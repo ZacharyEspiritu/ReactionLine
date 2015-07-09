@@ -33,10 +33,16 @@ There are no levels; only a one-player game mode.
 
 ## MVP Milestones
 
-### Day 1
-* Finish MVP
+### Week 1
+* Complete base game without much polish
 
-### Days 2 - ??
-* Add a bunch of unnecessarily complex features and animations without any planning whatsoever and cross our fingers that they work
+### Week 2
+* Add sounds
+* Polish up graphics
+* Add some animations
+* Add some options via `NSUserDefaults`
+* Add a main menu
+* Add an options menu
+
+### Week 3
 * ???
-* Profit!
