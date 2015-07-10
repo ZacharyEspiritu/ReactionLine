@@ -39,4 +39,10 @@ class Line: CCNode {
         
     }
     
+    func fallDown() {
+        
+        self.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.position.x, y: -2000))))
+        
+    }
+    
 }

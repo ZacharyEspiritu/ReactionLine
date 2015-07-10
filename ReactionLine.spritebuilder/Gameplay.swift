@@ -8,25 +8,6 @@
 
 import Foundation
 
-extension Double {
-    
-    var roundTo2:Double {
-        let converter = NSNumberFormatter()
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = NSNumberFormatterStyle.NoStyle
-        formatter.minimumFractionDigits = 2
-        formatter.roundingMode = .RoundDown
-        formatter.maximumFractionDigits = 2
-        if let stringFromDouble =  formatter.stringFromNumber(self) {
-            if let doubleFromString = converter.numberFromString( stringFromDouble ) as? Double {
-                return doubleFromString
-            }
-        }
-        return 0
-    }
-    
-}
-
 class Gameplay: CCNode {
     
     // MARK: Constants
@@ -47,8 +28,10 @@ class Gameplay: CCNode {
     weak var redTouchZone: CCNode!
     
     weak var lineGroupingNode: CCNode!
+    weak var startingColorNode: CCNodeColor!
     
     weak var againButton: CCControl!
+    weak var mainMenuButton: CCControl!
     
     weak var countdownLabel: CCLabelTTF!
     var countdown: String = "" {
@@ -58,17 +41,14 @@ class Gameplay: CCNode {
     }
     var time: Double = 0.4 {
         didSet {
-            countdownLabel.string = "\(time.roundTo2)"
+            countdownLabel.string = String(format: "%.3f", time)
         }
     }
     
     var lineArray: [Line] = []
-    
     var lineIndex = 0
     
     var gameState: GameState = .Playing
-    
-    weak var startingColorNode: CCNodeColor!
     
     
     // MARK: Convenience Functions
@@ -112,20 +92,20 @@ class Gameplay: CCNode {
     func countdownBeforeGameBegins() {
         countdownLabel.visible = true
         
-        self.countdown = "READY?"
+        self.countdown = "ready?"
         delay(1.2) {
             self.countdown = "3"
-            self.delay(1) {
+            self.delay(0.5) {
                 self.countdown = "2"
-                self.delay(1) {
+                self.delay(0.5) {
                     self.countdown = "1"
-                    self.delay(1) {
+                    self.delay(0.5) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
                         self.startingColorNode.visible = false
                         self.userInteractionEnabled = true
                         self.multipleTouchEnabled = true
-                        self.schedule("timer", interval: 0.01)
+                        self.schedule("timer", interval: 0.001)
                         return
                     }
                 }
@@ -137,7 +117,7 @@ class Gameplay: CCNode {
     // MARK: Timing Functions
     
     func timer() {
-        time += 0.01
+        time += 0.001
     }
     
     
@@ -227,11 +207,10 @@ class Gameplay: CCNode {
         
         lineGroupingNode.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: 1.5, position: CGPoint(x: 0, y: (Double(line.contentSize.height + padding) * Double(numberOfLines - 20))))))
         
-        winLabel.visible = true
-        winLabel.runAction(CCActionEaseElasticOut(action: CCActionMoveTo(duration: 1.5, position: CGPoint(x: 0.5, y: 0.5))))
-        
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
+        
+        self.animationManager.runAnimationsForSequenceNamed("WinSequence")
         
         againButton.visible = true
     }
@@ -274,27 +253,51 @@ class Gameplay: CCNode {
                 
                 currentLine.runAction(tiltAction)
                 
-                println(random)
-                
+            }
+            
+            // Randomize "broken" position of the `blueTouchZone`.
+            var blueRandom = Int(arc4random_uniform(9))
+            var blueNegativeRandom = Int(arc4random_uniform(2))
+            blueRandom = blueRandom * 4 + 3
+            if blueNegativeRandom == 0 {
+                blueRandom = -blueRandom
+            }
+            
+            self.blueTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(blueRandom))))
+            
+            // Randomize "broken" position of the `redTouchZone`.
+            var redRandom = Int(arc4random_uniform(9))
+            var redNegativeRandom = Int(arc4random_uniform(2))
+            redRandom = redRandom * 4 + 3
+            if redNegativeRandom == 0 {
+                redRandom = -redRandom
+            }
+            
+            self.redTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(redRandom))))
+            
+            self.countdownLabel.runAction(CCActionFadeOut(duration: 0.5))
+            
+            if (blueRandom + redRandom) == 2 {
+                self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
+            }
+            else {
+                self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
             }
             
             self.delay(1) {
+                
+                self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
+                self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
                 
                 for index in 0..<self.lineArray.count {
                     
                     var currentLine = self.lineArray[index]
                     
-                    currentLine.runAction(CCActionEaseRate(action: CCActionMoveBy(duration: 5, position: CGPoint(x: currentLine.position.x, y: -2000)), rate: Float(5)))
+                    currentLine.scheduleOnce("fallDown", delay: (0.06 * Double(index)))
                     
                 }
                 
-                self.countdown = "GAME\nOVER"
-                self.countdownLabel.visible = true
-                
-                self.countdownLabel.runAction(CCActionFadeIn(duration: 1.5))
-                
-                self.againButton.visible = true
-                self.againButton.runAction(CCActionFadeIn(duration: 1.5))
+                self.animationManager.runAnimationsForSequenceNamed("LoseSequence")
                 
             }
             
@@ -313,6 +316,19 @@ class Gameplay: CCNode {
         
         var scene = CCScene()
         scene.addChild(gameplayScene)
+        
+        var transition = CCTransition(fadeWithDuration: 0.3)
+        
+        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
+        
+    }
+    
+    func mainMenu() {
+        
+        var mainScene = CCBReader.load("MainScene") as! MainScene
+        
+        var scene = CCScene()
+        scene.addChild(mainScene)
         
         var transition = CCTransition(fadeWithDuration: 0.3)
         

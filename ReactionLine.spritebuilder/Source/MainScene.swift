@@ -18,7 +18,6 @@ class MainScene: CCNode {
     
     weak var titleLabel: CCLabelTTF!
     weak var infoLabel: CCLabelTTF!
-    weak var winLabel: CCLabelTTF!
     
     weak var playButton: CCControl!
     weak var optionsButton: CCControl!
@@ -27,39 +26,12 @@ class MainScene: CCNode {
     weak var buttonNode: CCNode!
     weak var headerNode: CCNode!
     
-    weak var blueTouchZone: CCNode!
-    weak var redTouchZone: CCNode!
-    
-    weak var lineGroupingNode: CCNode!
-    
-    var lineArray: [Line] = []
-    
-    var lineIndex = 0
-    
     var gameState: GameState = .Playing
     
     
     // MARK: Functions
     
     func didLoadFromCCB() {
-        
-        for index in 0..<numberOfLines {
-            
-            var line = CCBReader.load("Line") as! Line
-            line.setRandomColor()
-            
-            var lineHeight = (line.contentSizeInPoints.height + padding) * CGFloat(index)
-            line.position = CGPoint(x: 0, y: lineHeight)
-            
-            lineGroupingNode.addChild(line)
-            lineArray.append(line)
-            
-        }
-        
-        lineGroupingNode.cascadeOpacityEnabled = true
-        lineGroupingNode.opacity = 0
-        
-        audio.preloadEffect("slide.wav")
         
     }
     
