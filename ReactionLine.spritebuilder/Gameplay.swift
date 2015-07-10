@@ -12,27 +12,34 @@ class Gameplay: CCNode {
     
     // MARK: Constants
     
-    let padding: CGFloat = 16
-    let numberOfLines: Int = 100
-    let animationRowDelay = 0.15
-    let animationLinesDownDelay = 0.1
+    let padding: CGFloat = 16          // How much space do we want between each row?
+    let numberOfLines: Int = 100       // How many lines should be played in this game instance?
+    let animationRowDelay = 0.15       // How long should it take for a correctly tapped line to move from its current position to the side of the screen?
+    let animationLinesDownDelay = 0.1  // How long should it take for the stack of lines to move down on a correct tap?
     
-    let audio = OALSimpleAudio.sharedInstance()
+    let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
     
     // MARK: Variables
     
+    // The label that appears when the WinSequence animation is played.
     weak var winLabel: CCLabelTTF!
     
+    // Refers to the two colored touch "buttons" at the bottom of the screen.
     weak var blueTouchZone: CCNode!
     weak var redTouchZone: CCNode!
     
+    // All lines are made children of this node so they can be animated easier during the game.
     weak var lineGroupingNode: CCNode!
+    
+    // Refers to the black screen that appears behind the countdown before the start of each game.
     weak var startingColorNode: CCNodeColor!
     
+    // The two buttons that appear at the end of each game.
     weak var againButton: CCControl!
     weak var mainMenuButton: CCControl!
     
+    // `countdownLabel` and `countdown` work together in tandem via the `didSet` property of `countdown` to display the countdown at the beginning of each game. Similarly, the `countdownLabel` is repurposed to display the time by working with the `didSet` property of the `time` variable.
     weak var countdownLabel: CCLabelTTF!
     var countdown: String = "" {
         didSet {
@@ -45,9 +52,11 @@ class Gameplay: CCNode {
         }
     }
     
+    // Variables used to handle correct tap checking and individual line animation.
     var lineArray: [Line] = []
     var lineIndex = 0
     
+    // The game state of the current game instnace.
     var gameState: GameState = .Playing
     
     
@@ -55,6 +64,8 @@ class Gameplay: CCNode {
     
     /**
     When called, delays the running of code included in the `closure` parameter.
+    
+    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
@@ -68,8 +79,12 @@ class Gameplay: CCNode {
     
     // MARK: Start-Game Functions
     
+    /**
+    Called whenever the `Gameplay.ccb` file loads into the scene.
+    */
     func didLoadFromCCB() {
         
+        // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {
             
             var line = CCBReader.load("Line") as! Line
@@ -85,10 +100,13 @@ class Gameplay: CCNode {
         
         audio.preloadEffect("slide.wav")
         
-        countdownBeforeGameBegins()
+        countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
     }
     
+    /**
+    Initiates the pre-game countdown.
+    */
     func countdownBeforeGameBegins() {
         countdownLabel.visible = true
         
@@ -116,6 +134,9 @@ class Gameplay: CCNode {
     
     // MARK: Timing Functions
     
+    /**
+    Adds 0.001 to the `time` variable.
+    */
     func timer() {
         time += 0.001
     }
@@ -123,6 +144,11 @@ class Gameplay: CCNode {
     
     // MARK: In-Game Functions
     
+    /**
+    Called whenever a tap is registered on the screen.
+    
+    It checks to see if the game is currently in the `Playing` state, and if so, checks to see which side the player tapped on and passes that value to the `checkIfRightTap()` function.
+    */
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
         if gameState == .Playing {
@@ -141,11 +167,21 @@ class Gameplay: CCNode {
         
     }
     
+    /**
+    Checks to see if the latest registered tap was on the correct `tapSide` of the screen, corresponding to the current `Line` in question.
+    
+    It checks to see if the `tapSide` is equal to the `lineColor` of the current `Line`, and if so, runs the associated animation with that action. If the tap was incorrect, it calls the `gameOver()` function and ends the game there.
+    
+    The function also checks to see if the current tap may have caused a win state to occur.
+    
+    :param: tapSide  the side that the player just tapped on (value should be passed from `touchBegan()`)
+    */
     func checkIfRightTap(#tapSide: Color) {
         
         var currentLine = lineArray[lineIndex]
         var lineColor = currentLine.colorType
         
+        // Check if the tap was on the correct side of the screen.
         if tapSide == lineColor {
             if tapSide == .Red {
                 moveStackDown(sideAnimation: .Red)
@@ -159,6 +195,7 @@ class Gameplay: CCNode {
             return
         }
         
+        // Check to see if a win state just occured.
         if lineIndex == lineArray.count {
             win(lineArray[lineIndex - 1])
         }
@@ -167,12 +204,14 @@ class Gameplay: CCNode {
     
     // MARK: Animation Functions
     
+    /**
+    Runs the animation sequence corresponding to a correct tap.
+    
+    It "slides" the `currentLine` over to its corresponding `Color` side, and moves the `lineGroupingNode` down to account for the now moved piece.
+    */
     func moveStackDown(#sideAnimation: Color) {
         
-        println("Try Stack")
-        
         var currentLine = lineArray[lineIndex]
-        
         var flyOutAction: CCActionMoveTo? = nil
         
         if sideAnimation == .Blue {
@@ -184,10 +223,10 @@ class Gameplay: CCNode {
         
         currentLine.runAction(flyOutAction!)
         
-        audio.playEffect("slide.wav")
-        
         var moveLinesDown = CCActionMoveBy(duration: animationLinesDownDelay, position: CGPoint(x: 0, y: -(currentLine.contentSize.height + padding)))
         lineGroupingNode.runAction(moveLinesDown)
+        
+        audio.playEffect("slide.wav")
         
         lineIndex++
         
@@ -196,6 +235,13 @@ class Gameplay: CCNode {
     
     // MARK: End-Game Functions
     
+    /**
+    Ends the game in a winning state, and runs the corresponding animations for that state.
+    
+    It should only be called whenever the player makes a move that would land the game in a winning state.
+    
+    :param: line  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game can be passed into this function (assuming that all of them are the same size).
+    */
     func win(line: Line) {
         
         self.unschedule("timer")
@@ -213,8 +259,14 @@ class Gameplay: CCNode {
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
         
         againButton.visible = true
+        
     }
     
+    /**
+    Ends the game in a losing state, and runs the corresponding animations for that state.
+    
+    It should only be called when the player makes a move that would land the game in a losing state.
+    */
     func gameOver() {
         
         self.unschedule("timer")
@@ -310,6 +362,9 @@ class Gameplay: CCNode {
     
     // MARK: Button Functions
     
+    /**
+    Loads a new instance of `Gameplay.ccb` to restart the game.
+    */
     func playAgain() {
         
         var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
@@ -323,6 +378,9 @@ class Gameplay: CCNode {
         
     }
     
+    /**
+    Returns the game back to the main menu by loading a new instance of `MainScene.ccb`.
+    */
     func mainMenu() {
         
         var mainScene = CCBReader.load("MainScene") as! MainScene
