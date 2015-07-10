@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55916C2B1B5003B5003C9E93 /* spring.mp3 */; };
 		5596AB691B4DB7610089D1BA /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB681B4DB7610089D1BA /* Line.swift */; };
-		5596AB941B4DFBA30089D1BA /* slide.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB931B4DFBA30089D1BA /* slide.wav */; };
 		5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB951B4DFCCF0089D1BA /* tada.wav */; };
 		5596AB981B4E16D30089D1BA /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB971B4E16D30089D1BA /* Gameplay.swift */; };
 		5B121030197484FA004C1E1D /* ReactionLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ReactionLineActivity.m */; };
@@ -152,8 +152,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55916C2B1B5003B5003C9E93 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		5596AB681B4DB7610089D1BA /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		5596AB931B4DFBA30089D1BA /* slide.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slide.wav; sourceTree = "<group>"; };
 		5596AB951B4DFCCF0089D1BA /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
 		5596AB971B4E16D30089D1BA /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
@@ -282,8 +282,8 @@
 		5596AB901B4DFAB80089D1BA /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				5596AB931B4DFBA30089D1BA /* slide.wav */,
 				5596AB951B4DFCCF0089D1BA /* tada.wav */,
+				55916C2B1B5003B5003C9E93 /* spring.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -755,8 +755,8 @@
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
-				5596AB941B4DFBA30089D1BA /* slide.wav in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
+				55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,

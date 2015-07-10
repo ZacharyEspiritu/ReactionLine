@@ -56,10 +56,10 @@ class Line: CCNode {
         self.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.position.x, y: -2000))))
         
         if self.rotation <= 0 {
-            self.runAction(CCActionEaseSineIn(action: CCActionRotateBy(duration: 4, angle: -30)))
+            self.runAction(CCActionEaseSineIn(action: CCActionRotateBy(duration: 4, angle: -40)))
         }
         else {
-            self.runAction(CCActionEaseSineIn(action: CCActionRotateBy(duration: 4, angle: 30)))
+            self.runAction(CCActionEaseSineIn(action: CCActionRotateBy(duration: 4, angle: 40)))
         }
         
     }

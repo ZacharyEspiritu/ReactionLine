@@ -97,9 +97,7 @@ class Gameplay: CCNode {
             lineArray.append(line)
             
         }
-        
-        audio.preloadEffect("slide.wav")
-        
+                
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
     }
@@ -226,8 +224,6 @@ class Gameplay: CCNode {
         var moveLinesDown = CCActionMoveBy(duration: animationLinesDownDelay, position: CGPoint(x: 0, y: -(currentLine.contentSize.height + padding)))
         lineGroupingNode.runAction(moveLinesDown)
         
-        audio.playEffect("slide.wav")
-        
         lineIndex++
         
     }
@@ -336,6 +332,8 @@ class Gameplay: CCNode {
                 self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
             }
             
+            self.audio.playEffect("spring.mp3")
+            
             self.delay(1) {
                 
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
@@ -343,9 +341,26 @@ class Gameplay: CCNode {
                 
                 for index in 0..<self.lineArray.count {
                     
-                    var currentLine = self.lineArray[index]
+                    let numberOfRowsToSkip: Int = 9 // A bit hard to explain, but, in essence, determines how fast the animation responds to the losing state occuring. This entire section is necessary in order for the animation sequence to start running at the `Line` objects that are currently on the screen as opposed to starting at the ones that the player may have already cleared and are now off the screen. If we start the animation sequence at the ones that are off the screen, it can take a while until the sequence actually has any visible effect.
                     
-                    currentLine.scheduleOnce("fallDown", delay: (0.06 * Double(index)))
+                    var currentLine = self.lineArray[index]
+                    var delayMultiplier: Int?
+                   
+                    if (self.lineIndex - numberOfRowsToSkip) < numberOfRowsToSkip {
+                        delayMultiplier = index
+                    }
+                    else {
+                        if (index - (self.lineIndex - numberOfRowsToSkip)) < 0 {
+                            delayMultiplier = 0
+                        }
+                        else {
+                            delayMultiplier = index - (self.lineIndex - numberOfRowsToSkip)
+                        }
+                    }
+                    
+                    var delay = (0.06 * Double(delayMultiplier!))
+                    
+                    currentLine.scheduleOnce("fallDown", delay: delay)
                     
                 }
                 
