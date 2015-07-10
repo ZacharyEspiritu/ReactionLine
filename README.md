@@ -38,9 +38,11 @@ There are no levels; only a one-player game mode.
 * Add end-game animations for polish
 * Try to start working on implementing `NSUserDefaults` into game files for easier implementation of options in Week 2
 * Complete some sort of sound design plan
-* Add sounds
+* Integrate Game Center leaderboard API
+* Use `NSUserDefaults` for high score integration
 
 ### Week 2
+* Add sounds
 * Polish up graphics
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
