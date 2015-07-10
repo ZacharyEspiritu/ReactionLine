@@ -14,9 +14,18 @@ enum Color {
 
 class Line: CCNode {
     
+    // MARK: Variables
+    
     weak var colorNode: CCNodeColor!
+    
     var colorType: Color = .Red
     
+    
+    // MARK: Functions
+    
+    /**
+    Sets each line to a randomly chosen color.
+    */
     func setRandomColor() {
         
         let redColor = CCColor(red: 255/255, green: 102/255, blue: 102/255)
@@ -39,6 +48,9 @@ class Line: CCNode {
         
     }
     
+    /**
+    Function used in the losing state end-game animation sequence to achieve a "cascading" effect with the lines. See `gameOver()` in `Gameplay.swift` for more information.
+    */
     func fallDown() {
         
         self.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.position.x, y: -2000))))

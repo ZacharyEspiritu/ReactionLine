@@ -35,6 +35,11 @@ class MainScene: CCNode {
         
     }
     
+    /**
+    Begins the game.
+    
+    It is called whenever the `playButton` is tapped.
+    */
     func play() {
         
         var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
@@ -48,10 +53,20 @@ class MainScene: CCNode {
         
     }
     
+    /**
+    Displays the options menu.
+    
+    It is called whenever the `optionsButton` is tapped.
+    */
     func options() {
         
     }
     
+    /**
+    Displays the credits scene.
+    
+    It is called whenever the `aboutButton` is tapped.
+    */
     func about() {
         
     }
