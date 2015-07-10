@@ -35,14 +35,22 @@ There are no levels; only a one-player game mode.
 
 ### Week 1
 * Complete base game without much polish
+* Add end-game animations for polish
+* Try to start working on implementing `NSUserDefaults` into game files for easier implementation of options in Week 2
+* Complete some sort of sound design plan
+* Add sounds
 
 ### Week 2
-* Add sounds
 * Polish up graphics
-* Add some animations
-* Add some options via `NSUserDefaults`
-* Add a main menu
+* Complete integration of options via `NSUserDefaults`
 * Add an options menu
+* Add multiple playmodes, as suggested by playtesters
+
 
 ### Week 3
-* Add a multiplayer mode?
+* Final last-minute bug fixes
+* Submit the app to the App Store for approval (and pray)
+* Get the app approved
+
+### Week 4
+* Start raking in the ad revenue
