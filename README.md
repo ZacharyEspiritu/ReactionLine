@@ -1,5 +1,10 @@
 # Reaction Line
 
+## Description
+
+Reaction Line is a minimalistic, hardcore, single-player game that aims to be the most entertaining (and aggravating) mobile game for iOS. The game is simple: sort 100 lines into red and blue stacks as quickly as possible. The catch? You only have one life.
+
+
 ## Game Design
 
 ### Objective
@@ -17,6 +22,7 @@ There are no levels; only a one-player game mode.
 * Main Menu
 * Gameplay
 * Options
+* Credits ("About The Game")
 
 ### Controls/Input
 * Tap based controls
@@ -28,31 +34,32 @@ There are no levels; only a one-player game mode.
   * Main Menu
   * Gameplay
   * Options
+  * Credits ("About The Game")
 * Nodes/Sprites
   * Line
 
 ## MVP Milestones
 
-### Week 1
+### Completed:
 * Complete base game without much polish
 * Add end-game animations for polish
+* Use `NSUserDefaults` for high score integration
+* Polish up graphics
+
+### Week 1 - Weekend:
 * Try to start working on implementing `NSUserDefaults` into game files for easier implementation of options in Week 2
 * Complete some sort of sound design plan
+* Add sounds
 * Integrate Game Center leaderboard API
-* Use `NSUserDefaults` for high score integration
+
 
 ### Week 2
-* Add sounds
-* Polish up graphics
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
 * Add multiple playmodes, as suggested by playtesters
-
-
-### Week 3
 * Final last-minute bug fixes
 * Submit the app to the App Store for approval (and pray)
 * Get the app approved
 
-### Week 4
+### Week 3
 * Start raking in the ad revenue
