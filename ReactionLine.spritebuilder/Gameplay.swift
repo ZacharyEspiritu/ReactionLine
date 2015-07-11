@@ -20,10 +20,25 @@ class Gameplay: CCNode {
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
     
+    // MARK: Memory Variables
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    let highScoreKey = "highScoreKey"
+    
+    
     // MARK: Variables
     
     // The label that appears when the WinSequence animation is played.
     weak var winLabel: CCLabelTTF!
+    
+    // Highscore handling system.
+    weak var highScoreLabel: CCLabelTTF!
+    var highScore: Double = 0 {
+        didSet {
+            highScoreLabel.string = String(format: "fastest time:\n%.3f", highScore)
+        }
+    }
     
     // Refers to the two colored touch "buttons" at the bottom of the screen.
     weak var blueTouchZone: CCNode!
@@ -31,9 +46,6 @@ class Gameplay: CCNode {
     
     // All lines are made children of this node so they can be animated easier during the game.
     weak var lineGroupingNode: CCNode!
-    
-    // Refers to the black screen that appears behind the countdown before the start of each game.
-    weak var startingColorNode: CCNodeColor!
     
     // The two buttons that appear at the end of each game.
     weak var againButton: CCControl!
@@ -58,6 +70,8 @@ class Gameplay: CCNode {
     
     // The game state of the current game instnace.
     var gameState: GameState = .Playing
+    
+    weak var backgroundGroupingNode: CCNode!
     
     
     // MARK: Convenience Functions
@@ -97,6 +111,13 @@ class Gameplay: CCNode {
             lineArray.append(line)
             
         }
+        
+        lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
+        blueTouchZone.opacity = 0
+        redTouchZone.opacity = 0
+        
+        backgroundGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0, y: 0))))
+        lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
                 
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
@@ -107,18 +128,21 @@ class Gameplay: CCNode {
     */
     func countdownBeforeGameBegins() {
         countdownLabel.visible = true
+        countdownLabel.opacity = 0
         
+        countdownLabel.runAction(CCActionFadeIn(duration: 0.5))
         self.countdown = "ready?"
         delay(1.2) {
             self.countdown = "3"
-            self.delay(0.5) {
+            self.delay(0.6) {
                 self.countdown = "2"
-                self.delay(0.5) {
+                self.blueTouchZone.runAction(CCActionFadeIn(duration: 1))
+                self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
+                self.delay(0.6) {
                     self.countdown = "1"
-                    self.delay(0.5) {
+                    self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
-                        self.startingColorNode.visible = false
                         self.userInteractionEnabled = true
                         self.multipleTouchEnabled = true
                         self.schedule("timer", interval: 0.001)
@@ -200,6 +224,7 @@ class Gameplay: CCNode {
         
     }
     
+    
     // MARK: Animation Functions
     
     /**
@@ -252,6 +277,8 @@ class Gameplay: CCNode {
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         
+        getHighScore()
+        
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
         
         againButton.visible = true
@@ -267,6 +294,8 @@ class Gameplay: CCNode {
         
         self.unschedule("timer")
         self.userInteractionEnabled = false
+        
+        highScore = defaults.doubleForKey(highScoreKey)
 
         println("GAMEOVER")
         
@@ -371,6 +400,18 @@ class Gameplay: CCNode {
         }
         
         
+        
+    }
+    
+    func getHighScore() {
+        
+        var lastHighScore = defaults.doubleForKey(highScoreKey)
+        
+        if lastHighScore > time {
+            defaults.setDouble(time, forKey: highScoreKey)
+        }
+        
+        highScore = lastHighScore
         
     }
     

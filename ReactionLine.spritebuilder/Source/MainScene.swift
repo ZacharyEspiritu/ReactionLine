@@ -14,6 +14,14 @@ class MainScene: CCNode {
     let audio = OALSimpleAudio.sharedInstance()
     
     
+    // MARK: Memory Variables
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    let hasAlreadyLoaded = "hasAlreadyLoaded"
+    let highScoreKey = "highScoreKey"
+    
+    
     // MARK: Variables
     
     weak var titleLabel: CCLabelTTF!
@@ -33,6 +41,13 @@ class MainScene: CCNode {
     
     func didLoadFromCCB() {
         
+        if !defaults.boolForKey(hasAlreadyLoaded) {
+            
+            defaults.setBool(true, forKey: hasAlreadyLoaded)
+            defaults.setDouble(99.999, forKey: highScoreKey)
+            
+        }
+        
     }
     
     /**
@@ -42,14 +57,20 @@ class MainScene: CCNode {
     */
     func play() {
         
-        var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+        self.animationManager.runAnimationsForSequenceNamed("FlyOutToGameplay")
         
-        var scene = CCScene()
-        scene.addChild(gameplayScene)
-        
-        var transition = CCTransition(fadeWithDuration: 0.3)
-        
-        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
+        delay(0.9) {
+            
+            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            
+            var scene = CCScene()
+            scene.addChild(gameplayScene)
+            
+            var transition = CCTransition(fadeWithDuration: 0.1)
+            
+            CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
+            
+        }
         
     }
     
@@ -69,6 +90,23 @@ class MainScene: CCNode {
     */
     func about() {
         
+    }
+    
+    
+    // MARK: Convenience Functions
+    
+    /**
+    When called, delays the running of code included in the `closure` parameter.
+    
+    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    */
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 
 }
