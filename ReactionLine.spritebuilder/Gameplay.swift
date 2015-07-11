@@ -118,6 +118,8 @@ class Gameplay: CCNode {
         
         backgroundGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0, y: 0))))
         lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
+        
+        self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
                 
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
