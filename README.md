@@ -4,6 +4,8 @@
 
 Reaction Line is a minimalistic, hardcore, single-player game that aims to be the most entertaining (and aggravating) mobile game for iOS. The game is simple: sort 100 lines into red and blue stacks as quickly as possible. The catch? You only have one life.
 
+The mechanics are simple to learn, but the game is hard to master. Do you have the hand-eye coordination and quick thinking skills to tap your way to the top?
+
 
 ## Game Design
 
