@@ -42,26 +42,45 @@ There are no levels; only a one-player game mode.
 
 ## MVP Milestones
 
-### Completed:
-* Complete base game without much polish
-* Add end-game animations for polish
-* Use `NSUserDefaults` for high score integration
-* Polish up graphics
+### Week 1:
+* **Complete!** ~~Complete base game without much polish~~
+* **Complete!** ~~Add end-game animations for polish~~
+* **Complete!** ~~Use `NSUserDefaults` for high score integration~~
+* **Complete!** ~~Polish up graphics~~
+* **Complete!** ~~Complete some sort of sound design plan~~
 
 ### Week 1 - Weekend:
-* Try to start working on implementing `NSUserDefaults` into game files for easier implementation of options in Week 2
-* Complete some sort of sound design plan
+* **Complete!** ~~Overhaul main menu design~~
+* **Complete!** ~~Add some more animations in the main menu~~
 * Add sounds
-* Integrate Game Center leaderboard API
+* Add multiple playmodes, as suggested by playtesters
 
 
 ### Week 2
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
-* Add multiple playmodes, as suggested by playtesters
+* Facebook/Twitter sharing from app
+* Integrate Game Center leaderboard API
 * Final last-minute bug fixes
 * Submit the app to the App Store for approval (and pray)
 * Get the app approved
 
 ### Week 3
 * Start raking in the ad revenue
+
+## List of Feedback
+
+### Week 1: Office Hours
+* **Complete!** ~~Lines need to be thicker because they're hard to see, especially when they're moving at the same time.~~
+* **Complete!** ~~Menu needs to be redesigned, so it doesn't look like the MTA signs.~~ 
+* **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
+* EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.
+* EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
+* Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
+* Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)
+
+### Week 1: Weekend
+* Everyone: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
+* CK: Menu icons need to be slightly redesigned so they look less jumbled together.
+* SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.
+* JT: The "hamburger" icon might be too unclear on what it actually does.
