@@ -65,3 +65,18 @@ There are no levels; only a one-player game mode.
 
 ### Week 3
 * Start raking in the ad revenue
+
+## List of Feedback
+
+### Week 1: Office Hours
+* **Complete!** ~~Lines need to be thicker because they're hard to see, especially when they're moving at the same time.~~
+* **Complete!** ~~Menu needs to be redesigned, so it doesn't look like the MTA signs.~~ 
+* **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
+* End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.
+* More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
+
+### Week 1: Weekend
+* Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!")
+* Menu icons need to be slightly redesigned so they look more "aesthetically pleasing".
+* Some people don't like the lower-case letter design, but other people do. Need more user feedback.
+* Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
