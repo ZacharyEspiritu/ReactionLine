@@ -42,8 +42,10 @@ There are no levels; only a one-player game mode.
 
 ## MVP Milestones
 
-### Week 1:
+### Week 1: Thursday
 * **Complete!** ~~Complete base game without much polish~~
+
+### Week 1: Friday
 * **Complete!** ~~Add end-game animations for polish~~
 * **Complete!** ~~Use `NSUserDefaults` for high score integration~~
 * **Complete!** ~~Polish up graphics~~
@@ -52,18 +54,26 @@ There are no levels; only a one-player game mode.
 ### Week 1 - Weekend:
 * **Complete!** ~~Overhaul main menu design~~
 * **Complete!** ~~Add some more animations in the main menu~~
-* Add sounds
-* Add multiple playmodes, as suggested by playtesters
+* Add Infinite Mode
+* Add Two Player Mode
 
-
-### Week 2
+### Week 2: Monday
+* Add Challenge Mode
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
-* Facebook/Twitter sharing from app
+
+### Week 2: Tuesday
 * Integrate Game Center leaderboard API
-* Final last-minute bug fixes
-* Submit the app to the App Store for approval (and pray)
-* Get the app approved
+* Facebook/Twitter sharing from app
+
+### Week 2: Wednesday
+* Add sounds
+* Run some final playtesting sessions
+
+### Week 2: Thursday
+* Take some screenshots for iTunes Connect
+* Finalize description (or have someone else willing enough write it themselves)
+* Submit the app to the App Store for approval (and pray that it does)
 
 ### Week 3
 * Start raking in the ad revenue
@@ -80,8 +90,8 @@ There are no levels; only a one-player game mode.
 * Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)
 
 ### Week 1: Weekend
-* Everyone: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
-* Parents: Add text below each of the circular buttons because they're unclear on what they do.
-* CK: Menu icons need to be slightly redesigned so they have more padding between the edge of the circle and the icon.
+* **Complete!** ~~Parents: Add text below each of the circular buttons because they're unclear on what they do.~~
+* SS & CK: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
+* **Complete!** ~~CK: Menu icons need to be slightly redesigned so they have more padding between the edge of the circle and the icon.~~
 * SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.
-* JT: The "hamburger" icon might be too unclear on what it actually does.
+* **Complete!** ~~JT: The "hamburger" icon might be too unclear on what it actually does, so you'll want to run some more user testing to see if people understand. (The fact that he thought it was a hamburger also should be a cause for concern.)~~
