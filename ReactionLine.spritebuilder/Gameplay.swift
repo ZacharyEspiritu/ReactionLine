@@ -263,7 +263,7 @@ class Gameplay: CCNode {
     
     It should only be called whenever the player makes a move that would land the game in a winning state.
     
-    :param: line  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game can be passed into this function (assuming that all of them are the same size).
+    :param: line  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game are passed into this function, because it simply uses it to determine how tall each of the `Line` objects are.
     */
     func win(line: Line) {
         

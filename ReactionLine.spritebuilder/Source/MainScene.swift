@@ -27,14 +27,17 @@ class MainScene: CCNode {
     weak var titleLabel: CCLabelTTF!
     weak var infoLabel: CCLabelTTF!
     
-    weak var playButton: CCControl!
+    weak var creditsLayer: CCNode!
+    var isCreditsInView = false
+    
+    weak var timedModeButton: CCControl!
+    weak var infiniteModeButton: CCControl!
+    weak var twoPlayerModeButton: CCControl!
+    weak var challengeModeButton: CCControl!
+    
     weak var optionsButton: CCControl!
     weak var aboutButton: CCControl!
-    
-    weak var buttonNode: CCNode!
-    weak var headerNode: CCNode!
-    
-    var gameState: GameState = .Playing
+    weak var shareButton: CCControl!
     
     
     // MARK: Functions
@@ -48,50 +51,111 @@ class MainScene: CCNode {
             
         }
         
+        creditsLayer.cascadeOpacityEnabled = true
+        creditsLayer.opacity = 0
+        
+        self.userInteractionEnabled = true
+        
     }
     
     /**
-    Begins the game.
-    
-    It is called whenever the `playButton` is tapped.
+    Begins Timed Mode.
     */
-    func play() {
+    func timedMode() {
+        disableAllMenuButtons()
+        self.animationManager.runAnimationsForSequenceNamed("TimedMode")
         
-        self.animationManager.runAnimationsForSequenceNamed("FlyOutToGameplay")
-        
-        delay(0.9) {
+        delay(1.1) {
             
             var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
             
-            var transition = CCTransition(fadeWithDuration: 0.1)
-            
-            CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
+            CCDirector.sharedDirector().presentScene(scene)
             
         }
+    }
+    
+    /**
+    Begins Infinite Mode.
+    */
+    func infiniteMode() {
+        disableAllMenuButtons()
+        self.animationManager.runAnimationsForSequenceNamed("InfiniteMode")
+        
+        delay(1.1) {
+            
+            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            
+            var scene = CCScene()
+            scene.addChild(gameplayScene)
+            
+            CCDirector.sharedDirector().presentScene(scene)
+            
+        }
+    }
+    
+    /**
+    Begins Two Player Mode.
+    */
+    func twoPlayerMode() {
+        disableAllMenuButtons()
+        self.animationManager.runAnimationsForSequenceNamed("TwoPlayerMode")
+        
+        delay(1.1) {
+            
+            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            
+            var scene = CCScene()
+            scene.addChild(gameplayScene)
+            
+            CCDirector.sharedDirector().presentScene(scene)
+            
+        }
+    }
+    
+    /**
+    Begins Challenge Mode.
+    */
+    func challengeMode() {
+        disableAllMenuButtons()
+        self.animationManager.runAnimationsForSequenceNamed("ChallengeMode")
+        
+        delay(1.1) {
+            
+            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            
+            var scene = CCScene()
+            scene.addChild(gameplayScene)
+            
+            CCDirector.sharedDirector().presentScene(scene)
+            
+        }
+    }
+    
+    /**
+    Displays an interface from which the user can change certain options for the game.
+    */
+    func optionsMenu() {
         
     }
     
     /**
-    Displays the options menu.
-    
-    It is called whenever the `optionsButton` is tapped.
+    Displays the game credits.
     */
-    func options() {
-        
+    func aboutMenu() {
+        creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+        isCreditsInView = true
+        disableAllMenuButtons()
     }
     
     /**
-    Displays the credits scene.
-    
-    It is called whenever the `aboutButton` is tapped.
+    Displays an interface from which the user can share the app.
     */
-    func about() {
+    func shareMenu() {
         
     }
-    
     
     // MARK: Convenience Functions
     
@@ -107,6 +171,36 @@ class MainScene: CCNode {
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
             dispatch_get_main_queue(), closure)
+    }
+    
+    func disableAllMenuButtons() {
+        timedModeButton.enabled = false
+        infiniteModeButton.enabled = false
+        twoPlayerModeButton.enabled = false
+        challengeModeButton.enabled = false
+        
+        optionsButton.enabled = false
+        aboutButton.enabled = false
+        shareButton.enabled = false
+    }
+    
+    func enableAllMenuButtons() {
+        timedModeButton.enabled = true
+        infiniteModeButton.enabled = true
+        twoPlayerModeButton.enabled = true
+        challengeModeButton.enabled = true
+        
+        optionsButton.enabled = true
+        aboutButton.enabled = true
+        shareButton.enabled = true
+    }
+    
+    override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        if isCreditsInView {
+            creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 0))
+            isCreditsInView = false
+            enableAllMenuButtons()
+        }
     }
 
 }
