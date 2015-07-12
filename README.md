@@ -42,23 +42,25 @@ There are no levels; only a one-player game mode.
 
 ## MVP Milestones
 
-### Completed:
-* Complete base game without much polish
-* Add end-game animations for polish
-* Use `NSUserDefaults` for high score integration
-* Polish up graphics
+### Week 1:
+* **Complete!** ~~Complete base game without much polish~~
+* **Complete!** ~~Add end-game animations for polish~~
+* **Complete!** ~~Use `NSUserDefaults` for high score integration~~
+* **Complete!** ~~Polish up graphics~~
+* **Complete!** ~~Complete some sort of sound design plan~~
 
 ### Week 1 - Weekend:
-* Try to start working on implementing `NSUserDefaults` into game files for easier implementation of options in Week 2
-* Complete some sort of sound design plan
+* **Complete!** ~~Overhaul main menu design~~
+* **Complete!** ~~Add some more animations in the main menu~~
 * Add sounds
-* Integrate Game Center leaderboard API
+* Add multiple playmodes, as suggested by playtesters
 
 
 ### Week 2
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
-* Add multiple playmodes, as suggested by playtesters
+* Facebook/Twitter sharing from app
+* Integrate Game Center leaderboard API
 * Final last-minute bug fixes
 * Submit the app to the App Store for approval (and pray)
 * Get the app approved
@@ -80,5 +82,5 @@ There are no levels; only a one-player game mode.
 ### Week 1: Weekend
 * Everyone: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
 * CK: Menu icons need to be slightly redesigned so they look less jumbled together.
-* SS: Not sure about the lowercase letter design.
+* SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.
 * JT: The "hamburger" icon might be too unclear on what it actually does.
