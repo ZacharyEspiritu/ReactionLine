@@ -745,7 +745,7 @@
 									<key>easing</key>
 									<dict>
 										<key>type</key>
-										<integer>13</integer>
+										<integer>12</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -1281,7 +1281,7 @@
 									<key>easing</key>
 									<dict>
 										<key>type</key>
-										<integer>13</integer>
+										<integer>12</integer>
 									</dict>
 									<key>name</key>
 									<string>scale</string>
@@ -2882,6 +2882,14 @@
 															<string></string>
 															<string>assets/multiplayerButton.png</string>
 														</array>
+													</dict>
+													<dict>
+														<key>name</key>
+														<string>backgroundOpacity|Disabled</string>
+														<key>type</key>
+														<string>Float</string>
+														<key>value</key>
+														<real>1</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4493,6 +4501,14 @@
 															<string></string>
 															<string>assets/challengesButton.png</string>
 														</array>
+													</dict>
+													<dict>
+														<key>name</key>
+														<string>backgroundOpacity|Disabled</string>
+														<key>type</key>
+														<string>Float</string>
+														<key>value</key>
+														<real>1</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -6192,6 +6208,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>backgroundOpacity|Disabled</string>
+														<key>type</key>
+														<string>Float</string>
+														<key>value</key>
+														<real>1</real>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>labelOpacity|Disabled</string>
 														<key>type</key>
 														<string>Float</string>
@@ -6350,8 +6374,6 @@
 														</array>
 													</dict>
 												</array>
-												<key>selected</key>
-												<true/>
 												<key>seqExpanded</key>
 												<true/>
 											</dict>
@@ -7805,6 +7827,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>backgroundOpacity|Disabled</string>
+														<key>type</key>
+														<string>Float</string>
+														<key>value</key>
+														<real>1</real>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>labelOpacity|Disabled</string>
 														<key>type</key>
 														<string>Float</string>
@@ -8489,8 +8519,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>0.30000001192092896</real>
 										<key>type</key>
-										<integer>13</integer>
+										<integer>12</integer>
 									</dict>
 									<key>name</key>
 									<string>scale</string>
@@ -9295,6 +9327,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>1</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>labelOpacity|Disabled</string>
 								<key>type</key>
 								<string>Float</string>
@@ -9618,6 +9658,14 @@
 									<string></string>
 									<string>assets/aboutButton.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>1</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -9947,6 +9995,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>1</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>labelOpacity|Disabled</string>
 								<key>type</key>
 								<string>Float</string>
@@ -10105,6 +10161,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -10544,7 +10602,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1000000238418579</real>
+			<real>1.0666667222976685</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

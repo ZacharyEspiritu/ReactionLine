@@ -12,7 +12,7 @@ class Gameplay: CCNode {
     
     // MARK: Constants
     
-    let padding: CGFloat = 16          // How much space do we want between each row?
+    let padding: CGFloat = 5          // How much space do we want between each row?
     let numberOfLines: Int = 100       // How many lines should be played in this game instance?
     let animationRowDelay = 0.15       // How long should it take for a correctly tapped line to move from its current position to the side of the screen?
     let animationLinesDownDelay = 0.1  // How long should it take for the stack of lines to move down on a correct tap?
@@ -22,9 +22,7 @@ class Gameplay: CCNode {
     
     // MARK: Memory Variables
     
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    let highScoreKey = "highScoreKey"
+    let memoryHandler = MemoryHandler()
     
     
     // MARK: Variables
@@ -34,11 +32,6 @@ class Gameplay: CCNode {
     
     // Highscore handling system.
     weak var highScoreLabel: CCLabelTTF!
-    var highScore: Double = 0 {
-        didSet {
-            highScoreLabel.string = String(format: "fastest time:\n%.3f", highScore)
-        }
-    }
     
     // Refers to the two colored touch "buttons" at the bottom of the screen.
     weak var blueTouchZone: CCNode!
@@ -178,13 +171,16 @@ class Gameplay: CCNode {
         if gameState == .Playing {
             
             let xPos = touch.locationInWorld().x
+            let yPos = touch.locationInWorld().y
             let width = CCDirector.sharedDirector().viewSize().width
             
-            if xPos < (width / 2) {
-                checkIfRightTap(tapSide: .Blue)
-            }
-            else {
-                checkIfRightTap(tapSide: .Red)
+            if yPos < 130 { // Check if in the button zone.
+                if xPos < (width / 2) {
+                    checkIfRightTap(tapSide: .Blue)
+                }
+                else {
+                    checkIfRightTap(tapSide: .Red)
+                }
             }
             
         }
@@ -240,10 +236,10 @@ class Gameplay: CCNode {
         var flyOutAction: CCActionMoveTo? = nil
         
         if sideAnimation == .Blue {
-            flyOutAction = CCActionMoveTo(duration: animationRowDelay, position: CGPoint(x: -200, y: currentLine.position.y))
+            flyOutAction = CCActionMoveTo(duration: animationRowDelay, position: CGPoint(x: -currentLine.contentSize.width, y: currentLine.position.y))
         }
         else {
-            flyOutAction = CCActionMoveTo(duration: animationRowDelay, position: CGPoint(x: 200, y: currentLine.position.y))
+            flyOutAction = CCActionMoveTo(duration: animationRowDelay, position: CGPoint(x: currentLine.contentSize.width, y: currentLine.position.y))
         }
         
         currentLine.runAction(flyOutAction!)
@@ -279,7 +275,9 @@ class Gameplay: CCNode {
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         
-        getHighScore()
+        if memoryHandler.checkForNewTopScore(time) {
+            getHighScore()
+        }
         
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
         
@@ -294,11 +292,11 @@ class Gameplay: CCNode {
     */
     func gameOver() {
         
+        getHighScore()
+        
         self.unschedule("timer")
         self.userInteractionEnabled = false
         
-        highScore = defaults.doubleForKey(highScoreKey)
-
         println("GAMEOVER")
         
         var currentLine = lineArray[lineIndex]
@@ -407,13 +405,21 @@ class Gameplay: CCNode {
     
     func getHighScore() {
         
-        var lastHighScore = defaults.doubleForKey(highScoreKey)
+        var topTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.topScoreKey))
+        var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondScoreKey))
+        var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdScoreKey))
         
-        if lastHighScore > time {
-            defaults.setDouble(time, forKey: highScoreKey)
+        if topTimeString == "99.999" {
+            topTimeString = "—"
+        }
+        if secondTimeString == "99.999" {
+            secondTimeString = "—"
+        }
+        if thirdTimeString == "99.999" {
+            thirdTimeString = "—"
         }
         
-        highScore = lastHighScore
+        highScoreLabel.string = "fastest times:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
         
     }
     

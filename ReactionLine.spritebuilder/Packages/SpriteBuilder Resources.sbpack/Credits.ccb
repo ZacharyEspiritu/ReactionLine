@@ -1260,18 +1260,16 @@ Google (flaticon.com/authors/google)
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-</string>
+									<string>Frank Boccia
+Jorrie Brettin
+Nico Cobb
+Ashu Desai
+Austin Feight
+Rel Guzman
+Jacob Haff
+Cassandra Kane
+Eric Kim
+Yeon Jun Kim</string>
 									<false/>
 								</array>
 							</dict>
@@ -1478,18 +1476,16 @@ Placeholder Name
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-Placeholder Name
-</string>
+									<string>Vasu Laroiya
+Rohan Mishra
+Liam Rahav
+Adam Reis
+Aman Sawhney
+Make School
+Shashank Sharma
+Luke Solomon
+Julian Thesseling
+Eric Zhou</string>
 									<false/>
 								</array>
 							</dict>
@@ -1625,6 +1621,8 @@ Placeholder Name
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>

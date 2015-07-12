@@ -16,10 +16,7 @@ class MainScene: CCNode {
     
     // MARK: Memory Variables
     
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    let hasAlreadyLoaded = "hasAlreadyLoaded"
-    let highScoreKey = "highScoreKey"
+    let memoryHandler = MemoryHandler()
     
     
     // MARK: Variables
@@ -44,10 +41,15 @@ class MainScene: CCNode {
     
     func didLoadFromCCB() {
         
-        if !defaults.boolForKey(hasAlreadyLoaded) {
+        if !memoryHandler.defaults.boolForKey(memoryHandler.hasAlreadyLoaded) {
             
-            defaults.setBool(true, forKey: hasAlreadyLoaded)
-            defaults.setDouble(99.999, forKey: highScoreKey)
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.hasAlreadyLoaded)
+            
+            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.topScoreKey)
+            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.secondScoreKey)
+            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.thirdScoreKey)
+            
+            println("Default settings loaded.")
             
         }
         
@@ -138,7 +140,7 @@ class MainScene: CCNode {
     Displays an interface from which the user can change certain options for the game.
     */
     func optionsMenu() {
-        
+        println("TODO: Implement options menu.")
     }
     
     /**
@@ -154,7 +156,7 @@ class MainScene: CCNode {
     Displays an interface from which the user can share the app.
     */
     func shareMenu() {
-        
+        println("TODO: Implement sharing buttons.")
     }
     
     // MARK: Convenience Functions
