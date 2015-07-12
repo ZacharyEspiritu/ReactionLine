@@ -72,11 +72,13 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Lines need to be thicker because they're hard to see, especially when they're moving at the same time.~~
 * **Complete!** ~~Menu needs to be redesigned, so it doesn't look like the MTA signs.~~ 
 * **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
-* End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.
-* More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
+* EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.
+* EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
+* Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
+* Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)
 
 ### Week 1: Weekend
-* Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!")
-* Menu icons need to be slightly redesigned so they look more "aesthetically pleasing".
-* Some people don't like the lower-case letter design, but other people do. Need more user feedback.
-* Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
+* Everyone: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
+* CK: Menu icons need to be slightly redesigned so they look less jumbled together.
+* SS: Not sure about the lowercase letter design.
+* JT: The "hamburger" icon might be too unclear on what it actually does.
