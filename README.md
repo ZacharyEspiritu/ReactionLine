@@ -74,7 +74,7 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Lines need to be thicker because they're hard to see, especially when they're moving at the same time.~~
 * **Complete!** ~~Menu needs to be redesigned, so it doesn't look like the MTA signs.~~ 
 * **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
-* EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.
+* **Complete!** ~~EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.~~
 * EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
 * Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
 * Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)
@@ -83,5 +83,5 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Parents: Add text below each of the circular buttons because they're unclear on what they do.~~
 * SS & CK: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
 * **Complete!** ~~CK: Menu icons need to be slightly redesigned so they have more padding between the edge of the circle and the icon.~~
-* SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.
+* **Complete-ish!** ~~SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.~~
 * **Complete!** ~~JT: The "hamburger" icon might be too unclear on what it actually does, so you'll want to run some more user testing to see if people understand. (The fact that he thought it was a hamburger also should be a cause for concern.)~~
