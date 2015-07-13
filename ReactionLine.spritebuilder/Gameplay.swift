@@ -19,9 +19,6 @@ class Gameplay: CCNode {
     
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
-    
-    // MARK: Memory Variables
-    
     let memoryHandler = MemoryHandler()
     
     
@@ -232,6 +229,8 @@ class Gameplay: CCNode {
     */
     func moveStackDown(#sideAnimation: Color) {
         
+        audio.playEffect("pop.wav")
+                
         var currentLine = lineArray[lineIndex]
         var flyOutAction: CCActionMoveTo? = nil
         
@@ -275,9 +274,8 @@ class Gameplay: CCNode {
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         
-        if memoryHandler.checkForNewTopScore(time) {
-            getHighScore()
-        }
+        memoryHandler.checkForNewTopScore(time)
+        getHighScore()
         
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
         
@@ -308,7 +306,11 @@ class Gameplay: CCNode {
             currentLine.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: animationRowDelay * 2.5, position: CGPoint(x: -100, y: 0))))
         }
         
-        delay(0.7) {
+        delay(0.6) {
+            
+            self.delay(0.08) {
+                AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+            }
             
             for index in 0..<self.lineArray.count {
                 var currentLine = self.lineArray[index]
@@ -404,7 +406,7 @@ class Gameplay: CCNode {
         var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondScoreKey))
         var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdScoreKey))
         
-        // Check if the time values are currently equal to the default time settings, and if so, simply put an em dash in their place to signify that they haven't been set by the user yet.
+        // Check if the time values are currently equal to the default time settings, and if so, simply put an em dash (not a hyphen, please!) in their place to signify that they haven't been set by the user yet.
         if topTimeString == "999.999" {
             topTimeString = "—"
         }
