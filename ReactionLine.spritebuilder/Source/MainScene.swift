@@ -27,14 +27,14 @@ class MainScene: CCNode {
     weak var creditsLayer: CCNode!
     var isCreditsInView = false
     
-    weak var timedModeButton: CCControl!
-    weak var infiniteModeButton: CCControl!
-    weak var twoPlayerModeButton: CCControl!
-    weak var challengeModeButton: CCControl!
+    weak var timedModeButton: CCButton!
+    weak var infiniteModeButton: CCButton!
+    weak var twoPlayerModeButton: CCButton!
+    weak var challengeModeButton: CCButton!
     
-    weak var optionsButton: CCControl!
-    weak var aboutButton: CCControl!
-    weak var shareButton: CCControl!
+    weak var optionsButton: CCButton!
+    weak var aboutButton: CCButton!
+    weak var shareButton: CCButton!
     
     
     // MARK: Functions
@@ -45,13 +45,18 @@ class MainScene: CCNode {
             
             memoryHandler.defaults.setBool(true, forKey: memoryHandler.hasAlreadyLoaded)
             
-            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.topScoreKey)
-            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.secondScoreKey)
-            memoryHandler.defaults.setDouble(99.999, forKey: memoryHandler.thirdScoreKey)
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.topScoreKey)
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondScoreKey)
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdScoreKey)
             
             println("Default settings loaded.")
             
         }
+        
+        timedModeButton.zoomWhenHighlighted = true
+        infiniteModeButton.zoomWhenHighlighted = true
+        twoPlayerModeButton.zoomWhenHighlighted = true
+        challengeModeButton.zoomWhenHighlighted = true
         
         creditsLayer.cascadeOpacityEnabled = true
         creditsLayer.opacity = 0
@@ -65,6 +70,8 @@ class MainScene: CCNode {
     */
     func timedMode() {
         disableAllMenuButtons()
+        timedModeButton.highlighted = false
+        
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
         
         delay(1.1) {
@@ -84,6 +91,8 @@ class MainScene: CCNode {
     */
     func infiniteMode() {
         disableAllMenuButtons()
+        infiniteModeButton.highlighted = false
+        
         self.animationManager.runAnimationsForSequenceNamed("InfiniteMode")
         
         delay(1.1) {
@@ -103,6 +112,8 @@ class MainScene: CCNode {
     */
     func twoPlayerMode() {
         disableAllMenuButtons()
+        twoPlayerModeButton.highlighted = false
+        
         self.animationManager.runAnimationsForSequenceNamed("TwoPlayerMode")
         
         delay(1.1) {
@@ -122,6 +133,8 @@ class MainScene: CCNode {
     */
     func challengeMode() {
         disableAllMenuButtons()
+        challengeModeButton.highlighted = false
+        
         self.animationManager.runAnimationsForSequenceNamed("ChallengeMode")
         
         delay(1.1) {

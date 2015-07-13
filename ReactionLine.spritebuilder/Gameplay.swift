@@ -308,10 +308,9 @@ class Gameplay: CCNode {
             currentLine.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: animationRowDelay * 2.5, position: CGPoint(x: -100, y: 0))))
         }
         
-        delay(1.5) {
+        delay(0.7) {
             
             for index in 0..<self.lineArray.count {
-                
                 var currentLine = self.lineArray[index]
                 var random = Int(arc4random_uniform(9))
                 var negativeRandom = Int(arc4random_uniform(2))
@@ -329,7 +328,6 @@ class Gameplay: CCNode {
                 var tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
                 
                 currentLine.runAction(tiltAction)
-                
             }
             
             // Randomize "broken" position of the `blueTouchZone`.
@@ -339,9 +337,6 @@ class Gameplay: CCNode {
             if blueNegativeRandom == 0 {
                 blueRandom = -blueRandom
             }
-            
-            self.blueTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(blueRandom))))
-            
             // Randomize "broken" position of the `redTouchZone`.
             var redRandom = Int(arc4random_uniform(9))
             var redNegativeRandom = Int(arc4random_uniform(2))
@@ -350,10 +345,10 @@ class Gameplay: CCNode {
                 redRandom = -redRandom
             }
             
+            self.blueTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(blueRandom))))
             self.redTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(redRandom))))
             
             self.countdownLabel.runAction(CCActionFadeOut(duration: 0.5))
-            
             if (blueRandom + redRandom) == 2 {
                 self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
             }
@@ -409,13 +404,14 @@ class Gameplay: CCNode {
         var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondScoreKey))
         var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdScoreKey))
         
-        if topTimeString == "99.999" {
+        // Check if the time values are currently equal to the default time settings, and if so, simply put an em dash in their place to signify that they haven't been set by the user yet.
+        if topTimeString == "999.999" {
             topTimeString = "—"
         }
-        if secondTimeString == "99.999" {
+        if secondTimeString == "999.999" {
             secondTimeString = "—"
         }
-        if thirdTimeString == "99.999" {
+        if thirdTimeString == "999.999" {
             thirdTimeString = "—"
         }
         

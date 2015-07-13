@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>57</integer>
+	<integer>58</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -55,15 +55,15 @@
 				<array>
 					<dict>
 						<key>UUID</key>
-						<integer>2</integer>
+						<integer>57</integer>
 						<key>baseClass</key>
-						<string>CCNodeGradient</string>
+						<string>CCNodeColor</string>
 						<key>children</key>
 						<array/>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCNodeGradient</string>
+						<string>CCNodeColor</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -131,7 +131,7 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>startColor</string>
+								<string>color</string>
 								<key>type</key>
 								<string>Color3</string>
 								<key>value</key>
@@ -144,27 +144,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>endColor</string>
+								<string>opacity</string>
 								<key>type</key>
-								<string>Color3</string>
+								<string>Float</string>
 								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>0.80000001192092896</real>
-									<real>0.58431375026702881</real>
-									<real>1</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>vector</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>-1</real>
-								</array>
+								<real>1</real>
 							</dict>
 						</array>
 					</dict>
@@ -254,7 +238,7 @@
 									<real>1</real>
 									<real>0.82173842191696167</real>
 									<real>0.62918657064437866</real>
-									<real>0.60000002384185791</real>
+									<real>0.5</real>
 								</array>
 							</dict>
 							<dict>
@@ -263,7 +247,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.60000002384185791</real>
+								<real>0.5</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4471,7 +4455,7 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>stageColor</key>
 	<integer>0</integer>
 </dict>
