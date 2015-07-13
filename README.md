@@ -86,6 +86,9 @@ There are no levels; only a one-player game mode.
 * **Complete-ish!** ~~SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.~~
 * **Complete!** ~~JT: The "hamburger" icon might be too unclear on what it actually does, so you'll want to run some more user testing to see if people understand. (The fact that he thought it was a hamburger also should be a cause for concern.)~~
 
+### Week 2: Office Hours
+* EK: Add a counter to the top of the screen in Timed Mode, because I'm not good enough to beat CK without that unnecessary feature implemented.
+
 ## Sound Design Plan
 
 ### Pop Sounds:
