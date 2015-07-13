@@ -42,35 +42,25 @@ There are no levels; only a one-player game mode.
 
 ## MVP Milestones
 
-### Week 1: Thursday
+### Week 1:
 * **Complete!** ~~Complete base game without much polish~~
-
-### Week 1: Friday
 * **Complete!** ~~Add end-game animations for polish~~
 * **Complete!** ~~Use `NSUserDefaults` for high score integration~~
 * **Complete!** ~~Polish up graphics~~
 * **Complete!** ~~Complete some sort of sound design plan~~
-
-### Week 1 - Weekend:
 * **Complete!** ~~Overhaul main menu design~~
 * **Complete!** ~~Add some more animations in the main menu~~
 * Add Infinite Mode
-* Add Two Player Mode
 
-### Week 2: Monday
+### Week 2:
+* Add Two Player Mode
 * Add Challenge Mode
 * Complete integration of options via `NSUserDefaults`
 * Add an options menu
-
-### Week 2: Tuesday
 * Integrate Game Center leaderboard API
 * Facebook/Twitter sharing from app
-
-### Week 2: Wednesday
 * Add sounds
 * Run some final playtesting sessions
-
-### Week 2: Thursday
 * Take some screenshots for iTunes Connect
 * Finalize description (or have someone else willing enough write it themselves)
 * Submit the app to the App Store for approval (and pray that it does)
