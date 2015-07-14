@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF361B531F6300FA200F /* MemoryHandler.swift */; };
-		555CAF3B1B532EF100FA200F /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3A1B532EF100FA200F /* TimedMode.swift */; };
 		555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */; };
-		555CAF3F1B532F1700FA200F /* TwoPlayerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3E1B532F1700FA200F /* TwoPlayerMode.swift */; };
 		55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55916C2B1B5003B5003C9E93 /* spring.mp3 */; };
 		5596AB691B4DB7610089D1BA /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB681B4DB7610089D1BA /* Line.swift */; };
 		5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB951B4DFCCF0089D1BA /* tada.wav */; };
-		5596AB981B4E16D30089D1BA /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB971B4E16D30089D1BA /* Gameplay.swift */; };
+		5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB971B4E16D30089D1BA /* TimedMode.swift */; };
 		5B121030197484FA004C1E1D /* ReactionLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ReactionLineActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -157,13 +155,11 @@
 
 /* Begin PBXFileReference section */
 		555CAF361B531F6300FA200F /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
-		555CAF3A1B532EF100FA200F /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedMode.swift; sourceTree = "<group>"; };
 		555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteMode.swift; sourceTree = "<group>"; };
-		555CAF3E1B532F1700FA200F /* TwoPlayerMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPlayerMode.swift; sourceTree = "<group>"; };
 		55916C2B1B5003B5003C9E93 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		5596AB681B4DB7610089D1BA /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5596AB951B4DFCCF0089D1BA /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
-		5596AB971B4E16D30089D1BA /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
+		5596AB971B4E16D30089D1BA /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedMode.swift; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -461,10 +457,8 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				5596AB971B4E16D30089D1BA /* Gameplay.swift */,
-				555CAF3A1B532EF100FA200F /* TimedMode.swift */,
+				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
 				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
-				555CAF3E1B532F1700FA200F /* TwoPlayerMode.swift */,
 				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
 				5596AB681B4DB7610089D1BA /* Line.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
@@ -849,12 +843,10 @@
 			files = (
 				555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				555CAF3B1B532EF100FA200F /* TimedMode.swift in Sources */,
 				555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */,
 				5596AB691B4DB7610089D1BA /* Line.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
-				5596AB981B4E16D30089D1BA /* Gameplay.swift in Sources */,
-				555CAF3F1B532F1700FA200F /* TwoPlayerMode.swift in Sources */,
+				5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

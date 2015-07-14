@@ -1,3 +1,11 @@
+//
+//  MainScene.swift
+//  ReactionLine
+//
+//  Created by Zachary Espiritu on 7/8/15.
+//  Copyright (c) 2015 Zachary Espiritu. All rights reserved.
+//
+
 import Foundation
 
 enum GameState {
@@ -35,6 +43,11 @@ class MainScene: CCNode {
     weak var optionsButton: CCButton!
     weak var aboutButton: CCButton!
     weak var shareButton: CCButton!
+    weak var statsButton: CCButton!
+    
+    weak var vibrationToggleLabel: CCLabelTTF!
+    weak var soundsToggleLabel: CCLabelTTF!
+    weak var colorblindToggleLabel: CCLabelTTF!
     
     
     // MARK: Functions
@@ -45,6 +58,10 @@ class MainScene: CCNode {
             
             memoryHandler.defaults.setBool(true, forKey: memoryHandler.hasAlreadyLoaded)
             
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.vibrationSettingKey)
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.soundsSettingKey)
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.colorblindSettingKey)
+            
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.topScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdScoreKey)
@@ -52,6 +69,8 @@ class MainScene: CCNode {
             println("Default settings loaded.")
             
         }
+        
+        updateOptionsButtonText()
         
         timedModeButton.zoomWhenHighlighted = true
         infiniteModeButton.zoomWhenHighlighted = true
@@ -73,10 +92,10 @@ class MainScene: CCNode {
         timedModeButton.highlighted = false
         
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
-        
+                
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -97,7 +116,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            var gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -118,7 +137,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -139,7 +158,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -154,6 +173,87 @@ class MainScene: CCNode {
     */
     func optionsMenu() {
         println("TODO: Implement options menu.")
+        
+        self.animationManager.runAnimationsForSequenceNamed("MenuToOptionsScreen")
+        disableAllMenuButtons()
+    }
+    
+    func optionsScreenToMenu() {
+        self.animationManager.runAnimationsForSequenceNamed("OptionsScreenToMenu")
+        enableAllMenuButtons()
+    }
+    
+    func updateOptionsButtonText() {
+        
+        println("Vibration:  \(memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey))")
+        println("Sounds:     \(memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey))")
+        println("Colorblind: \(memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey))")
+        
+        if !memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey) {
+            vibrationToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            vibrationToggleLabel.string = "OFF"
+        }
+        else {
+            vibrationToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            vibrationToggleLabel.string = "ON"
+        }
+        
+        if !memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey) {
+            soundsToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            soundsToggleLabel.string = "OFF"
+        }
+        else {
+            soundsToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            soundsToggleLabel.string = "ON"
+        }
+        
+        if !memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+            colorblindToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            colorblindToggleLabel.string = "OFF"
+        }
+        else {
+            colorblindToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            colorblindToggleLabel.string = "ON"
+        }
+    }
+    
+    func toggleVibrationSetting() {
+        if memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey) {
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.vibrationSettingKey)
+            vibrationToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            vibrationToggleLabel.string = "OFF"
+        }
+        else {
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.vibrationSettingKey)
+            vibrationToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            vibrationToggleLabel.string = "ON"
+        }
+    }
+    
+    func toggleSoundsSetting() {
+        if memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey) {
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.soundsSettingKey)
+            soundsToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            soundsToggleLabel.string = "OFF"
+        }
+        else {
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.soundsSettingKey)
+            soundsToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            soundsToggleLabel.string = "ON"
+        }
+    }
+    
+    func toggleColorblindSetting() {
+        if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.colorblindSettingKey)
+            colorblindToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
+            colorblindToggleLabel.string = "OFF"
+        }
+        else {
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.colorblindSettingKey)
+            colorblindToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
+            colorblindToggleLabel.string = "ON"
+        }
     }
     
     /**
@@ -169,7 +269,17 @@ class MainScene: CCNode {
     Displays an interface from which the user can share the app.
     */
     func shareMenu() {
-        println("TODO: Implement sharing buttons.")
+        self.animationManager.runAnimationsForSequenceNamed("MenuToShareScreen")
+        disableAllMenuButtons()
+    }
+    
+    func shareScreenToMenu() {
+        self.animationManager.runAnimationsForSequenceNamed("ShareScreenToMenu")
+        enableAllMenuButtons()
+    }
+    
+    func statsMenu() {
+        
     }
     
     // MARK: Convenience Functions
@@ -197,6 +307,7 @@ class MainScene: CCNode {
         optionsButton.enabled = false
         aboutButton.enabled = false
         shareButton.enabled = false
+        statsButton.enabled = false
     }
     
     func enableAllMenuButtons() {
@@ -208,6 +319,7 @@ class MainScene: CCNode {
         optionsButton.enabled = true
         aboutButton.enabled = true
         shareButton.enabled = true
+        statsButton.enabled = true
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {

@@ -3,10 +3,14 @@
 //  ReactionLine
 //
 //  Created by Zachary Espiritu on 7/12/15.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Zachary Espiritu. All rights reserved.
 //
 
 import Foundation
+
+enum Gamemode {
+    case Timed, Infinite
+}
 
 class MemoryHandler {
     
@@ -17,6 +21,12 @@ class MemoryHandler {
     let topScoreKey = "topScoreKey"
     let secondScoreKey = "secondScoreKey"
     let thirdScoreKey = "thirdScoreKey"
+    
+    let currentGamemode = "currentGamemode"
+    
+    let vibrationSettingKey = "vibrationSettingKey"
+    let soundsSettingKey = "soundsSettingKey"
+    let colorblindSettingKey = "colorblindSettingKey"
     
     
     func checkForNewTopScore(newTime: Double) -> Bool {
