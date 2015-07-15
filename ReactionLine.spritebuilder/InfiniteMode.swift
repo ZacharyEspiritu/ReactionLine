@@ -298,6 +298,13 @@ class InfiniteMode: CCNode {
         
         lineIndex++
         
+        // Remove lines that are offscreen to prevent memory overload if someone goes crazy and generates too many lines. (We can't do this in single-player mode because we have that funky end-game animation where it flies up and shows some of the previous lines if you win.)
+        if (lineIndex - 15) >= 0 {
+            var lineToRemove = lineArray[lineIndex - 15]
+            
+            lineToRemove.removeFromParent()
+        }
+        
     }
     
     
@@ -324,9 +331,7 @@ class InfiniteMode: CCNode {
         
         self.unschedule("timer")
         self.userInteractionEnabled = false
-        
-        println("GAMEOVER")
-        
+                
         var currentLine = lineArray[lineIndex]
         
         if currentLine.colorType == .Blue {

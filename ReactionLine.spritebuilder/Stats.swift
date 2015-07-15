@@ -18,9 +18,11 @@ class Stats: CCNode {
     let tapTimeOfLastFifteenGamesArray = "tapTimeOfLastFifteenGamesArray"
     
     let timedModeWins = "timedModeWins"
+    
     let timedModeLosses = "timedModeLosses"
     
     let numberOfLinesCleared = "numberOfLinesCleared"
+    
     let totalPlaytime = "totalPlaytime"
     
     
@@ -29,7 +31,10 @@ class Stats: CCNode {
     /**
     Calculates the new average tap time of the player.
     
-    It stores the last 10 games of the player and combines the averages of all of those to find a more accurate average.
+    It stores the last 15 games of the player and combines the averages of all of those games to find a more accurate average.
+    
+    :param: numberOfTaps  the number of taps the player made in the last game instance
+    :param: timeSpent     the amount of time the player was in the last game instance, in seconds
     */
     func calculateNewAverageTapTime(#numberOfTaps: Int, timeSpent: Double) {
     
@@ -62,6 +67,9 @@ class Stats: CCNode {
         
     }
     
+    /**
+    Adds 1 to the amount of timed mode wins and stores that value.
+    */
     func addTimedModeWin() {
         
         var currentTimedModeWins = defaults.integerForKey(timedModeWins)
@@ -71,6 +79,9 @@ class Stats: CCNode {
         
     }
     
+    /**
+    Adds 1 to the amount of timed mode losses and stores that value.
+    */
     func addTimedModeLoss() {
         
         var currentTimedModeLosses = defaults.integerForKey(timedModeLosses)
@@ -80,6 +91,11 @@ class Stats: CCNode {
         
     }
     
+    /**
+    Adds `numberOfLinesToAdd` to the current amount of total lines cleared and stores that value.
+    
+    :param: numberOfLinesToAdd  the number of lines to add to the total amount of lines ever cleared
+    */
     func addMoreLinesCleared(#numberOfLinesToAdd: Int) {
         
         var currentNumberOfLinesCleared = defaults.integerForKey(numberOfLinesCleared)

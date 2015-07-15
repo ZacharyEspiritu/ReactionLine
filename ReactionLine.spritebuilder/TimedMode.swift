@@ -310,8 +310,6 @@ class TimedMode: CCNode {
         self.unschedule("timer")
         self.userInteractionEnabled = false
         
-        println("GAMEOVER")
-        
         var currentLine = lineArray[lineIndex]
         
         if currentLine.colorType == .Blue {
