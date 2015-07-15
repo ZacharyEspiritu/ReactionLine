@@ -50,13 +50,13 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Complete some sort of sound design plan~~
 * **Complete!** ~~Overhaul main menu design~~
 * **Complete!** ~~Add some more animations in the main menu~~
-* Add Infinite Mode
+* **Complete!** ~~Add Infinite Mode~~
 
 ### Week 2:
-* Add Two Player Mode
-* Add Challenge Mode
+* **Complete!** ~~Add an options menu~~
 * Complete integration of options via `NSUserDefaults`
-* Add an options menu
+* Complete stat tracking integration
+* Add ability to challenge other players
 * Integrate Game Center leaderboard API
 * Facebook/Twitter sharing from app
 * Add sounds
@@ -76,8 +76,8 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
 * **Complete!** ~~EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.~~
 * EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
-* Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)
-* Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)
+* **Complete!** ~~Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)~~
+* **Complete-ish!** ~~Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)~~
 
 ### Week 1: Weekend
 * **Complete!** ~~Parents: Add text below each of the circular buttons because they're unclear on what they do.~~
@@ -87,7 +87,7 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~JT: The "hamburger" icon might be too unclear on what it actually does, so you'll want to run some more user testing to see if people understand. (The fact that he thought it was a hamburger also should be a cause for concern.)~~
 
 ### Week 2: Office Hours
-* EK: Add a counter to the top of the screen in Timed Mode, because I'm not good enough to beat CK without that unnecessary feature implemented.
+* **Nah!** ~~EK: Add a counter to the top of the screen in Timed Mode, because I'm not good enough to beat CK without that unnecessary feature implemented.~~
 
 ## Sound Design Plan
 
