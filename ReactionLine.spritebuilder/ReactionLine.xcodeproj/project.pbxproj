@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555C43341B567D1000AC39ED /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C43331B567D1000AC39ED /* EvilMode.swift */; };
 		555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF361B531F6300FA200F /* MemoryHandler.swift */; };
 		555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */; };
 		55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55916C2B1B5003B5003C9E93 /* spring.mp3 */; };
@@ -155,6 +156,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		555C43331B567D1000AC39ED /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvilMode.swift; sourceTree = "<group>"; };
 		555CAF361B531F6300FA200F /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
 		555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteMode.swift; sourceTree = "<group>"; };
 		55916C2B1B5003B5003C9E93 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
 				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
+				555C43331B567D1000AC39ED /* EvilMode.swift */,
 				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
 				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
 				559AACA71B5580E800F77C7D /* Stats.swift */,
@@ -852,6 +855,7 @@
 				559AACA81B5580E800F77C7D /* Stats.swift in Sources */,
 				5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
+				555C43341B567D1000AC39ED /* EvilMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

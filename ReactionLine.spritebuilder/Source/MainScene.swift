@@ -165,7 +165,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
+            var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)

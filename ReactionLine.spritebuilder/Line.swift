@@ -49,6 +49,27 @@ class Line: CCNode {
     }
     
     /**
+    Swaps the color of the `Line`.
+    
+    For use in Evil Mode.
+    */
+    func swapColors() {
+        
+        let redColor = CCColor(red: 255/255, green: 102/255, blue: 102/255)
+        let blueColor = CCColor(red: 54/255, green: 166/255, blue: 222/255)
+        
+        if colorType == .Red {
+            colorNode.color = blueColor
+            colorType = .Blue
+        }
+        else if colorType == .Blue {
+            colorNode.color = redColor
+            colorType = .Red
+        }
+        
+    }
+    
+    /**
     Function used in the losing state end-game animation sequence to achieve a "cascading" effect with the lines. See `gameOver()` in `Gameplay.swift` for more information.
     */
     func fallDown() {

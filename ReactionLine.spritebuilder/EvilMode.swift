@@ -1,5 +1,5 @@
 //
-//  InfiniteMode.swift
+//  EvilMode.swift
 //  ReactionLine
 //
 //  Created by Zachary Espiritu on 7/8/15.
@@ -8,16 +8,14 @@
 
 import Foundation
 
-class InfiniteMode: CCNode {
+class EvilMode: CCNode {
     
     // MARK: Constants
     
     let padding: CGFloat = 5          // How much space do we want between each row?
-    let numberOfLines: Int = 25       // How many lines should be played in this game instance?
+    let numberOfLines: Int = 100       // How many lines should be played in this game instance?
     let animationRowDelay = 0.15       // How long should it take for a correctly tapped line to move from its current position to the side of the screen?
     let animationLinesDownDelay = 0.1  // How long should it take for the stack of lines to move down on a correct tap?
-    let timeBonusOnCorrectTap: Float = 0.16
-    let indexToStartRemovingOutOfBoundsLines = 15
     
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
@@ -25,6 +23,8 @@ class InfiniteMode: CCNode {
     // MARK: Memory Variables
     
     let memoryHandler = MemoryHandler()
+    
+    let statsHandler: Stats = Stats()
     
     
     // MARK: Variables
@@ -53,42 +53,23 @@ class InfiniteMode: CCNode {
             countdownLabel.string = countdown
         }
     }
-    var time: Double = 0.4
+    var time: Double = 0.4 {
+        didSet {
+            countdownLabel.string = String(format: "%.3f", time)
+        }
+    }
     
     // Variables used to handle correct tap checking and individual line animation.
     var lineArray: [Line] = []
     var lineIndex = 0
     
     // The game state of the current game instnace.
-    var gameState: GameState = .GameOver
+    var gameState: GameState = .Playing
     
     weak var backgroundGroupingNode: CCNode!
     
     var numberOfLinesCleared: Int = 0
     
-    var statsHandler: Stats = Stats()
-    
-    var score: Int = -1 {
-        didSet {
-            countdownLabel.string = "\(score)"
-        }
-    }
-    
-    weak var leftLifeBar: CCNode!
-    weak var rightLifeBar: CCNode!
-    
-    weak var leftTimerOutline: CCNode!
-    weak var rightTimerOutline: CCNode!
-    
-    var timeLeft: Float = 0 {
-        didSet {
-            timeLeft = max(min(timeLeft,5), 0)
-            leftLifeBar.scaleY = timeLeft / Float(5)
-            rightLifeBar.scaleY = timeLeft / Float(5)
-        }
-    }
-    
-    weak var finalScoreLabel: CCLabelTTF!
     
     // MARK: Convenience Functions
     
@@ -110,7 +91,7 @@ class InfiniteMode: CCNode {
     // MARK: Start-Game Functions
     
     /**
-    Called whenever the `TimedMode.ccb` file loads into the scene.
+    Called whenever the `EvilMode.ccb` file loads into the scene.
     */
     func didLoadFromCCB() {
         
@@ -139,8 +120,6 @@ class InfiniteMode: CCNode {
         
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
-        timeLeft = 2.5
-        
     }
     
     /**
@@ -166,8 +145,6 @@ class InfiniteMode: CCNode {
                         self.userInteractionEnabled = true
                         self.multipleTouchEnabled = true
                         self.schedule("timer", interval: 0.001)
-                        self.score = 0
-                        self.gameState = .Playing
                         return
                     }
                 }
@@ -230,10 +207,6 @@ class InfiniteMode: CCNode {
         
         // Check if the tap was on the correct side of the screen.
         if tapSide == lineColor {
-            
-            score++
-            timeLeft += timeBonusOnCorrectTap
-            
             if tapSide == .Red {
                 moveStackDown(sideAnimation: .Red)
             }
@@ -242,22 +215,13 @@ class InfiniteMode: CCNode {
             }
         }
         else {
-            gameOver(breakDelay: 0.6)
+            gameOver()
             return
         }
         
-    }
-    
-    override func update(delta: CCTime) {
-        
-        if gameState != .Playing {
-            return
-        }
-        
-        timeLeft -= Float(delta)
-        
-        if timeLeft == 0 {
-            gameOver(breakDelay: 0.1)
+        // Check to see if a win state just occured.
+        if lineIndex == lineArray.count {
+            win(lineArray[lineIndex - 1])
         }
         
     }
@@ -289,21 +253,10 @@ class InfiniteMode: CCNode {
         var moveLinesDown = CCActionMoveBy(duration: animationLinesDownDelay, position: CGPoint(x: 0, y: -(currentLine.contentSize.height + padding)))
         lineGroupingNode.runAction(moveLinesDown)
         
-        var newLine = CCBReader.load("Line") as! Line
-        newLine.position = CGPoint(x: 0, y: (currentLine.contentSize.height + padding) * CGFloat(numberOfLines + lineIndex))
-        
-        newLine.setRandomColor()
-        
-        lineGroupingNode.addChild(newLine)
-        lineArray.append(newLine)
-        
         lineIndex++
         
-        // Remove lines that are offscreen to prevent memory overload if someone goes crazy and generates too many lines. (We can't do this in single-player mode because we have that funky end-game animation where it flies up and shows some of the previous lines if you win.)
-        if (lineIndex - indexToStartRemovingOutOfBoundsLines) >= 0 {
-            var lineToRemove = lineArray[lineIndex - indexToStartRemovingOutOfBoundsLines]
-            
-            lineToRemove.removeFromParent()
+        for index in lineIndex..<lineArray.count {
+            lineArray[index].swapColors()
         }
         
     }
@@ -312,19 +265,47 @@ class InfiniteMode: CCNode {
     // MARK: End-Game Functions
     
     /**
+    Ends the game in a winning state, and runs the corresponding animations for that state.
+    
+    It should only be called whenever the player makes a move that would land the game in a winning state.
+    
+    :param: line  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game are passed into this function, because it simply uses it to determine how tall each of the `Line` objects are.
+    */
+    func win(line: Line) {
+        
+        statsHandler.addTimedModeWin()
+        statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
+        
+        self.unschedule("timer")
+        println("win!")
+        
+        audio.playEffect("tada.wav")
+        
+        gameState = .GameOver
+        
+        lineGroupingNode.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: 1.5, position: CGPoint(x: 0, y: (Double(line.contentSize.height + padding) * Double(numberOfLines - 20))))))
+        
+        redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
+        blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
+        
+        memoryHandler.checkForNewTopScore(time)
+        getHighScore()
+        
+        self.animationManager.runAnimationsForSequenceNamed("WinSequence")
+        
+        againButton.visible = true
+        
+    }
+    
+    /**
     Ends the game in a losing state, and runs the corresponding animations for that state.
     
     It should only be called when the player makes a move that would land the game in a losing state.
     */
-    func gameOver(#breakDelay: Double) {
+    func gameOver() {
         
-        finalScoreLabel.string = "\(score)"
-        
-        memoryHandler.checkForNewTopInfiniteScore(score)
-        getHighScore()
-        
-        gameState = .GameOver
-        
+        statsHandler.addTimedModeLoss()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
@@ -332,7 +313,7 @@ class InfiniteMode: CCNode {
         
         self.unschedule("timer")
         self.userInteractionEnabled = false
-                
+        
         var currentLine = lineArray[lineIndex]
         
         if currentLine.colorType == .Blue {
@@ -342,140 +323,122 @@ class InfiniteMode: CCNode {
             currentLine.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: animationRowDelay * 2.5, position: CGPoint(x: -100, y: 0))))
         }
         
-        delay(breakDelay) {
+        delay(0.6) {
             
-            self.playEndGameAnimationSequence()
-            
-        }
-        
-        
-        
-    }
-    
-    func playEndGameAnimationSequence() {
-        
-        if self.memoryHandler.defaults.boolForKey(self.memoryHandler.vibrationSettingKey) {
-            self.delay(0.07) {
-                AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+            if self.memoryHandler.defaults.boolForKey(self.memoryHandler.vibrationSettingKey) {
+                self.delay(0.07) {
+                    AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+                }
             }
-        }
-        
-        for index in 0..<self.lineArray.count {
-            var currentLine = self.lineArray[index]
-            var random = Int(arc4random_uniform(9))
-            var negativeRandom = Int(arc4random_uniform(2))
-            
-            random = random * 4
-            
-            if random == 0 {
-                random = 30
-            }
-            
-            if negativeRandom != 0 {
-                random = -random
-            }
-            
-            var tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
-            
-            currentLine.runAction(tiltAction)
-        }
-        
-        // Randomize "broken" position of the `blueTouchZone`.
-        var blueRandom = Int(arc4random_uniform(9))
-        var blueNegativeRandom = Int(arc4random_uniform(2))
-        blueRandom = blueRandom * 4 + 3
-        if blueNegativeRandom == 0 {
-            blueRandom = -blueRandom
-        }
-        // Randomize "broken" position of the `redTouchZone`.
-        var redRandom = Int(arc4random_uniform(9))
-        var redNegativeRandom = Int(arc4random_uniform(2))
-        redRandom = redRandom * 4 + 3
-        if redNegativeRandom == 0 {
-            redRandom = -redRandom
-        }
-        
-        self.blueTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(blueRandom))))
-        self.redTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(redRandom))))
-        
-        self.countdownLabel.runAction(CCActionFadeOut(duration: 0.5))
-        if (blueRandom + redRandom) == 2 {
-            self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
-        }
-        else {
-            self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
-        }
-        
-        self.leftTimerOutline.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
-        self.rightTimerOutline.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
-        self.leftLifeBar.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
-        self.rightLifeBar.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
-        
-        self.delay(0.5) {
-            self.leftTimerOutline.visible = false
-            self.rightTimerOutline.visible = false
-            self.leftLifeBar.visible = false
-            self.rightLifeBar.visible = false
-        }
-        
-        if self.memoryHandler.defaults.boolForKey(self.memoryHandler.soundsSettingKey) {
-            self.audio.playEffect("spring.mp3")
-        }
-        
-        self.delay(1) {
-            
-            self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
-            self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
             
             for index in 0..<self.lineArray.count {
-                
-                let numberOfRowsToSkip: Int = 9 // A bit hard to explain, but, in essence, determines how fast the animation responds to the losing state occuring. This entire section is necessary in order for the animation sequence to start running at the `Line` objects that are currently on the screen as opposed to starting at the ones that the player may have already cleared and are now off the screen. If we start the animation sequence at the ones that are off the screen, it can take a while until the sequence actually has any visible effect.
-                
                 var currentLine = self.lineArray[index]
-                var delayMultiplier: Int?
+                var random = Int(arc4random_uniform(9))
+                var negativeRandom = Int(arc4random_uniform(2))
                 
-                if (self.lineIndex - numberOfRowsToSkip) < numberOfRowsToSkip {
-                    delayMultiplier = index
+                random = random * 4
+                
+                if random == 0 {
+                    random = 30
                 }
-                else {
-                    if (index - (self.lineIndex - numberOfRowsToSkip)) < 0 {
-                        delayMultiplier = 0
+                
+                if negativeRandom != 0 {
+                    random = -random
+                }
+                
+                var tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
+                
+                currentLine.runAction(tiltAction)
+            }
+            
+            // Randomize "broken" position of the `blueTouchZone`.
+            var blueRandom = Int(arc4random_uniform(9))
+            var blueNegativeRandom = Int(arc4random_uniform(2))
+            blueRandom = blueRandom * 4 + 3
+            if blueNegativeRandom == 0 {
+                blueRandom = -blueRandom
+            }
+            // Randomize "broken" position of the `redTouchZone`.
+            var redRandom = Int(arc4random_uniform(9))
+            var redNegativeRandom = Int(arc4random_uniform(2))
+            redRandom = redRandom * 4 + 3
+            if redNegativeRandom == 0 {
+                redRandom = -redRandom
+            }
+            
+            self.blueTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(blueRandom))))
+            self.redTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(redRandom))))
+            
+            self.countdownLabel.runAction(CCActionFadeOut(duration: 0.5))
+            if (blueRandom + redRandom) == 2 {
+                self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
+            }
+            else {
+                self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
+            }
+            
+            if self.memoryHandler.defaults.boolForKey(self.memoryHandler.soundsSettingKey) {
+                self.audio.playEffect("spring.mp3")
+            }
+            
+            self.delay(1) {
+                
+                self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
+                self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
+                
+                for index in 0..<self.lineArray.count {
+                    
+                    let numberOfRowsToSkip: Int = 9 // A bit hard to explain, but, in essence, determines how fast the animation responds to the losing state occuring. This entire section is necessary in order for the animation sequence to start running at the `Line` objects that are currently on the screen as opposed to starting at the ones that the player may have already cleared and are now off the screen. If we start the animation sequence at the ones that are off the screen, it can take a while until the sequence actually has any visible effect.
+                    
+                    var currentLine = self.lineArray[index]
+                    var delayMultiplier: Int?
+                    
+                    if (self.lineIndex - numberOfRowsToSkip) < numberOfRowsToSkip {
+                        delayMultiplier = index
                     }
                     else {
-                        delayMultiplier = index - (self.lineIndex - numberOfRowsToSkip)
+                        if (index - (self.lineIndex - numberOfRowsToSkip)) < 0 {
+                            delayMultiplier = 0
+                        }
+                        else {
+                            delayMultiplier = index - (self.lineIndex - numberOfRowsToSkip)
+                        }
                     }
+                    
+                    var delay = (0.06 * Double(delayMultiplier!))
+                    
+                    currentLine.scheduleOnce("fallDown", delay: delay)
+                    
                 }
                 
-                var delay = (0.06 * Double(delayMultiplier!))
-                
-                currentLine.scheduleOnce("fallDown", delay: delay)
+                self.animationManager.runAnimationsForSequenceNamed("LoseSequence")
                 
             }
             
-            self.animationManager.runAnimationsForSequenceNamed("LoseSequence")
-            
         }
+        
+        
         
     }
     
     func getHighScore() {
         
-        var topScoreString = "\(memoryHandler.defaults.integerForKey(memoryHandler.topInfiniteScoreKey))"
-        var secondScoreString = "\(memoryHandler.defaults.integerForKey(memoryHandler.secondInfiniteScoreKey))"
-        var thirdScoreString = "\(memoryHandler.defaults.integerForKey(memoryHandler.thirdInfiniteScoreKey))"
+        var topTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.topScoreKey))
+        var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondScoreKey))
+        var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdScoreKey))
         
         // Check if the time values are currently equal to the default time settings, and if so, simply put an em dash (not a hyphen, please!) in their place to signify that they haven't been set by the user yet.
-        if topScoreString == "0" {
-            topScoreString = "—"
+        if topTimeString == "999.999" {
+            topTimeString = "—"
         }
-        if secondScoreString == "0" {
-            secondScoreString = "—"
+        if secondTimeString == "999.999" {
+            secondTimeString = "—"
         }
-        if thirdScoreString == "0" {
-            thirdScoreString = "—"
+        if thirdTimeString == "999.999" {
+            thirdTimeString = "—"
         }
         
-        highScoreLabel.string = "longest runs:\n" + topScoreString + "\n" + secondScoreString + "\n" + thirdScoreString
+        highScoreLabel.string = "fastest times:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
         
     }
     
@@ -483,11 +446,11 @@ class InfiniteMode: CCNode {
     // MARK: Button Functions
     
     /**
-    Loads a new instance of `TimedMode.ccb` to restart the game.
+    Loads a new instance of `EvilMode.ccb` to restart the game.
     */
     func playAgain() {
         
-        var gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
+        var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
         
         var scene = CCScene()
         scene.addChild(gameplayScene)
