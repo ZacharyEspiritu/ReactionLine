@@ -22,6 +22,10 @@ class MemoryHandler {
     let secondScoreKey = "secondScoreKey"
     let thirdScoreKey = "thirdScoreKey"
     
+    let topInfiniteScoreKey = "topInfiniteScoreKey"
+    let secondInfiniteScoreKey = "secondInfiniteScoreKey"
+    let thirdInfiniteScoreKey = "thirdInfiniteScoreKey"
+    
     let currentGamemode = "currentGamemode"
     
     let vibrationSettingKey = "vibrationSettingKey"
@@ -40,6 +44,21 @@ class MemoryHandler {
         defaults.setDouble(scoreArray[2], forKey: thirdScoreKey)
         
         return true
+        
+    }
+    
+    func checkForNewTopInfiniteScore(newTime: Int) -> Bool {
+        
+        var scoreArray: [Int] = [newTime, defaults.integerForKey(topInfiniteScoreKey), defaults.integerForKey(secondInfiniteScoreKey), defaults.integerForKey(thirdInfiniteScoreKey)]
+        
+        scoreArray.sort({ $0 > $1 })
+        
+        defaults.setInteger(scoreArray[0], forKey: topInfiniteScoreKey)
+        defaults.setInteger(scoreArray[1], forKey: secondInfiniteScoreKey)
+        defaults.setInteger(scoreArray[2], forKey: thirdInfiniteScoreKey)
+        
+        return true
+        
     }
     
 }

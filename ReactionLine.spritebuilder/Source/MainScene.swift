@@ -66,6 +66,10 @@ class MainScene: CCNode {
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdScoreKey)
             
+            memoryHandler.defaults.setInteger(0, forKey: memoryHandler.topInfiniteScoreKey)
+            memoryHandler.defaults.setInteger(0, forKey: memoryHandler.secondInfiniteScoreKey)
+            memoryHandler.defaults.setInteger(0, forKey: memoryHandler.thirdInfiniteScoreKey)
+            
             println("Default settings loaded.")
             
         }

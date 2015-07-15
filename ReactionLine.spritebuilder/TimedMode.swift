@@ -66,6 +66,10 @@ class TimedMode: CCNode {
     
     weak var backgroundGroupingNode: CCNode!
     
+    var numberOfTaps: Int = 0
+    
+    var statsHandler: Stats = Stats()
+    
     
     // MARK: Convenience Functions
     
@@ -263,6 +267,8 @@ class TimedMode: CCNode {
     */
     func win(line: Line) {
         
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfTaps, timeSpent: time)
+        
         self.unschedule("timer")
         println("win!")
         
@@ -290,6 +296,8 @@ class TimedMode: CCNode {
     It should only be called when the player makes a move that would land the game in a losing state.
     */
     func gameOver() {
+        
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfTaps, timeSpent: time)
         
         getHighScore()
         

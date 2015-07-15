@@ -13,6 +13,7 @@
 		5596AB691B4DB7610089D1BA /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB681B4DB7610089D1BA /* Line.swift */; };
 		5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB951B4DFCCF0089D1BA /* tada.wav */; };
 		5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB971B4E16D30089D1BA /* TimedMode.swift */; };
+		559AACA81B5580E800F77C7D /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559AACA71B5580E800F77C7D /* Stats.swift */; };
 		5B121030197484FA004C1E1D /* ReactionLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ReactionLineActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -160,6 +161,7 @@
 		5596AB681B4DB7610089D1BA /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5596AB951B4DFCCF0089D1BA /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
 		5596AB971B4E16D30089D1BA /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedMode.swift; sourceTree = "<group>"; };
+		559AACA71B5580E800F77C7D /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
 				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
 				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
+				559AACA71B5580E800F77C7D /* Stats.swift */,
 				5596AB681B4DB7610089D1BA /* Line.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
@@ -846,6 +849,7 @@
 				555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */,
 				5596AB691B4DB7610089D1BA /* Line.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
+				559AACA81B5580E800F77C7D /* Stats.swift in Sources */,
 				5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 			);
