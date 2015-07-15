@@ -60,8 +60,8 @@ class Stats: CCNode {
             
             defaults.setDouble(averageTapTime, forKey: averageTapTimeKey)
             
-            println(lastFifteenGames)
-            println(defaults.doubleForKey(averageTapTimeKey))
+            println("Average Tap Time of Last 15 Games: \(lastFifteenGames)")
+            println("Calculated Average Tap Time: \(defaults.doubleForKey(averageTapTimeKey)) seconds between taps")
             
         }
         

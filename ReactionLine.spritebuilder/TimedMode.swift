@@ -107,6 +107,17 @@ class TimedMode: CCNode {
             lineGroupingNode.addChild(line)
             lineArray.append(line)
             
+            if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+                
+                if line.colorType == .Red {
+                    line.colorNode.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+                }
+                else {
+                    line.colorNode.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+                }
+                
+            }
+            
         }
         
         lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
@@ -117,7 +128,12 @@ class TimedMode: CCNode {
         lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
         
         self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
-                
+        
+        if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+            redTouchZone.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+            blueTouchZone.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+        }
+        
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
     }

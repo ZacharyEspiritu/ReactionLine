@@ -698,8 +698,8 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>1</real>
-							<real>1</real>
+							<real>0.40000000596046448</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -901,9 +901,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
+							<real>0.21176470816135406</real>
+							<real>0.65098041296005249</real>
+							<real>0.87058824300765991</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -940,6 +940,8 @@
 						<real>0.20000000298023224</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4412,8 +4414,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

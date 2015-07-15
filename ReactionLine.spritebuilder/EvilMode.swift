@@ -107,6 +107,17 @@ class EvilMode: CCNode {
             lineGroupingNode.addChild(line)
             lineArray.append(line)
             
+            if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+                
+                if line.colorType == .Red {
+                    line.colorNode.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+                }
+                else {
+                    line.colorNode.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+                }
+                
+            }
+            
         }
         
         lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
@@ -117,6 +128,11 @@ class EvilMode: CCNode {
         lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
         
         self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
+        
+        if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+            redTouchZone.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+            blueTouchZone.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+        }
         
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
@@ -289,7 +305,7 @@ class EvilMode: CCNode {
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         
-        memoryHandler.checkForNewTopScore(time)
+        memoryHandler.checkForNewTopEvilScore(time)
         getHighScore()
         
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
@@ -423,9 +439,9 @@ class EvilMode: CCNode {
     
     func getHighScore() {
         
-        var topTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.topScoreKey))
-        var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondScoreKey))
-        var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdScoreKey))
+        var topTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.topEvilScoreKey))
+        var secondTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.secondEvilScoreKey))
+        var thirdTimeString = String(format: "%.3f", memoryHandler.defaults.doubleForKey(memoryHandler.thirdEvilScoreKey))
         
         // Check if the time values are currently equal to the default time settings, and if so, simply put an em dash (not a hyphen, please!) in their place to signify that they haven't been set by the user yet.
         if topTimeString == "999.999" {

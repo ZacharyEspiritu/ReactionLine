@@ -71,12 +71,16 @@ class MainScene: CCNode {
             memoryHandler.defaults.setInteger(0, forKey: memoryHandler.secondInfiniteScoreKey)
             memoryHandler.defaults.setInteger(0, forKey: memoryHandler.thirdInfiniteScoreKey)
             
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.topEvilScoreKey)
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondEvilScoreKey)
+            memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdEvilScoreKey)
+            
             statsHandler.defaults.setObject([], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
             println("Default settings loaded.")
             
         }
-                
+        
         updateOptionsButtonText()
         
         timedModeButton.zoomWhenHighlighted = true
@@ -144,7 +148,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
+            var gameplayScene = CCBReader.load("BlindMode") as! BlindMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
