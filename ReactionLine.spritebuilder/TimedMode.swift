@@ -24,6 +24,8 @@ class TimedMode: CCNode {
     
     let memoryHandler = MemoryHandler()
     
+    let statsHandler: Stats = Stats()
+    
     
     // MARK: Variables
     
@@ -66,9 +68,7 @@ class TimedMode: CCNode {
     
     weak var backgroundGroupingNode: CCNode!
     
-    var numberOfTaps: Int = 0
-    
-    var statsHandler: Stats = Stats()
+    var numberOfLinesCleared: Int = 0
     
     
     // MARK: Convenience Functions
@@ -236,6 +236,8 @@ class TimedMode: CCNode {
     */
     func moveStackDown(#sideAnimation: Color) {
         
+        numberOfLinesCleared++
+        
         var currentLine = lineArray[lineIndex]
         var flyOutAction: CCActionMoveTo? = nil
         
@@ -267,7 +269,9 @@ class TimedMode: CCNode {
     */
     func win(line: Line) {
         
-        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfTaps, timeSpent: time)
+        statsHandler.addTimedModeWin()
+        statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
         self.unschedule("timer")
         println("win!")
@@ -297,7 +301,9 @@ class TimedMode: CCNode {
     */
     func gameOver() {
         
-        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfTaps, timeSpent: time)
+        statsHandler.addTimedModeLoss()
+        statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
         getHighScore()
         
@@ -369,7 +375,9 @@ class TimedMode: CCNode {
                 self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
             }
             
-            self.audio.playEffect("spring.mp3")
+            if self.memoryHandler.defaults.boolForKey(self.memoryHandler.soundsSettingKey) {
+                self.audio.playEffect("spring.mp3")
+            }
             
             self.delay(1) {
                 

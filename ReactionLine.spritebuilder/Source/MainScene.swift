@@ -25,6 +25,7 @@ class MainScene: CCNode {
     // MARK: Memory Variables
     
     let memoryHandler = MemoryHandler()
+    let statsHandler = Stats()
     
     
     // MARK: Variables
@@ -70,10 +71,12 @@ class MainScene: CCNode {
             memoryHandler.defaults.setInteger(0, forKey: memoryHandler.secondInfiniteScoreKey)
             memoryHandler.defaults.setInteger(0, forKey: memoryHandler.thirdInfiniteScoreKey)
             
+            statsHandler.defaults.setObject([], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
+            
             println("Default settings loaded.")
             
         }
-        
+                
         updateOptionsButtonText()
         
         timedModeButton.zoomWhenHighlighted = true

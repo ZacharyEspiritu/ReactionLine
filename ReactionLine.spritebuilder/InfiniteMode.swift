@@ -63,7 +63,7 @@ class InfiniteMode: CCNode {
     
     weak var backgroundGroupingNode: CCNode!
     
-    var numberOfTaps: Int = 0
+    var numberOfLinesCleared: Int = 0
     
     var statsHandler: Stats = Stats()
     
@@ -271,6 +271,8 @@ class InfiniteMode: CCNode {
     */
     func moveStackDown(#sideAnimation: Color) {
         
+        numberOfLinesCleared++
+        
         var currentLine = lineArray[lineIndex]
         var flyOutAction: CCActionMoveTo? = nil
         
@@ -315,7 +317,8 @@ class InfiniteMode: CCNode {
         
         gameState = .GameOver
         
-        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfTaps, timeSpent: time)
+        statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
+        statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
         getHighScore()
         
@@ -409,7 +412,9 @@ class InfiniteMode: CCNode {
             self.rightLifeBar.visible = false
         }
         
-        self.audio.playEffect("spring.mp3")
+        if self.memoryHandler.defaults.boolForKey(self.memoryHandler.soundsSettingKey) {
+            self.audio.playEffect("spring.mp3")
+        }
         
         self.delay(1) {
             
