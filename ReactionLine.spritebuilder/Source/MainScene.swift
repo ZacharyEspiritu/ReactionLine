@@ -50,6 +50,8 @@ class MainScene: CCNode {
     weak var soundsToggleLabel: CCLabelTTF!
     weak var colorblindToggleLabel: CCLabelTTF!
     
+    weak var statsScrollView: CCScrollView!
+    
     
     // MARK: Functions
     
@@ -80,7 +82,7 @@ class MainScene: CCNode {
             println("Default settings loaded.")
             
         }
-        
+                
         updateOptionsButtonText()
         
         timedModeButton.zoomWhenHighlighted = true
@@ -296,6 +298,7 @@ class MainScene: CCNode {
     
     func statsScreenToMenu() {
         self.animationManager.runAnimationsForSequenceNamed("StatsScreenToMenu")
+        statsScrollView.setScrollPosition(CGPoint(x: 0, y: 0), animated: true) // Reset the scroll position to 0 to prevent the tip of it from staying on the screen.
         enableAllMenuButtons()
     }
     

@@ -83,10 +83,12 @@ class Stats: CCNode {
             
             var averageTapTime: Double = totalTapTime / Double(lastFifteenGames.count)
             
+            averageTapTime = 1 / averageTapTime // Change the value from seconds between taps to taps per second.
+            
             defaults.setDouble(averageTapTime, forKey: averageTapTimeKey)
             
             println("Average Tap Time of Last 15 Games: \(lastFifteenGames)")
-            println("Calculated Average Tap Time: \(defaults.doubleForKey(averageTapTimeKey)) seconds between taps")
+            println("Calculated Average Tap Time: \(defaults.doubleForKey(averageTapTimeKey)) taps per second")
             
         }
         
