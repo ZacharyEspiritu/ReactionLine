@@ -290,7 +290,13 @@ class MainScene: CCNode {
     }
     
     func statsMenu() {
-        
+        self.animationManager.runAnimationsForSequenceNamed("MenuToStatsScreen")
+        disableAllMenuButtons()
+    }
+    
+    func statsScreenToMenu() {
+        self.animationManager.runAnimationsForSequenceNamed("StatsScreenToMenu")
+        enableAllMenuButtons()
     }
     
     // MARK: Convenience Functions
