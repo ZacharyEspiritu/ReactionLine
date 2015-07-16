@@ -3,7 +3,7 @@
 //  ReactionLine
 //
 //  Created by Zachary Espiritu on 7/14/15.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Zachary Espiritu. All rights reserved.
 //
 
 import Foundation
@@ -48,6 +48,18 @@ class Stats: CCNode {
         timedModeLossesLabel.string      = String(defaults.integerForKey(timedModeLosses))
         bestTimedLabel.string            = String(format: "%.3f", defaults.doubleForKey(topScoreKey))
         bestInfiniteLabel.string         = String(defaults.integerForKey(topInfiniteScoreKey))
+        
+        if tapsPerSecondLabel.string == "999.999 tps" {
+            tapsPerSecondLabel.string = "—" // Em dash!
+        }
+        
+        if bestTimedLabel.string == "999.999" {
+            bestTimedLabel.string = "—" // Em dash!
+        }
+        
+        if bestInfiniteLabel.string == "0" {
+            bestInfiniteLabel.string = "—" // Em dash!
+        }
         
     }
     

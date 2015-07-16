@@ -16,38 +16,35 @@ class MainScene: CCNode {
     
     // MARK: Constants
     
-    let padding: CGFloat = 16
-    let numberOfLines: Int = 100
-    
     let audio = OALSimpleAudio.sharedInstance()
     
     
     // MARK: Memory Variables
     
     let memoryHandler = MemoryHandler()
-    let statsHandler = Stats()
+    let statsHandler  = Stats()
     
     
     // MARK: Variables
     
     weak var titleLabel: CCLabelTTF!
-    weak var infoLabel: CCLabelTTF!
+    weak var infoLabel:  CCLabelTTF!
     
     weak var creditsLayer: CCNode!
     var isCreditsInView = false
     
-    weak var timedModeButton: CCButton!
-    weak var infiniteModeButton: CCButton!
+    weak var timedModeButton:     CCButton!
+    weak var infiniteModeButton:  CCButton!
     weak var twoPlayerModeButton: CCButton!
     weak var challengeModeButton: CCButton!
     
     weak var optionsButton: CCButton!
-    weak var aboutButton: CCButton!
-    weak var shareButton: CCButton!
-    weak var statsButton: CCButton!
+    weak var aboutButton:   CCButton!
+    weak var shareButton:   CCButton!
+    weak var statsButton:   CCButton!
     
-    weak var vibrationToggleLabel: CCLabelTTF!
-    weak var soundsToggleLabel: CCLabelTTF!
+    weak var vibrationToggleLabel:  CCLabelTTF!
+    weak var soundsToggleLabel:     CCLabelTTF!
     weak var colorblindToggleLabel: CCLabelTTF!
     
     weak var statsScrollView: CCScrollView!
@@ -77,6 +74,7 @@ class MainScene: CCNode {
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondEvilScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdEvilScoreKey)
             
+            statsHandler.defaults.setDouble(999.999, forKey: statsHandler.averageTapTimeKey)
             statsHandler.defaults.setObject([], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
             println("Default settings loaded.")
@@ -85,8 +83,8 @@ class MainScene: CCNode {
                 
         updateOptionsButtonText()
         
-        timedModeButton.zoomWhenHighlighted = true
-        infiniteModeButton.zoomWhenHighlighted = true
+        timedModeButton.zoomWhenHighlighted     = true
+        infiniteModeButton.zoomWhenHighlighted  = true
         twoPlayerModeButton.zoomWhenHighlighted = true
         challengeModeButton.zoomWhenHighlighted = true
         
@@ -180,6 +178,9 @@ class MainScene: CCNode {
             
         }
     }
+    
+    
+    // MARK: Bottom Navigation Bar Functions
     
     /**
     Displays an interface from which the user can change certain options for the game.
@@ -319,27 +320,27 @@ class MainScene: CCNode {
     }
     
     func disableAllMenuButtons() {
-        timedModeButton.enabled = false
-        infiniteModeButton.enabled = false
+        timedModeButton.enabled     = false
+        infiniteModeButton.enabled  = false
         twoPlayerModeButton.enabled = false
         challengeModeButton.enabled = false
         
         optionsButton.enabled = false
-        aboutButton.enabled = false
-        shareButton.enabled = false
-        statsButton.enabled = false
+        aboutButton.enabled   = false
+        shareButton.enabled   = false
+        statsButton.enabled   = false
     }
     
     func enableAllMenuButtons() {
-        timedModeButton.enabled = true
-        infiniteModeButton.enabled = true
+        timedModeButton.enabled     = true
+        infiniteModeButton.enabled  = true
         twoPlayerModeButton.enabled = true
         challengeModeButton.enabled = true
         
         optionsButton.enabled = true
-        aboutButton.enabled = true
-        shareButton.enabled = true
-        statsButton.enabled = true
+        aboutButton.enabled   = true
+        shareButton.enabled   = true
+        statsButton.enabled   = true
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
