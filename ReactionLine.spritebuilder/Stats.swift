@@ -18,15 +18,40 @@ class Stats: CCNode {
     let tapTimeOfLastFifteenGamesArray = "tapTimeOfLastFifteenGamesArray"
     
     let timedModeWins = "timedModeWins"
-    
     let timedModeLosses = "timedModeLosses"
     
     let numberOfLinesCleared = "numberOfLinesCleared"
-    
     let totalPlaytime = "totalPlaytime"
     
+    let topScoreKey = "topScoreKey"
+    let topInfiniteScoreKey = "topInfiniteScoreKey"
     
-    // MARK: Functions
+    
+    // MARK: Code Connections
+    
+    weak var tapsPerSecondLabel:        CCLabelTTF!
+    weak var numberOfLinesClearedLabel: CCLabelTTF!
+    weak var timedModeClearsLabel:      CCLabelTTF!
+    weak var timedModeLossesLabel:      CCLabelTTF!
+    weak var bestTimedLabel:            CCLabelTTF!
+    weak var bestInfiniteLabel:         CCLabelTTF!
+    weak var totalPlaytimeLabel:        CCLabelTTF!
+    
+    
+    // MARK: Stats Screen Loading Functions
+    
+    func didLoadFromCCB() {
+        
+        tapsPerSecondLabel.string        = String(format: "%.3f", defaults.doubleForKey(averageTapTimeKey)) + " tps"
+        numberOfLinesClearedLabel.string = String(defaults.integerForKey(numberOfLinesCleared)) + " lines"
+        timedModeClearsLabel.string      = String(defaults.integerForKey(timedModeWins))
+        timedModeLossesLabel.string      = String(defaults.integerForKey(timedModeLosses))
+        bestTimedLabel.string            = String(format: "%.3f", defaults.doubleForKey(topScoreKey))
+        bestInfiniteLabel.string         = String(defaults.integerForKey(topInfiniteScoreKey))
+        
+    }
+    
+    // MARK: Statistic Handling Functions
     
     /**
     Calculates the new average tap time of the player.

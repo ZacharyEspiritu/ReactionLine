@@ -298,6 +298,17 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
+		55E66E401B57310D008F1190 /* Gamemodes */ = {
+			isa = PBXGroup;
+			children = (
+				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
+				55F54A201B56D53F00F13308 /* BlindMode.swift */,
+				555C43331B567D1000AC39ED /* EvilMode.swift */,
+				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
+			);
+			name = Gamemodes;
+			sourceTree = "<group>";
+		};
 		5B12100D197483EE004C1E1D /* res */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,13 +474,10 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
-				55F54A201B56D53F00F13308 /* BlindMode.swift */,
-				555C43331B567D1000AC39ED /* EvilMode.swift */,
-				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
 				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
 				559AACA71B5580E800F77C7D /* Stats.swift */,
 				5596AB681B4DB7610089D1BA /* Line.swift */,
+				55E66E401B57310D008F1190 /* Gamemodes */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
 			name = Source;
