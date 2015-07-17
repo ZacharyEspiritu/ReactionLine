@@ -52,8 +52,6 @@ class MainScene: CCNode {
     
     weak var statsScrollView: CCScrollView!
     
-    weak var gameCenterViewController: GameCenterViewController!
-    
     
     // MARK: Functions
     
@@ -84,10 +82,8 @@ class MainScene: CCNode {
             
             println("Default settings loaded.")
             
-            
-            
         }
-                
+        
         updateOptionsButtonText()
         
         timedModeButton.zoomWhenHighlighted     = true
@@ -184,13 +180,7 @@ class MainScene: CCNode {
     */
     func leaderboardMode() {
         leaderboardButton.highlighted = false
-        
         showLeaderboard()
-        
-        
-//        self.animationManager.runAnimationsForSequenceNamed("LeaderboardMode")
-        
-        
     }
     
     
