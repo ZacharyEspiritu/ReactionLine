@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GameKit
 
 enum GameState {
     case Playing, GameOver
@@ -19,7 +20,7 @@ class MainScene: CCNode {
     let audio = OALSimpleAudio.sharedInstance()
     
     let mixpanel = Mixpanel.sharedInstance()
-    
+
     
     // MARK: Memory Variables
     
@@ -38,7 +39,7 @@ class MainScene: CCNode {
     weak var timedModeButton:     CCButton!
     weak var infiniteModeButton:  CCButton!
     weak var twoPlayerModeButton: CCButton!
-    weak var challengeModeButton: CCButton!
+    weak var leaderboardButton: CCButton!
     
     weak var optionsButton: CCButton!
     weak var aboutButton:   CCButton!
@@ -50,6 +51,8 @@ class MainScene: CCNode {
     weak var colorblindToggleLabel: CCLabelTTF!
     
     weak var statsScrollView: CCScrollView!
+    
+    weak var gameCenterViewController: GameCenterViewController!
     
     
     // MARK: Functions
@@ -81,6 +84,8 @@ class MainScene: CCNode {
             
             println("Default settings loaded.")
             
+            
+            
         }
                 
         updateOptionsButtonText()
@@ -88,12 +93,20 @@ class MainScene: CCNode {
         timedModeButton.zoomWhenHighlighted     = true
         infiniteModeButton.zoomWhenHighlighted  = true
         twoPlayerModeButton.zoomWhenHighlighted = true
-        challengeModeButton.zoomWhenHighlighted = true
+        leaderboardButton.zoomWhenHighlighted = true
         
         creditsLayer.cascadeOpacityEnabled = true
         creditsLayer.opacity = 0
         
         self.userInteractionEnabled = true
+        
+        setupGameCenter()
+    }
+    
+    func setupGameCenter() {
+        
+        let gameCenterInteractor = GameCenterInteractor.sharedInstance
+        gameCenterInteractor.authenticationCheck()
         
     }
     
@@ -156,7 +169,7 @@ class MainScene: CCNode {
         
         delay(1.1) {
             
-            var gameplayScene = CCBReader.load("BlindMode") as! BlindMode
+            var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -169,22 +182,16 @@ class MainScene: CCNode {
     /**
     Begins Challenge Mode.
     */
-    func challengeMode() {
+    func leaderboardMode() {
         disableAllMenuButtons()
-        challengeModeButton.highlighted = false
+        leaderboardButton.highlighted = false
         
-        self.animationManager.runAnimationsForSequenceNamed("ChallengeMode")
+        showLeaderboard()
         
-        delay(1.1) {
-            
-            var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
-            
-            var scene = CCScene()
-            scene.addChild(gameplayScene)
-            
-            CCDirector.sharedDirector().presentScene(scene)
-            
-        }
+        
+//        self.animationManager.runAnimationsForSequenceNamed("LeaderboardMode")
+        
+        
     }
     
     
@@ -334,7 +341,7 @@ class MainScene: CCNode {
         timedModeButton.enabled     = false
         infiniteModeButton.enabled  = false
         twoPlayerModeButton.enabled = false
-        challengeModeButton.enabled = false
+        leaderboardButton.enabled = false
         
         optionsButton.enabled = false
         aboutButton.enabled   = false
@@ -346,7 +353,7 @@ class MainScene: CCNode {
         timedModeButton.enabled     = true
         infiniteModeButton.enabled  = true
         twoPlayerModeButton.enabled = true
-        challengeModeButton.enabled = true
+        leaderboardButton.enabled = true
         
         optionsButton.enabled = true
         aboutButton.enabled   = true
@@ -362,4 +369,22 @@ class MainScene: CCNode {
         }
     }
 
+}
+
+extension MainScene: GKGameCenterControllerDelegate {
+    
+    func showLeaderboard() {
+        
+        var viewController = CCDirector.sharedDirector().parentViewController!
+        var gameCenterViewController = GKGameCenterViewController()
+        gameCenterViewController.gameCenterDelegate = self
+        viewController.presentViewController(gameCenterViewController, animated: true, completion: nil)
+        
+    }
+    
+    //Delegate methods
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        
+    }
+    
 }

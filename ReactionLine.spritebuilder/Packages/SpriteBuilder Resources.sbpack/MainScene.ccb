@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>11</integer>
+	<integer>1</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -279,7 +279,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>75</real>
+							<real>-570</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -363,8 +363,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4046,7 +4044,7 @@
 												<key>displayName</key>
 												<string>challengeMode</string>
 												<key>memberVarAssignmentName</key>
-												<string>challengeModeButton</string>
+												<string>leaderboardButton</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -4119,7 +4117,7 @@
 														<string>Block</string>
 														<key>value</key>
 														<array>
-															<string>challengeMode</string>
+															<string>leaderboardMode</string>
 															<integer>1</integer>
 														</array>
 													</dict>
@@ -4390,6 +4388,8 @@
 														</array>
 													</dict>
 												</array>
+												<key>selected</key>
+												<true/>
 												<key>seqExpanded</key>
 												<true/>
 											</dict>
@@ -8011,7 +8011,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>570</real>
+							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -8259,7 +8259,7 @@
 							<real>1</real>
 							<real>0.93333333730697632</real>
 							<real>0.79607844352722168</real>
-							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -8270,7 +8270,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.0</real>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -11815,7 +11815,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>-35</real>
+							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -11844,8 +11844,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.30000001192092896</real>
-							<real>1.2999999523162842</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -19912,7 +19912,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.0</real>
+							<real>-70</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -20104,7 +20104,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.0333333015441895</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -20208,7 +20208,7 @@
 			<key>length</key>
 			<real>1.0333333015441895</real>
 			<key>name</key>
-			<string>ChallengeMode</string>
+			<string>LeaderboardMode</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
