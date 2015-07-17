@@ -14,6 +14,8 @@ class Stats: CCNode {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     let averageTapTimeKey = "averageTapTimeKey"
     let tapTimeOfLastFifteenGamesArray = "tapTimeOfLastFifteenGamesArray"
     

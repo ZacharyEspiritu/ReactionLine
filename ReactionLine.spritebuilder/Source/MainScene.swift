@@ -18,6 +18,8 @@ class MainScene: CCNode {
     
     let audio = OALSimpleAudio.sharedInstance()
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     
     // MARK: Memory Variables
     
