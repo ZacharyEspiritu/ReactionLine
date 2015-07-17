@@ -16,6 +16,8 @@ class MemoryHandler {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     let hasAlreadyLoaded = "hasAlreadyLoaded"
     
     let topScoreKey = "topScoreKey"
@@ -47,6 +49,9 @@ class MemoryHandler {
         defaults.setDouble(scoreArray[1], forKey: secondScoreKey)
         defaults.setDouble(scoreArray[2], forKey: thirdScoreKey)
         
+        let truncatedHighScore: Double = Double(round(1000 * self.defaults.doubleForKey(self.topScoreKey))/1000)
+        mixpanel.people.set("Timed Mode High Score", to: truncatedHighScore)
+        
         return true
         
     }
@@ -60,6 +65,8 @@ class MemoryHandler {
         defaults.setInteger(scoreArray[0], forKey: topInfiniteScoreKey)
         defaults.setInteger(scoreArray[1], forKey: secondInfiniteScoreKey)
         defaults.setInteger(scoreArray[2], forKey: thirdInfiniteScoreKey)
+        
+        mixpanel.people.set("Infinite Mode High Score", to: self.defaults.integerForKey(self.topInfiniteScoreKey))
         
         return true
         

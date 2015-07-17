@@ -101,6 +101,9 @@ class MainScene: CCNode {
     Begins Timed Mode.
     */
     func timedMode() {
+        
+        mixpanel.timeEvent("Timed Mode Session Duration")
+        
         disableAllMenuButtons()
         timedModeButton.highlighted = false
         
@@ -122,6 +125,9 @@ class MainScene: CCNode {
     Begins Infinite Mode.
     */
     func infiniteMode() {
+        
+        mixpanel.timeEvent("Infinite Mode Session Duration")
+        
         disableAllMenuButtons()
         infiniteModeButton.highlighted = false
         
@@ -276,6 +282,7 @@ class MainScene: CCNode {
     Displays the game credits.
     */
     func aboutMenu() {
+        mixpanel.track("Viewed About Screen")
         creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
         isCreditsInView = true
         disableAllMenuButtons()
@@ -285,6 +292,7 @@ class MainScene: CCNode {
     Displays an interface from which the user can share the app.
     */
     func shareMenu() {
+        mixpanel.track("Viewed Share Screen")
         self.animationManager.runAnimationsForSequenceNamed("MenuToShareScreen")
         disableAllMenuButtons()
     }
@@ -295,6 +303,7 @@ class MainScene: CCNode {
     }
     
     func statsMenu() {
+        mixpanel.track("Viewed Stats Screen")
         self.animationManager.runAnimationsForSequenceNamed("MenuToStatsScreen")
         disableAllMenuButtons()
     }

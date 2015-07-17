@@ -19,6 +19,8 @@ class TimedMode: CCNode {
     
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     
     // MARK: Memory Variables
     
@@ -94,6 +96,10 @@ class TimedMode: CCNode {
     Called whenever the `TimedMode.ccb` file loads into the scene.
     */
     func didLoadFromCCB() {
+        
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.increment("Timed Mode Plays", by: 1)
+        mixpanel.track("Timed Mode Plays")
         
         // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {
@@ -462,6 +468,8 @@ class TimedMode: CCNode {
     */
     func playAgain() {
         
+        mixpanel.track("Timed Mode Play Again Button Pressed")
+        
         var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
         
         var scene = CCScene()
@@ -477,6 +485,8 @@ class TimedMode: CCNode {
     Returns the game back to the main menu by loading a new instance of `MainScene.ccb`.
     */
     func mainMenu() {
+        
+        mixpanel.track("Timed Mode Session Duration")
         
         var mainScene = CCBReader.load("MainScene") as! MainScene
         

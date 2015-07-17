@@ -65,10 +65,17 @@
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     
     [mixpanel track:@"Game Launched"];
+    [mixpanel timeEvent:@"Entire Gameplay Session Duration"];
     
     [mixpanel identify:mixpanel.distinctId];
     
     return YES;
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Entire Gameplay Session Duration"];
 }
 
 - (CCScene*) startScene
