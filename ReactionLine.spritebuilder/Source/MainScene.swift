@@ -93,7 +93,7 @@ class MainScene: CCNode {
         timedModeButton.zoomWhenHighlighted     = true
         infiniteModeButton.zoomWhenHighlighted  = true
         twoPlayerModeButton.zoomWhenHighlighted = true
-        leaderboardButton.zoomWhenHighlighted = true
+        leaderboardButton.zoomWhenHighlighted   = false
         
         creditsLayer.cascadeOpacityEnabled = true
         creditsLayer.opacity = 0
@@ -183,7 +183,6 @@ class MainScene: CCNode {
     Begins Challenge Mode.
     */
     func leaderboardMode() {
-        disableAllMenuButtons()
         leaderboardButton.highlighted = false
         
         showLeaderboard()
@@ -384,7 +383,7 @@ extension MainScene: GKGameCenterControllerDelegate {
     
     //Delegate methods
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
-        
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

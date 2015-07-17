@@ -14,6 +14,8 @@ class Stats: CCNode {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    let gameCenterInteractor = GameCenterInteractor.sharedInstance
+    
     let mixpanel = Mixpanel.sharedInstance()
     
     let averageTapTimeKey = "averageTapTimeKey"
@@ -38,6 +40,16 @@ class Stats: CCNode {
     weak var bestTimedLabel:            CCLabelTTF!
     weak var bestInfiniteLabel:         CCLabelTTF!
     weak var totalPlaytimeLabel:        CCLabelTTF!
+    
+    
+    // MARK: Singleton
+    
+    class var sharedInstance : Stats {
+        struct Static {
+            static let instance : Stats = Stats()
+        }
+        return Static.instance
+    }
     
     
     // MARK: Stats Screen Loading Functions

@@ -23,6 +23,8 @@ class InfiniteMode: CCNode {
     
     let mixpanel = Mixpanel.sharedInstance()
     
+    let statsHandler: Stats = Stats.sharedInstance
+    
     
     // MARK: Memory Variables
     
@@ -67,8 +69,6 @@ class InfiniteMode: CCNode {
     weak var backgroundGroupingNode: CCNode!
     
     var numberOfLinesCleared: Int = 0
-    
-    var statsHandler: Stats = Stats()
     
     var score: Int = -1 {
         didSet {

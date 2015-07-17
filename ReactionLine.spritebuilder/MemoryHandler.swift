@@ -14,6 +14,8 @@ enum Gamemode {
 
 class MemoryHandler {
     
+    // MARK: Constants
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     let mixpanel = Mixpanel.sharedInstance()
@@ -39,6 +41,8 @@ class MemoryHandler {
     let colorblindSettingKey = "colorblindSettingKey"
     
     
+    // MARK: Functions
+    
     func checkForNewTopScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topScoreKey), defaults.doubleForKey(secondScoreKey), defaults.doubleForKey(thirdScoreKey)]
@@ -51,6 +55,8 @@ class MemoryHandler {
         
         let truncatedHighScore: Double = Double(round(1000 * self.defaults.doubleForKey(self.topScoreKey))/1000)
         mixpanel.people.set("Timed Mode High Score", to: truncatedHighScore)
+        
+        GameCenterInteractor.sharedInstance.saveHighScore("Timed", score: truncatedHighScore)
         
         return true
         
@@ -67,6 +73,8 @@ class MemoryHandler {
         defaults.setInteger(scoreArray[2], forKey: thirdInfiniteScoreKey)
         
         mixpanel.people.set("Infinite Mode High Score", to: self.defaults.integerForKey(self.topInfiniteScoreKey))
+        
+        GameCenterInteractor.sharedInstance.saveHighScore("Infinite", score: Double(self.defaults.integerForKey(self.topInfiniteScoreKey)))
         
         return true
         

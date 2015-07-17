@@ -24,7 +24,7 @@ class EvilMode: CCNode {
     
     let memoryHandler = MemoryHandler()
     
-    let statsHandler: Stats = Stats()
+    let statsHandler: Stats = Stats.sharedInstance
     
     
     // MARK: Variables
