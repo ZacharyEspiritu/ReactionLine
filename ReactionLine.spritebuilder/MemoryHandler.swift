@@ -84,7 +84,7 @@ class MemoryHandler {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topEvilScoreKey), defaults.doubleForKey(secondEvilScoreKey), defaults.doubleForKey(thirdEvilScoreKey)]
         
-        scoreArray.sort({ $0 > $1 })
+        scoreArray.sort({ $0 < $1 })
         
         defaults.setDouble(scoreArray[0], forKey: topEvilScoreKey)
         defaults.setDouble(scoreArray[1], forKey: secondEvilScoreKey)
