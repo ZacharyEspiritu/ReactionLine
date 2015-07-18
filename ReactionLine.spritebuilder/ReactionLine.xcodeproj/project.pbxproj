@@ -17,7 +17,6 @@
 		559AACA81B5580E800F77C7D /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559AACA71B5580E800F77C7D /* Stats.swift */; };
 		55D928011B59746700CECBAE /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D928001B59746600CECBAE /* GameCenterInteractor.swift */; };
 		55D928081B59772400CECBAE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D928051B5975E500CECBAE /* GameKit.framework */; };
-		55F54A211B56D53F00F13308 /* BlindMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F54A201B56D53F00F13308 /* BlindMode.swift */; };
 		5B121030197484FA004C1E1D /* ReactionLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ReactionLineActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -173,7 +172,6 @@
 		55D928041B5975E400CECBAE /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		55D928051B5975E500CECBAE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		55DAD8891B58B0C200A7AF16 /* Mixpanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixpanel.h; path = Pods/Mixpanel/Mixpanel/Mixpanel.h; sourceTree = "<group>"; };
-		55F54A201B56D53F00F13308 /* BlindMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlindMode.swift; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
-				55F54A201B56D53F00F13308 /* BlindMode.swift */,
 				555C43331B567D1000AC39ED /* EvilMode.swift */,
 				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
 			);
@@ -922,7 +919,6 @@
 				B73789871807631A0076A88C /* main.m in Sources */,
 				555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */,
 				5596AB691B4DB7610089D1BA /* Line.swift in Sources */,
-				55F54A211B56D53F00F13308 /* BlindMode.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
 				559AACA81B5580E800F77C7D /* Stats.swift in Sources */,
 				5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */,

@@ -181,6 +181,7 @@ class MainScene: CCNode {
     func leaderboardMode() {
         leaderboardButton.highlighted = false
         showLeaderboard()
+        mixpanel.track("Viewed Game Center Leaderboard")
     }
     
     
@@ -360,6 +361,8 @@ class MainScene: CCNode {
 
 }
 
+// MARK: Game Center Handling
+
 extension MainScene: GKGameCenterControllerDelegate {
     
     func showLeaderboard() {
@@ -371,7 +374,7 @@ extension MainScene: GKGameCenterControllerDelegate {
         
     }
     
-    //Delegate methods
+    // Delegate methods
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
