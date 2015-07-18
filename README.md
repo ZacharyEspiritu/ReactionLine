@@ -57,7 +57,7 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Complete integration of options via `NSUserDefaults`~~
 * **Complete!** ~~Complete stat tracking integration~~
 * Add ability to challenge other players
-* Integrate Game Center leaderboard API
+* **Complete!** ~~Integrate Game Center leaderboard API~~
 * Facebook/Twitter sharing from app
 * Add sounds
 * Run some final playtesting sessions
@@ -75,7 +75,7 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Menu needs to be redesigned, so it doesn't look like the MTA signs.~~ 
 * **Complete!** ~~End-game needs to be more polished, maybe with an animation or something.~~
 * **Complete!** ~~EK: End-game animation sequence needs to be shortened, or, at the very least, able to be skipped.~~
-* EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity. 
+* **Complete!** ~~EK: Color blind option needs to be implemented, because ~~inclusiveity~~ ~~inclusivety~~ inclusivity.~~ 
 * **Complete!** ~~Everyone: More gameplay modes. (EK suggests an infinite mode where you have a constantly decreasing time meter and get additional time added with a correct tap.)~~
 * **Complete-ish!** ~~Everyone: Leaderboards of some kind. (What does this mean? Does this mean we do a Piano Tiles-esque "top 10" scores saved locally on the device? or Game Center integration? or both? or a Flappy Bird-style single high score, so your friends can get higher scores than you on your device and irritate you for the rest of your life until you beat it?)~~
 
