@@ -120,7 +120,7 @@ class GameCenterInteractor: NSObject {
                 
                 GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
                     if error != nil {
-                        println("Timed Score Submission Error")
+                        println("Game Center: Timed Score Submission Error")
                     }
                 })
             }
@@ -134,9 +134,26 @@ class GameCenterInteractor: NSObject {
                 
                 GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
                     if error != nil {
-                        println("Infinite Score Submission Error")
+                        println("Game Center: Infinite Score Submission Error")
                     }
                 })
+            }
+            else if gamemode == "Evil" {
+                
+                var scoreReporter = GKScore(leaderboardIdentifier: "evilModeLeaderboard")
+                
+                scoreReporter.value = Int64(score * 1000)
+                
+                var scoreArray: [GKScore] = [scoreReporter]
+                
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                    if error != nil {
+                        println("Game Center: Evil Score Submission Error")
+                    }
+                })
+            }
+            else {
+                println("Game Center: Invalid Gamemode Leaderboard Argument")
             }
         }
     }

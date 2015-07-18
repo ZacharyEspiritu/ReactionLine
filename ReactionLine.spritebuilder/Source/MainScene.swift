@@ -38,7 +38,7 @@ class MainScene: CCNode {
     
     weak var timedModeButton:     CCButton!
     weak var infiniteModeButton:  CCButton!
-    weak var twoPlayerModeButton: CCButton!
+    weak var evilModeButton: CCButton!
     weak var leaderboardButton:   CCButton!
     
     weak var optionsButton: CCButton!
@@ -150,13 +150,15 @@ class MainScene: CCNode {
     }
     
     /**
-    Begins Two Player Mode.
+    Begins Evil Mode.
     */
-    func twoPlayerMode() {
-        disableAllMenuButtons()
-        twoPlayerModeButton.highlighted = false
+    func evilMode() {
+        mixpanel.timeEvent("Evil Mode Session Duration")
         
-        self.animationManager.runAnimationsForSequenceNamed("TwoPlayerMode")
+        disableAllMenuButtons()
+        evilModeButton.highlighted = false
+        
+        self.animationManager.runAnimationsForSequenceNamed("EvilMode")
         
         delay(1.1) {
             
@@ -171,7 +173,7 @@ class MainScene: CCNode {
     }
     
     /**
-    Begins Challenge Mode.
+    Opens up the Game Center leaderboard.
     */
     func leaderboardMode() {
         leaderboardButton.highlighted = false
@@ -325,7 +327,7 @@ class MainScene: CCNode {
     func disableAllMenuButtons() {
         timedModeButton.enabled     = false
         infiniteModeButton.enabled  = false
-        twoPlayerModeButton.enabled = false
+        evilModeButton.enabled = false
         leaderboardButton.enabled = false
         
         optionsButton.enabled = false
@@ -337,7 +339,7 @@ class MainScene: CCNode {
     func enableAllMenuButtons() {
         timedModeButton.enabled     = true
         infiniteModeButton.enabled  = true
-        twoPlayerModeButton.enabled = true
+        evilModeButton.enabled = true
         leaderboardButton.enabled = true
         
         optionsButton.enabled = true

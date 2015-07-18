@@ -27,6 +27,8 @@ class Stats: CCNode {
     let totalPlaytime        = "totalPlaytime"
     let topScoreKey          = "topScoreKey"
     let topInfiniteScoreKey  = "topInfiniteScoreKey"
+    let evilModeWins         = "evilModeWins"
+    let evilModeLosses       = "evilModeLosses"
     
     
     // MARK: Code Connections
@@ -144,6 +146,34 @@ class Stats: CCNode {
         defaults.setInteger(currentTimedModeLosses, forKey: timedModeLosses)
         
         mixpanel.people.set("Timed Mode Losses", to: currentTimedModeLosses)
+        
+    }
+    
+    /**
+    Adds 1 to the amount of timed mode wins and stores that value.
+    */
+    func addEvilModeWin() {
+        
+        var currentEvilModeWins = defaults.integerForKey(evilModeWins)
+        currentEvilModeWins++
+        
+        defaults.setInteger(currentEvilModeWins, forKey: evilModeWins)
+        
+        mixpanel.people.set("Evil Mode Wins", to: currentEvilModeWins)
+        
+    }
+    
+    /**
+    Adds 1 to the amount of timed mode losses and stores that value.
+    */
+    func addEvilModeLoss() {
+        
+        var currentEvilModeLosses = defaults.integerForKey(evilModeLosses)
+        currentEvilModeLosses++
+        
+        defaults.setInteger(currentEvilModeLosses, forKey: evilModeLosses)
+        
+        mixpanel.people.set("Evil Mode Losses", to: currentEvilModeLosses)
         
     }
     

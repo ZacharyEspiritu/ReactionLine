@@ -19,6 +19,8 @@ class EvilMode: CCNode {
     
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     
     // MARK: Memory Variables
     
@@ -94,6 +96,10 @@ class EvilMode: CCNode {
     Called whenever the `EvilMode.ccb` file loads into the scene.
     */
     func didLoadFromCCB() {
+        
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.increment("Evil Mode Plays", by: 1)
+        mixpanel.track("Evil Mode Plays")
         
         // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {
@@ -289,7 +295,7 @@ class EvilMode: CCNode {
     */
     func win(line: Line) {
         
-        statsHandler.addTimedModeWin()
+        statsHandler.addEvilModeWin()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
@@ -321,7 +327,7 @@ class EvilMode: CCNode {
     */
     func gameOver() {
         
-        statsHandler.addTimedModeLoss()
+        statsHandler.addEvilModeLoss()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
@@ -466,6 +472,8 @@ class EvilMode: CCNode {
     */
     func playAgain() {
         
+        mixpanel.track("Evil Mode Play Again Button Pressed")
+        
         var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
         
         var scene = CCScene()
@@ -481,6 +489,8 @@ class EvilMode: CCNode {
     Returns the game back to the main menu by loading a new instance of `MainScene.ccb`.
     */
     func mainMenu() {
+        
+        mixpanel.track("Evil Mode Session Duration")
         
         var mainScene = CCBReader.load("MainScene") as! MainScene
         

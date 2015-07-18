@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>9</integer>
+	<integer>3</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -2405,7 +2405,7 @@
 												<key>displayName</key>
 												<string>twoPlayerMode</string>
 												<key>memberVarAssignmentName</key>
-												<string>twoPlayerModeButton</string>
+												<string>evilModeButton</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -2478,7 +2478,7 @@
 														<string>Block</string>
 														<key>value</key>
 														<array>
-															<string>twoPlayerMode</string>
+															<string>evilMode</string>
 															<integer>1</integer>
 														</array>
 													</dict>
@@ -2765,6 +2765,8 @@
 														</array>
 													</dict>
 												</array>
+												<key>selected</key>
+												<true/>
 												<key>seqExpanded</key>
 												<true/>
 											</dict>
@@ -8040,7 +8042,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -8289,7 +8291,7 @@
 							<real>1</real>
 							<real>0.93333333730697632</real>
 							<real>0.79607844352722168</real>
-							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -8300,7 +8302,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.0</real>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -11844,7 +11846,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -17803,8 +17805,6 @@
 								<real>1</real>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -18777,7 +18777,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>-0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -19310,7 +19310,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -20204,7 +20204,7 @@
 			<key>length</key>
 			<real>1.0333333015441895</real>
 			<key>name</key>
-			<string>TwoPlayerMode</string>
+			<string>EvilMode</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
