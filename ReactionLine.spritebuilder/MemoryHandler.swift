@@ -22,22 +22,22 @@ class MemoryHandler {
     
     let hasAlreadyLoaded = "hasAlreadyLoaded"
     
-    let topScoreKey = "topScoreKey"
+    let topScoreKey    = "topScoreKey"
     let secondScoreKey = "secondScoreKey"
-    let thirdScoreKey = "thirdScoreKey"
+    let thirdScoreKey  = "thirdScoreKey"
     
-    let topInfiniteScoreKey = "topInfiniteScoreKey"
+    let topInfiniteScoreKey    = "topInfiniteScoreKey"
     let secondInfiniteScoreKey = "secondInfiniteScoreKey"
-    let thirdInfiniteScoreKey = "thirdInfiniteScoreKey"
+    let thirdInfiniteScoreKey  = "thirdInfiniteScoreKey"
     
-    let topEvilScoreKey = "topEvilScoreKey"
+    let topEvilScoreKey    = "topEvilScoreKey"
     let secondEvilScoreKey = "secondEvilScoreKey"
-    let thirdEvilScoreKey = "thirdEvilScoreKey"
+    let thirdEvilScoreKey  = "thirdEvilScoreKey"
     
     let currentGamemode = "currentGamemode"
     
-    let vibrationSettingKey = "vibrationSettingKey"
-    let soundsSettingKey = "soundsSettingKey"
+    let vibrationSettingKey  = "vibrationSettingKey"
+    let soundsSettingKey     = "soundsSettingKey"
     let colorblindSettingKey = "colorblindSettingKey"
     
     

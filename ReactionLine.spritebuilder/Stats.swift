@@ -18,17 +18,15 @@ class Stats: CCNode {
     
     let mixpanel = Mixpanel.sharedInstance()
     
-    let averageTapTimeKey = "averageTapTimeKey"
     let tapTimeOfLastFifteenGamesArray = "tapTimeOfLastFifteenGamesArray"
     
-    let timedModeWins = "timedModeWins"
-    let timedModeLosses = "timedModeLosses"
-    
+    let averageTapTimeKey    = "averageTapTimeKey"
+    let timedModeWins        = "timedModeWins"
+    let timedModeLosses      = "timedModeLosses"
     let numberOfLinesCleared = "numberOfLinesCleared"
-    let totalPlaytime = "totalPlaytime"
-    
-    let topScoreKey = "topScoreKey"
-    let topInfiniteScoreKey = "topInfiniteScoreKey"
+    let totalPlaytime        = "totalPlaytime"
+    let topScoreKey          = "topScoreKey"
+    let topInfiniteScoreKey  = "topInfiniteScoreKey"
     
     
     // MARK: Code Connections

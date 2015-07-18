@@ -39,7 +39,7 @@ class MainScene: CCNode {
     weak var timedModeButton:     CCButton!
     weak var infiniteModeButton:  CCButton!
     weak var twoPlayerModeButton: CCButton!
-    weak var leaderboardButton: CCButton!
+    weak var leaderboardButton:   CCButton!
     
     weak var optionsButton: CCButton!
     weak var aboutButton:   CCButton!
@@ -85,11 +85,6 @@ class MainScene: CCNode {
         }
         
         updateOptionsButtonText()
-        
-        timedModeButton.zoomWhenHighlighted     = true
-        infiniteModeButton.zoomWhenHighlighted  = true
-        twoPlayerModeButton.zoomWhenHighlighted = true
-        leaderboardButton.zoomWhenHighlighted   = false
         
         creditsLayer.cascadeOpacityEnabled = true
         creditsLayer.opacity = 0

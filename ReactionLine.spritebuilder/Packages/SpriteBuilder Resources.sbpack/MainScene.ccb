@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>9</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -2537,6 +2537,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>zoomWhenHighlighted</string>
+														<key>type</key>
+														<string>Check</string>
+														<key>value</key>
+														<true/>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>backgroundSpriteFrame|Normal</string>
 														<key>type</key>
 														<string>SpriteFrame</string>
@@ -2714,7 +2722,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>1</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -2728,7 +2736,7 @@
 															<real>0.0</real>
 															<real>0.0</real>
 															<real>0.0</real>
-															<real>127</real>
+															<real>0.0</real>
 														</array>
 													</dict>
 													<dict>
@@ -2738,7 +2746,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>2</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4168,6 +4176,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>zoomWhenHighlighted</string>
+														<key>type</key>
+														<string>Check</string>
+														<key>value</key>
+														<true/>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>backgroundSpriteFrame|Normal</string>
 														<key>type</key>
 														<string>SpriteFrame</string>
@@ -4345,7 +4361,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>1</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4359,7 +4375,7 @@
 															<real>0.0</real>
 															<real>0.0</real>
 															<real>0.0</real>
-															<real>127</real>
+															<real>0.0</real>
 														</array>
 													</dict>
 													<dict>
@@ -4369,7 +4385,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>2</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4388,8 +4404,6 @@
 														</array>
 													</dict>
 												</array>
-												<key>selected</key>
-												<true/>
 												<key>seqExpanded</key>
 												<true/>
 											</dict>
@@ -5886,6 +5900,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>zoomWhenHighlighted</string>
+														<key>type</key>
+														<string>Check</string>
+														<key>value</key>
+														<true/>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>backgroundSpriteFrame|Normal</string>
 														<key>type</key>
 														<string>SpriteFrame</string>
@@ -6063,7 +6085,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>1</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -6077,7 +6099,7 @@
 															<real>0.0</real>
 															<real>0.0</real>
 															<real>0.0</real>
-															<real>127</real>
+															<real>0.0</real>
 														</array>
 													</dict>
 													<dict>
@@ -6087,7 +6109,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>2</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -7517,6 +7539,14 @@
 													</dict>
 													<dict>
 														<key>name</key>
+														<string>zoomWhenHighlighted</string>
+														<key>type</key>
+														<string>Check</string>
+														<key>value</key>
+														<true/>
+													</dict>
+													<dict>
+														<key>name</key>
 														<string>backgroundSpriteFrame|Normal</string>
 														<key>type</key>
 														<string>SpriteFrame</string>
@@ -7694,7 +7724,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>1</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -7708,7 +7738,7 @@
 															<real>0.0</real>
 															<real>0.0</real>
 															<real>0.0</real>
-															<real>127</real>
+															<real>0.0</real>
 														</array>
 													</dict>
 													<dict>
@@ -7718,7 +7748,7 @@
 														<string>FloatScale</string>
 														<key>value</key>
 														<array>
-															<real>2</real>
+															<real>0.0</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -8010,7 +8040,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -8259,7 +8289,7 @@
 							<real>1</real>
 							<real>0.93333333730697632</real>
 							<real>0.79607844352722168</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -8270,7 +8300,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>1</real>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -11814,7 +11844,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -13148,7 +13178,7 @@
 								<key>value</key>
 								<array>
 									<real>0.87000000476837158</real>
-									<real>2</real>
+									<real>1.5</real>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -13902,7 +13932,7 @@
 								<key>value</key>
 								<array>
 									<real>0.87000000476837158</real>
-									<real>2</real>
+									<real>1.5</real>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -16425,7 +16455,7 @@
 								<key>value</key>
 								<array>
 									<real>0.87000000476837158</real>
-									<real>2</real>
+									<real>1.5</real>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -17717,7 +17747,7 @@
 								<key>value</key>
 								<array>
 									<real>0.87000000476837158</real>
-									<real>2</real>
+									<real>1.5</real>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -17773,6 +17803,8 @@
 								<real>1</real>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -18745,7 +18777,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-0.5</real>
+							<real>0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -19278,7 +19310,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
