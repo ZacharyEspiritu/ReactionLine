@@ -43,7 +43,7 @@ class MemoryHandler {
     
     // MARK: Functions
     
-    func checkForNewTopScore(newTime: Double) -> Bool {
+    func checkForNewTopTimedScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topScoreKey), defaults.doubleForKey(secondScoreKey), defaults.doubleForKey(thirdScoreKey)]
         

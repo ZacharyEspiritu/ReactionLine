@@ -57,16 +57,12 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
-    // Initialize the library with your
-    // Mixpanel project token, MIXPANEL_TOKEN
+    // Mixpanel stuff.
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
-    // Later, you can get your instance with
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     
     [mixpanel track:@"Game Launched"];
-    [mixpanel timeEvent:@"Entire Gameplay Session Duration"];
-    
     [mixpanel identify:mixpanel.distinctId];
     
     return YES;
@@ -76,6 +72,7 @@
 {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Entire Gameplay Session Duration"];
+    
 }
 
 - (CCScene*) startScene

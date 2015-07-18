@@ -307,7 +307,7 @@ class TimedMode: CCNode {
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         
-        memoryHandler.checkForNewTopScore(time)
+        memoryHandler.checkForNewTopTimedScore(time)
         getHighScore()
         
         self.animationManager.runAnimationsForSequenceNamed("WinSequence")
