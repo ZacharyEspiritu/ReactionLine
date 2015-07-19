@@ -20,6 +20,8 @@ class MainScene: CCNode {
     let audio = OALSimpleAudio.sharedInstance()
     
     let mixpanel = Mixpanel.sharedInstance()
+    
+    let sharingHandler = SharingHandler.sharedInstance
 
     
     // MARK: Memory Variables
@@ -45,6 +47,8 @@ class MainScene: CCNode {
     weak var aboutButton:   CCButton!
     weak var shareButton:   CCButton!
     weak var statsButton:   CCButton!
+    
+    weak var statsScreenToMenuButton: CCButton!
     
     weak var vibrationToggleLabel:  CCLabelTTF!
     weak var soundsToggleLabel:     CCLabelTTF!
@@ -299,14 +303,12 @@ class MainScene: CCNode {
     
     func shareToFacebook() {
         mixpanel.track("Opened Facebook Sharing Dialog")
-        let sharingHandler = SharingHandler.sharedInstance
-        sharingHandler.postToFacebook(urlToPost: "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8", postWithScreenshot: true)
+        sharingHandler.postToFacebook(postWithScreenshot: false)
     }
     
     func shareToTwitter() {
         mixpanel.track("Opened Twitter Sharing Dialog")
-        let sharingHandler = SharingHandler.sharedInstance
-        sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here: https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8", postWithScreenshot: true)
+        sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here:", postWithScreenshot: false)
     }
     
     func shareScreenToMenu() {
@@ -330,6 +332,11 @@ class MainScene: CCNode {
         self.animationManager.runAnimationsForSequenceNamed("StatsScreenToMenu")
         statsScrollView.setScrollPosition(CGPoint(x: 0, y: 0), animated: true) // Reset the scroll position to 0 to prevent the tip of it from staying on the screen.
         enableAllMenuButtons()
+        
+        statsScreenToMenuButton.enabled = false
+        delay(0.5) {
+            self.statsScreenToMenuButton.enabled = true
+        }
     }
     
     
