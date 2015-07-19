@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>3</integer>
+	<integer>9</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -1170,8 +1170,8 @@
 											<integer>3</integer>
 											<key>value</key>
 											<array>
-												<real>1.492199182510376</real>
-												<real>-0.97989010810852051</real>
+												<real>3.1548111438751221</real>
+												<real>-0.75456583499908447</real>
 											</array>
 										</dict>
 									</array>
@@ -1710,7 +1710,7 @@
 														<string>Text</string>
 														<key>value</key>
 														<array>
-															<string>challenges</string>
+															<string>evil mode</string>
 															<false/>
 														</array>
 													</dict>
@@ -2152,7 +2152,7 @@
 																	<key>type</key>
 																	<integer>2</integer>
 																	<key>value</key>
-																	<real>150</real>
+																	<real>100</real>
 																</dict>
 															</array>
 															<key>name</key>
@@ -2198,8 +2198,8 @@
 																	<integer>4</integer>
 																	<key>value</key>
 																	<array>
-																		<real>57</real>
-																		<real>57</real>
+																		<real>62</real>
+																		<real>62</real>
 																	</array>
 																</dict>
 															</array>
@@ -2551,7 +2551,7 @@
 														<key>value</key>
 														<array>
 															<string></string>
-															<string>assets/multiplayerButton.png</string>
+															<string>assets/evilModeButton.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2562,7 +2562,7 @@
 														<key>value</key>
 														<array>
 															<string></string>
-															<string>assets/multiplayerButton.png</string>
+															<string>assets/evilModeButton.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2586,7 +2586,7 @@
 														<key>value</key>
 														<array>
 															<string></string>
-															<string>assets/multiplayerButton.png</string>
+															<string>assets/evilModeButton.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2613,7 +2613,7 @@
 														<key>value</key>
 														<array>
 															<string></string>
-															<string>assets/multiplayerButton.png</string>
+															<string>assets/evilModeButton.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2765,8 +2765,6 @@
 														</array>
 													</dict>
 												</array>
-												<key>selected</key>
-												<true/>
 												<key>seqExpanded</key>
 												<true/>
 											</dict>
@@ -8010,6 +8008,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -8042,7 +8042,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -8291,7 +8291,7 @@
 							<real>1</real>
 							<real>0.93333333730697632</real>
 							<real>0.79607844352722168</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -8302,7 +8302,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>1</real>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -11846,7 +11846,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -15648,7 +15648,7 @@
 												<string>Text</string>
 												<key>value</key>
 												<array>
-													<string>Vibration</string>
+													<string>vibration</string>
 													<false/>
 												</array>
 											</dict>
@@ -15797,6 +15797,8 @@
 												</array>
 											</dict>
 										</array>
+										<key>selected</key>
+										<true/>
 									</dict>
 									<dict>
 										<key>UUID</key>
@@ -16940,7 +16942,7 @@
 												<string>Text</string>
 												<key>value</key>
 												<array>
-													<string>Sounds</string>
+													<string>sounds</string>
 													<false/>
 												</array>
 											</dict>
@@ -18232,7 +18234,7 @@
 												<string>Text</string>
 												<key>value</key>
 												<array>
-													<string>Colorblind</string>
+													<string>colorblind (experimental)</string>
 													<false/>
 												</array>
 											</dict>
@@ -18777,7 +18779,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-0.5</real>
+							<real>0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -19310,7 +19312,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -20172,7 +20174,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.40000000596046448</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -20208,7 +20210,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.0333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -20280,7 +20282,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1000000238418579</real>
+			<real>1.2666666507720947</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

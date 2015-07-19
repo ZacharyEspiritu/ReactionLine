@@ -24,9 +24,9 @@ class Stats: CCNode {
     let timedModeWins        = "timedModeWins"
     let timedModeLosses      = "timedModeLosses"
     let numberOfLinesCleared = "numberOfLinesCleared"
-    let totalPlaytime        = "totalPlaytime"
     let topScoreKey          = "topScoreKey"
     let topInfiniteScoreKey  = "topInfiniteScoreKey"
+    let topEvilScoreKey      = "topEvilScoreKey"
     let evilModeWins         = "evilModeWins"
     let evilModeLosses       = "evilModeLosses"
     
@@ -39,8 +39,9 @@ class Stats: CCNode {
     weak var timedModeLossesLabel:      CCLabelTTF!
     weak var bestTimedLabel:            CCLabelTTF!
     weak var bestInfiniteLabel:         CCLabelTTF!
-    weak var totalPlaytimeLabel:        CCLabelTTF!
-    
+    weak var bestEvilLabel:             CCLabelTTF!
+    weak var evilModeClearsLabel:       CCLabelTTF!
+    weak var evilModeLossesLabel:       CCLabelTTF!
     
     // MARK: Singleton
     
@@ -56,12 +57,15 @@ class Stats: CCNode {
     
     func didLoadFromCCB() {
         
-        tapsPerSecondLabel.string        = String(format: "%.3f", defaults.doubleForKey(averageTapTimeKey)) + " tps"
-        numberOfLinesClearedLabel.string = String(defaults.integerForKey(numberOfLinesCleared)) + " lines"
+        tapsPerSecondLabel.string        = String(format: "%.3f", defaults.doubleForKey(averageTapTimeKey)) + " taps"
+        numberOfLinesClearedLabel.string = String(defaults.integerForKey(numberOfLinesCleared))
         timedModeClearsLabel.string      = String(defaults.integerForKey(timedModeWins))
         timedModeLossesLabel.string      = String(defaults.integerForKey(timedModeLosses))
         bestTimedLabel.string            = String(format: "%.3f", defaults.doubleForKey(topScoreKey))
+        bestEvilLabel.string             = String(format: "%.3f", defaults.doubleForKey(topEvilScoreKey))
         bestInfiniteLabel.string         = String(defaults.integerForKey(topInfiniteScoreKey))
+        evilModeClearsLabel.string       = String(defaults.integerForKey(evilModeWins))
+        evilModeLossesLabel.string       = String(defaults.integerForKey(evilModeLosses))
         
         if tapsPerSecondLabel.string == "999.999 tps" {
             tapsPerSecondLabel.string = "—" // Em dash!
@@ -69,6 +73,10 @@ class Stats: CCNode {
         
         if bestTimedLabel.string == "999.999" {
             bestTimedLabel.string = "—" // Em dash!
+        }
+        
+        if bestEvilLabel.string == "999.999" {
+            bestEvilLabel.string = "—" // Em dash!
         }
         
         if bestInfiniteLabel.string == "0" {

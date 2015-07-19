@@ -78,7 +78,7 @@ class MainScene: CCNode {
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdEvilScoreKey)
             
             statsHandler.defaults.setDouble(999.999, forKey: statsHandler.averageTapTimeKey)
-            statsHandler.defaults.setObject([], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
+            statsHandler.defaults.setObject([] as [Double], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
             println("Default settings loaded.")
             
