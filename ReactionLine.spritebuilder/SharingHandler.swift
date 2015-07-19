@@ -13,6 +13,10 @@ import Social
 
 class SharingHandler: UIViewController {
     
+    // MARK: Constants
+    
+    let defaultURL: String = "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8"
+    
     // MARK: Singleton
     
     class var sharedInstance : SharingHandler {
@@ -27,13 +31,15 @@ class SharingHandler: UIViewController {
     
     /**
     Opens the native iOS share screen for posting to Twitter.
+    
+    The `defaultURL` set in at the top of `SharingHandler.swift` will be appended to the end of the post automatically.
     */
     func postToTwitter(#stringToPost: String, postWithScreenshot: Bool) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
         
             var twitterViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterViewController.setInitialText(stringToPost)
+            twitterViewController.setInitialText(stringToPost + " \(defaultURL)")
             
             if postWithScreenshot {
                 twitterViewController.addImage(takeScreenshot())
@@ -58,17 +64,19 @@ class SharingHandler: UIViewController {
     /**
     Opens the native iOS share screen for posting to Facebook.
     
+    The `defaultURL` set in at the top of `SharingHandler.swift` will be appended to the end of the post automatically.
+    
     **Note:** A known caveat with the native iOS "share sheet" for Facebook is that you are no longer able to "pre-fill" the content of the box. If you want to be able to do this, you'll need to integrate the Facebook SDK, which is an entirely different ballgame of its own.
     
     Actually, even if you wanted to do that, Facebook recently changed their Platform Policy such that "pre-filling" the user message parameter with any content that the user didn't enter themselves (even if they are able to edit or delete that content before posting) is against their rules, so you technically aren't allowed to do that anyways.
     */
-    func postToFacebook(#urlToPost: String, postWithScreenshot: Bool) {
+    func postToFacebook(#postWithScreenshot: Bool) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
             var facebookViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             // THIS DOES NOT WORK (SEE ABOVE!): facebookViewController.setInitialText("Testing facebook integration!")
-            facebookViewController.addURL(NSURL(string: urlToPost))
+            facebookViewController.addURL(NSURL(string: defaultURL))
             
             if postWithScreenshot {
                 facebookViewController.addImage(takeScreenshot())
