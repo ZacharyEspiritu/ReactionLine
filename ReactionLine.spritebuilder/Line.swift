@@ -36,21 +36,30 @@ class Line: CCNode {
         let redColor = CCColor(red: 255/255, green: 102/255, blue: 102/255)
         let blueColor = CCColor(red: 54/255, green: 166/255, blue: 222/255)
         
+        let whiteColor = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+        let blackColor = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+        
         var randomNumber = CCRANDOM_0_1()
         
         if randomNumber < 0.50 {
-            
-            colorNode.color = redColor
+            if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+                colorNode.color = whiteColor
+            }
+            else {
+                colorNode.color = redColor
+            }
             colorType = .Red
-            
         }
         else {
-            
-            colorNode.color = blueColor
+            if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+                colorNode.color = blackColor
+            }
+            else {
+                colorNode.color = blueColor
+                
+            }
             colorType = .Blue
-            
         }
-        
     }
     
     /**

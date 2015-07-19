@@ -113,17 +113,6 @@ class TimedMode: CCNode {
             lineGroupingNode.addChild(line)
             lineArray.append(line)
             
-            if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
-                
-                if line.colorType == .Red {
-                    line.colorNode.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
-                }
-                else {
-                    line.colorNode.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
-                }
-                
-            }
-            
         }
         
         lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
