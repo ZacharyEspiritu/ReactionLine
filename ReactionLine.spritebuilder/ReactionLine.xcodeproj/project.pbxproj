@@ -10,6 +10,7 @@
 		555C43341B567D1000AC39ED /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C43331B567D1000AC39ED /* EvilMode.swift */; };
 		555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF361B531F6300FA200F /* MemoryHandler.swift */; };
 		555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */; };
+		558B430E1B5BF2C5003CD7A6 /* SharingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */; };
 		55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55916C2B1B5003B5003C9E93 /* spring.mp3 */; };
 		5596AB691B4DB7610089D1BA /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB681B4DB7610089D1BA /* Line.swift */; };
 		5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB951B4DFCCF0089D1BA /* tada.wav */; };
@@ -163,6 +164,7 @@
 		555C43331B567D1000AC39ED /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvilMode.swift; sourceTree = "<group>"; };
 		555CAF361B531F6300FA200F /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
 		555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteMode.swift; sourceTree = "<group>"; };
+		558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingHandler.swift; sourceTree = "<group>"; };
 		55916C2B1B5003B5003C9E93 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		5596AB681B4DB7610089D1BA /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5596AB951B4DFCCF0089D1BA /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
 				55D928001B59746600CECBAE /* GameCenterInteractor.swift */,
+				558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */,
 				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
 				559AACA71B5580E800F77C7D /* Stats.swift */,
 				5596AB681B4DB7610089D1BA /* Line.swift */,
@@ -914,6 +917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558B430E1B5BF2C5003CD7A6 /* SharingHandler.swift in Sources */,
 				55D928011B59746700CECBAE /* GameCenterInteractor.swift in Sources */,
 				555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,

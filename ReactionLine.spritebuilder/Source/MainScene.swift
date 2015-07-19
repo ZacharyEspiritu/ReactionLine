@@ -182,7 +182,7 @@ class MainScene: CCNode {
     }
     
     
-    // MARK: Bottom Navigation Bar Functions
+    // MARK: Options Menu Functions
     
     /**
     Displays an interface from which the user can change certain options for the game.
@@ -272,6 +272,9 @@ class MainScene: CCNode {
         }
     }
     
+    
+    // MARK: About Screen Functions
+    
     /**
     Displays the game credits.
     */
@@ -282,6 +285,9 @@ class MainScene: CCNode {
         disableAllMenuButtons()
     }
     
+    
+    // MARK: Share Screen Functions
+    
     /**
     Displays an interface from which the user can share the app.
     */
@@ -291,11 +297,27 @@ class MainScene: CCNode {
         disableAllMenuButtons()
     }
     
+    func shareToFacebook() {
+        let sharingHandler = SharingHandler.sharedInstance
+        sharingHandler.postToFacebook()
+    }
+    
+    func shareToTwitter() {
+        let sharingHandler = SharingHandler.sharedInstance
+        sharingHandler.postToTwitter()
+    }
+    
     func shareScreenToMenu() {
         self.animationManager.runAnimationsForSequenceNamed("ShareScreenToMenu")
         enableAllMenuButtons()
     }
     
+    
+    // MARK: Stats Screen Functions
+    
+    /**
+    Displays the stats view.
+    */
     func statsMenu() {
         mixpanel.track("Viewed Stats Screen")
         self.animationManager.runAnimationsForSequenceNamed("MenuToStatsScreen")
@@ -307,6 +329,7 @@ class MainScene: CCNode {
         statsScrollView.setScrollPosition(CGPoint(x: 0, y: 0), animated: true) // Reset the scroll position to 0 to prevent the tip of it from staying on the screen.
         enableAllMenuButtons()
     }
+    
     
     // MARK: Convenience Functions
     
