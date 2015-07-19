@@ -90,7 +90,7 @@ class MemoryHandler {
         defaults.setDouble(scoreArray[1], forKey: secondEvilScoreKey)
         defaults.setDouble(scoreArray[2], forKey: thirdEvilScoreKey)
         
-        let truncatedHighScore: Double = Double(round(1000 * self.defaults.doubleForKey(self.topScoreKey))/1000)
+        let truncatedHighScore: Double = Double(round(1000 * self.defaults.doubleForKey(self.topEvilScoreKey))/1000)
         mixpanel.people.set("Evil Mode High Score", to: truncatedHighScore)
         
         GameCenterInteractor.sharedInstance.saveHighScore("Evil", score: truncatedHighScore)
