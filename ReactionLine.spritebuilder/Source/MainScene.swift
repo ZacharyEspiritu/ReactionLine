@@ -311,6 +311,14 @@ class MainScene: CCNode {
         sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here:", postWithScreenshot: false)
     }
     
+    func openSupportURL() {
+        let supportURL: NSURL = NSURL(string: "https://docs.google.com/forms/d/1bDA5FjejM2KjPmpLzY6jroQv6nhhl6kDzOLa0mUUUP4/viewform")!
+        
+        if !UIApplication.sharedApplication().openURL(supportURL) {
+            NSLog("Support Button: Failed to open url")
+        }
+    }
+    
     func shareScreenToMenu() {
         self.animationManager.runAnimationsForSequenceNamed("ShareScreenToMenu")
         enableAllMenuButtons()

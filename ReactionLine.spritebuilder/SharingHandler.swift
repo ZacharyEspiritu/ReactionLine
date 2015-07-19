@@ -101,7 +101,6 @@ class SharingHandler: UIViewController {
     func takeScreenshot() -> UIImage {
         CCDirector.sharedDirector().nextDeltaTimeZero = true
         
-        let size: CGSize = CCDirector.sharedDirector().viewSize()
         let width = Int32(CCDirector.sharedDirector().viewSize().width)
         let height = Int32(CCDirector.sharedDirector().viewSize().height)
         let renderTexture: CCRenderTexture = CCRenderTexture(width: width, height: height)
