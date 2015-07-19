@@ -56,16 +56,17 @@ There are no levels; only a one-player game mode.
 * **Complete!** ~~Add an options menu~~
 * **Complete!** ~~Complete integration of options via `NSUserDefaults`~~
 * **Complete!** ~~Complete stat tracking integration~~
-* Add ability to challenge other players
+* **Complete!** ~~Add ability to challenge other players~~
 * **Complete!** ~~Integrate Game Center leaderboard API~~
-* Facebook/Twitter sharing from app
+* **Complete!** ~~Facebook/Twitter sharing from app~~
+* **Complete!** ~~Finalize description (or have someone else willing enough write it themselves)~~
+
+
+### Week 3
 * Add sounds
 * Run some final playtesting sessions
 * Take some screenshots for iTunes Connect
-* **Complete!** ~~Finalize description (or have someone else willing enough write it themselves)~~
 * Submit the app to the App Store for approval (and pray that it does)
-
-### Week 3
 * Start raking in the ad revenue
 
 ## List of Feedback
