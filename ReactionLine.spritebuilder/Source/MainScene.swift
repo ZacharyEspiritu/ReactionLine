@@ -298,11 +298,13 @@ class MainScene: CCNode {
     }
     
     func shareToFacebook() {
+        mixpanel.track("Opened Facebook Sharing Dialog")
         let sharingHandler = SharingHandler.sharedInstance
         sharingHandler.postToFacebook()
     }
     
     func shareToTwitter() {
+        mixpanel.track("Opened Twitter Sharing Dialog")
         let sharingHandler = SharingHandler.sharedInstance
         sharingHandler.postToTwitter()
     }
