@@ -28,12 +28,12 @@ class SharingHandler: UIViewController {
     /**
     Opens the native iOS share screen for posting to Twitter.
     */
-    func postToTwitter() {
+    func postToTwitter(#stringToPost: String) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
         
             var twitterViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterViewController.setInitialText("#ReactionLine is the best iPhone game in the world! Download it here: https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8")
+            twitterViewController.setInitialText(stringToPost)
             
             // The `completionHandler` block is called when the `twitterViewController` is closed. In this scenario, the `completionHandler` checks to see if a post was successfully made, or if the user exited out of the view without making a tweet.
             twitterViewController.completionHandler = {
@@ -58,13 +58,13 @@ class SharingHandler: UIViewController {
     
     Actually, even if you wanted to do that, Facebook recently changed their Platform Policy such that "pre-filling" the user message parameter with any content that the user didn't enter themselves (even if they are able to edit or delete that content before posting) is against their rules, so you technically aren't allowed to do that anyways.
     */
-    func postToFacebook() {
+    func postToFacebook(#urlToPost: String) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
             var facebookViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             // THIS DOES NOT WORK (SEE ABOVE!): facebookViewController.setInitialText("Testing facebook integration!")
-            facebookViewController.addURL(NSURL(string: "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8"))
+            facebookViewController.addURL(NSURL(string: urlToPost))
             
             // The `completionHandler` block is called when the `facebookViewController` is closed. In this scenario, the `completionHandler` checks to see if a post was successfully made, or if the user exited out of the view without making a tweet.
             facebookViewController.completionHandler = {
