@@ -302,12 +302,10 @@ class MainScene: CCNode {
     }
     
     func shareToFacebook() {
-        mixpanel.track("Opened Facebook Sharing Dialog")
         sharingHandler.postToFacebook(postWithScreenshot: false)
     }
     
     func shareToTwitter() {
-        mixpanel.track("Opened Twitter Sharing Dialog")
         sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here:", postWithScreenshot: false)
     }
     

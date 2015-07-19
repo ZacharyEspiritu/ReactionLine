@@ -492,4 +492,15 @@ class EvilMode: CCNode {
         
     }
     
+    
+    // MARK: Share Button Functions
+    
+    func shareToTwitter() {
+        SharingHandler.sharedInstance.postToTwitter(stringToPost: "I just got a time of " + String(format: "%.3f", time) + " on Evil Mode in #ReactionLine!", postWithScreenshot: true)
+    }
+    
+    func shareToFacebook() {
+        SharingHandler.sharedInstance.postToFacebook(postWithScreenshot: true)
+    }
+    
 }

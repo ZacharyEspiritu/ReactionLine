@@ -72,6 +72,8 @@ class TimedMode: CCNode {
     
     var numberOfLinesCleared: Int = 0
     
+    weak var effectNode: CCEffectNode!
+    
     
     // MARK: Convenience Functions
     
@@ -100,6 +102,8 @@ class TimedMode: CCNode {
         mixpanel.identify(mixpanel.distinctId)
         mixpanel.people.increment("Timed Mode Plays", by: 1)
         mixpanel.track("Timed Mode Plays")
+        
+        effectNode.effect = CCEffectDropShadow(shadowOffset: GLKVector2Make(0, 0), shadowColor: CCColor(red: 0/255, green: 0/255, blue: 0/255), blurRadius: 10)
         
         // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {
@@ -486,6 +490,17 @@ class TimedMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
+    }
+    
+    
+    // MARK: Share Button Functions
+    
+    func shareToTwitter() {
+        SharingHandler.sharedInstance.postToTwitter(stringToPost: "I just got a time of " + String(format: "%.3f", time) + " on Timed Mode in #ReactionLine!", postWithScreenshot: true)
+    }
+    
+    func shareToFacebook() {
+        SharingHandler.sharedInstance.postToFacebook(postWithScreenshot: true)
     }
     
 }

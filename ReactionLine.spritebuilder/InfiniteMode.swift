@@ -540,4 +540,15 @@ class InfiniteMode: CCNode {
         
     }
     
+    
+    // MARK: Share Button Functions
+    
+    func shareToTwitter() {
+        SharingHandler.sharedInstance.postToTwitter(stringToPost: "I just got a score of \(score) on Infinite Mode in #ReactionLine!", postWithScreenshot: true)
+    }
+    
+    func shareToFacebook() {
+        SharingHandler.sharedInstance.postToFacebook(postWithScreenshot: true)
+    }
+    
 }

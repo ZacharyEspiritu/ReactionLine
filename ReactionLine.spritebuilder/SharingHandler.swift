@@ -17,6 +17,8 @@ class SharingHandler: UIViewController {
     
     let defaultURL: String = "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8"
     
+    let mixpanel = Mixpanel.sharedInstance()
+    
     // MARK: Singleton
     
     class var sharedInstance : SharingHandler {
@@ -37,6 +39,8 @@ class SharingHandler: UIViewController {
     func postToTwitter(#stringToPost: String, postWithScreenshot: Bool) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            
+            mixpanel.track("Opened Twitter Sharing Dialog")
         
             var twitterViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterViewController.setInitialText(stringToPost + " \(defaultURL)")
@@ -50,7 +54,7 @@ class SharingHandler: UIViewController {
                 (result:SLComposeViewControllerResult) in
                 if result == .Done {
                     println("Sharing Handler: User posted to Twitter")
-                    Mixpanel.sharedInstance().track("User Posted To Twitter")
+                    self.mixpanel.track("User Posted To Twitter")
                 }
                 else {
                     println("Sharing Handler: User did not post to Twitter")
@@ -74,6 +78,8 @@ class SharingHandler: UIViewController {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
+            mixpanel.track("Opened Facebook Sharing Dialog")
+            
             var facebookViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             // THIS DOES NOT WORK (SEE ABOVE!): facebookViewController.setInitialText("Testing facebook integration!")
             facebookViewController.addURL(NSURL(string: defaultURL))
@@ -87,7 +93,7 @@ class SharingHandler: UIViewController {
                 (result:SLComposeViewControllerResult) in
                 if result == .Done {
                     println("Sharing Handler: User posted to Facebook")
-                    Mixpanel.sharedInstance().track("User Posted To Facebook")
+                    self.mixpanel.track("User Posted To Facebook")
                 }
                 else {
                     println("Sharing Handler: User did not post to Facebook")
