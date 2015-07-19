@@ -98,6 +98,11 @@ class SharingHandler: UIViewController {
         }
     }
     
+    /**
+    Used to take a screenshot of the current cocos2d scene.
+    
+    :returns:  a screenshot in the form of a `UIImage`
+    */
     func takeScreenshot() -> UIImage {
         CCDirector.sharedDirector().nextDeltaTimeZero = true
         
