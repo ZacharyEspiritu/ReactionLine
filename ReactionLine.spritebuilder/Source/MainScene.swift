@@ -300,13 +300,13 @@ class MainScene: CCNode {
     func shareToFacebook() {
         mixpanel.track("Opened Facebook Sharing Dialog")
         let sharingHandler = SharingHandler.sharedInstance
-        sharingHandler.postToFacebook(urlToPost: "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8")
+        sharingHandler.postToFacebook(urlToPost: "https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8", postWithScreenshot: true)
     }
     
     func shareToTwitter() {
         mixpanel.track("Opened Twitter Sharing Dialog")
         let sharingHandler = SharingHandler.sharedInstance
-        sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here: https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8")
+        sharingHandler.postToTwitter(stringToPost: "#ReactionLine is the best iPhone game in the world! Download it here: https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?ls=1&mt=8", postWithScreenshot: true)
     }
     
     func shareScreenToMenu() {
