@@ -76,6 +76,8 @@ class EvilMode: CCNode {
     
     weak var effectNode: CCEffectNode!
     
+    var useWinningTwitterMessage: Bool = false
+    
     
     // MARK: Convenience Functions
     
@@ -299,6 +301,8 @@ class EvilMode: CCNode {
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
         
+        useWinningTwitterMessage = true
+        
         self.unschedule("timer")
         println("win!")
         
@@ -509,7 +513,12 @@ class EvilMode: CCNode {
     // MARK: Share Button Functions
     
     func shareToTwitter() {
-        SharingHandler.sharedInstance.postToTwitter(stringToPost: "I just got a time of " + String(format: "%.3f", time) + " on Evil Mode in #ReactionLine!", postWithScreenshot: true)
+        if useWinningTwitterMessage {
+            SharingHandler.sharedInstance.postToTwitter(stringToPost: "I just got a time of " + String(format: "%.3f", time) + " on Evil Mode in #ReactionLine!", postWithScreenshot: true)
+        }
+        else {
+            SharingHandler.sharedInstance.postToTwitter(stringToPost: "AHHH! I just lost another round of Evil Mode in #ReactionLine!", postWithScreenshot: true)
+        }
     }
     
     func shareToFacebook() {
