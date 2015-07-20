@@ -63,6 +63,7 @@ class MainScene: CCNode {
     func didLoadFromCCB() {
         
         iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
+        iAdHandler.sharedInstance.loadInterstitialAd()
         
         if !memoryHandler.defaults.boolForKey(memoryHandler.hasAlreadyLoaded) {
             

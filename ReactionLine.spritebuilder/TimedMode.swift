@@ -407,6 +407,9 @@ class TimedMode: CCNode {
                 
                 self.adHandler.hideBannerAd()
                 
+                
+                iAdHandler.sharedInstance.displayInterstitialAd()
+                
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
                 self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
                 

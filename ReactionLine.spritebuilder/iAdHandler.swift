@@ -13,7 +13,7 @@ enum BannerPosition {
     case Top, Bottom
 }
 
-class iAdHandler: NSObject, ADBannerViewDelegate {
+class iAdHandler: NSObject {
     
     // MARK: Variables
     
@@ -22,6 +22,7 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     var adBannerView = ADBannerView(frame: CGRect.zeroRect)
     var bannerPosition: BannerPosition = .Top
     
+    var interstitial = ADInterstitialAd()
     
     // MARK: Singleton
     
@@ -33,7 +34,7 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     }
     
     
-    // MARK: Functions
+    // MARK: Banner Ad Functions
     
     /**
     Sets the position of the soon-to-be banner ad and attempts to load a new ad from the iAd network.
@@ -109,23 +110,22 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     }
     
     
-    // MARK: Functions Inherited From Delegate
+    // MARK: Interstitial Functions
     
-    /**
-    Called whenever a banner ad successfully loads.
-    */
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        println("Successfully loaded banner!")
+    func loadInterstitialAd() {
+        interstitial.delegate = self
     }
     
-    /**
-    Called when a banner ad was unable to be loaded.
-    */
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        println("Was not able to load a banner with error: \(error)")
-        adBannerView.hidden = true
+    func displayInterstitialAd() {
+        if interstitial.loaded == true {
+            interstitial.presentInView(view)
+            println("Interstitial loaded!")
+        }
+        else {
+            println("Interstitial not loaded yet!")
+        }
+        
     }
-    
     
     // MARK: Convenience Functions
     
@@ -142,4 +142,34 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
             ),
             dispatch_get_main_queue(), closure)
     }
+}
+
+extension iAdHandler: ADInterstitialAdDelegate {
+    
+    func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
+    }
+    
+    func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
+        println("Was not able to load an interstitial with error: \(error)")
+    }
+    
+}
+
+extension iAdHandler: ADBannerViewDelegate {
+    
+    /**
+    Called whenever a banner ad successfully loads.
+    */
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        println("Successfully loaded banner!")
+    }
+    
+    /**
+    Called when a banner ad was unable to be loaded.
+    */
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        println("Was not able to load a banner with error: \(error)")
+        adBannerView.hidden = true
+    }
+    
 }
