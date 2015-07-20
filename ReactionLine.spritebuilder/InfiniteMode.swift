@@ -534,6 +534,9 @@ class InfiniteMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
+        delay(0.4) {
+            self.clearAllLinesFromMemory()
+        }
     }
     
     /**
@@ -552,6 +555,15 @@ class InfiniteMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
+        delay(0.4) {
+            self.clearAllLinesFromMemory()
+        }
+    }
+    
+    func clearAllLinesFromMemory() {
+        for index in lineIndex..<lineArray.count {
+            lineArray[index].removeFromParent()
+        }
     }
     
     

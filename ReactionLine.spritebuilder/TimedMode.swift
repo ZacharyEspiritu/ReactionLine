@@ -504,6 +504,9 @@ class TimedMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
+        delay(0.4) {
+            self.clearAllLinesFromMemory()
+        }
     }
     
     /**
@@ -522,6 +525,15 @@ class TimedMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
+        delay(0.4) {
+            self.clearAllLinesFromMemory()
+        }
+    }
+    
+    func clearAllLinesFromMemory() {
+        for index in 0..<lineArray.count {
+            lineArray[index].removeFromParent()
+        }
     }
     
     
