@@ -157,7 +157,7 @@ class EvilMode: CCNode {
                 self.blueTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.delay(0.22) {
-                    self.adHandler.displayAds() // Make money
+                    self.adHandler.displayBannerAd() // Make money
                 }
                 self.delay(0.6) {
                     self.countdown = "1"
@@ -295,7 +295,7 @@ class EvilMode: CCNode {
     */
     func win(line: Line) {
         
-        adHandler.hideAds()
+        adHandler.hideBannerAd()
         
         statsHandler.addEvilModeWin()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
@@ -409,7 +409,7 @@ class EvilMode: CCNode {
             
             self.delay(1) {
                 
-                self.adHandler.hideAds()
+                self.adHandler.hideBannerAd()
                 
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
                 self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))

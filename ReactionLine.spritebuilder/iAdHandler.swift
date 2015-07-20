@@ -36,12 +36,13 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     // MARK: Functions
     
     /**
-    Attempts to load a new ad from the iAd network.
+    Sets the position of the soon-to-be banner ad and attempts to load a new ad from the iAd network.
     
     :param: bannerPosition  the `BannerPosition` at which the ad should be positioned initially
     */
     func loadAds(#bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
+        
         if bannerPosition == .Top {
             adBannerView.center = CGPoint(x: adBannerView.center.x, y: -(adBannerView.frame.size.height / 2))
         }
@@ -60,7 +61,7 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     
     :param: bannerPosition  the `BannerPosition` at which the ad should be positioned
     */
-    func moveAdsToNewPosition(#bannerPosition: BannerPosition) {
+    func setBannerPosition(#bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
     }
     
@@ -69,7 +70,7 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     
     If a banner ad has not been successfully loaded, nothing will happen.
     */
-    func displayAds() {
+    func displayBannerAd() {
         if adBannerView.bannerLoaded {
             adBannerView.hidden = false
             UIView.animateWithDuration(0.5, animations: {() -> Void in
@@ -91,7 +92,7 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     
     If a banner ad has not been successfully loaded, nothing will happen.
     */
-    func hideAds() {
+    func hideBannerAd() {
         if adBannerView.bannerLoaded {
             UIView.animateWithDuration(0.5, animations: {() -> Void in
                 if self.bannerPosition == .Top {
