@@ -23,12 +23,14 @@ class InfiniteMode: CCNode {
     
     let mixpanel = Mixpanel.sharedInstance()
     
-    let statsHandler: Stats = Stats.sharedInstance
+    let adHandler = iAdHandler.sharedInstance
     
     
     // MARK: Memory Variables
     
     let memoryHandler = MemoryHandler()
+    
+    let statsHandler: Stats = Stats.sharedInstance
     
     
     // MARK: Variables
@@ -186,6 +188,7 @@ class InfiniteMode: CCNode {
                 self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.delay(0.6) {
                     self.countdown = "1"
+                    self.adHandler.displayAds() // Make money
                     self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
@@ -449,6 +452,8 @@ class InfiniteMode: CCNode {
         }
         
         self.delay(1) {
+            
+            self.adHandler.hideAds()
             
             self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
             self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))

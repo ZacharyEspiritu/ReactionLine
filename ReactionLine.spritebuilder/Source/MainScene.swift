@@ -8,6 +8,7 @@
 
 import Foundation
 import GameKit
+import iAd
 
 enum GameState {
     case Playing, GameOver
@@ -61,6 +62,8 @@ class MainScene: CCNode {
     
     func didLoadFromCCB() {
         
+        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
+        
         if !memoryHandler.defaults.boolForKey(memoryHandler.hasAlreadyLoaded) {
             
             memoryHandler.defaults.setBool(true, forKey: memoryHandler.hasAlreadyLoaded)
@@ -109,7 +112,6 @@ class MainScene: CCNode {
     Begins Timed Mode.
     */
     func timedMode() {
-        
         mixpanel.timeEvent("Timed Mode Session Duration")
         
         disableAllMenuButtons()
@@ -118,14 +120,12 @@ class MainScene: CCNode {
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
                 
         delay(1.1) {
-            
             var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
         }
     }
     
@@ -133,7 +133,6 @@ class MainScene: CCNode {
     Begins Infinite Mode.
     */
     func infiniteMode() {
-        
         mixpanel.timeEvent("Infinite Mode Session Duration")
         
         disableAllMenuButtons()
@@ -142,14 +141,12 @@ class MainScene: CCNode {
         self.animationManager.runAnimationsForSequenceNamed("InfiniteMode")
         
         delay(1.1) {
-            
             var gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
         }
     }
     
@@ -165,14 +162,12 @@ class MainScene: CCNode {
         self.animationManager.runAnimationsForSequenceNamed("EvilMode")
         
         delay(1.1) {
-            
             var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
         }
     }
     
@@ -401,12 +396,10 @@ class MainScene: CCNode {
 extension MainScene: GKGameCenterControllerDelegate {
     
     func showLeaderboard() {
-        
         var viewController = CCDirector.sharedDirector().parentViewController!
         var gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         viewController.presentViewController(gameCenterViewController, animated: true, completion: nil)
-        
     }
     
     // Delegate methods

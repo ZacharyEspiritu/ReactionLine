@@ -21,6 +21,8 @@ class TimedMode: CCNode {
     
     let mixpanel = Mixpanel.sharedInstance()
     
+    let adHandler = iAdHandler.sharedInstance
+    
     
     // MARK: Memory Variables
     
@@ -154,6 +156,7 @@ class TimedMode: CCNode {
                 self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.delay(0.6) {
                     self.countdown = "1"
+                    self.adHandler.displayAds() // Make money
                     self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
@@ -393,6 +396,8 @@ class TimedMode: CCNode {
             }
             
             self.delay(1) {
+                
+                self.adHandler.hideAds()
                 
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
                 self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
