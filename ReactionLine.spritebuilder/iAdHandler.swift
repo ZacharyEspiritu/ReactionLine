@@ -23,6 +23,9 @@ class iAdHandler: NSObject {
     var bannerPosition: BannerPosition = .Top
     
     var interstitial = ADInterstitialAd()
+    var interstitialAdView: UIView = UIView()
+    
+    var closeButton: UIButton!
     
     // MARK: Singleton
     
@@ -117,14 +120,29 @@ class iAdHandler: NSObject {
     }
     
     func displayInterstitialAd() {
+        
         if interstitial.loaded == true {
-            interstitial.presentInView(view)
+    
+            view.addSubview(interstitialAdView)
+            interstitial.presentInView(interstitialAdView)
+            UIViewController.prepareInterstitialAds()
+            
+            closeButton = UIButton(frame: CGRect(x: 270, y:  25, width: 25, height: 25))
+            closeButton.setBackgroundImage(UIImage(named: "close"), forState: UIControlState.Normal)
+            closeButton.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchDown)
+            self.view.addSubview(closeButton)
+            
             println("Interstitial loaded!")
         }
         else {
             println("Interstitial not loaded yet!")
         }
         
+    }
+    
+    func close() {
+        interstitialAdView.removeFromSuperview()
+        closeButton.removeFromSuperview()
     }
     
     // MARK: Convenience Functions
@@ -146,7 +164,25 @@ class iAdHandler: NSObject {
 
 extension iAdHandler: ADInterstitialAdDelegate {
     
+    func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!) {
+        interstitialAdView = UIView()
+        interstitialAdView.frame = self.view.bounds
+        
+        println("Succesfully loaded interstitital!")
+    }
+    
+    func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
+        interstitialAdView.removeFromSuperview()
+        closeButton.removeFromSuperview()
+    }
+    
+    func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool {
+        return true
+    }
+    
     func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
+        interstitialAdView.removeFromSuperview()
+        closeButton.removeFromSuperview()
     }
     
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
