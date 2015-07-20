@@ -1,9 +1,9 @@
 //
-//  iAdInteractor.swift
+//  iAdHandler.swift
 //  ReactionLine
 //
 //  Created by Zachary Espiritu on 7/19/15.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 ZacharyEspiritu. All rights reserved.
 //
 
 import Foundation
@@ -35,6 +35,11 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     
     // MARK: Functions
     
+    /**
+    Attempts to load a new ad from the iAd network.
+    
+    :param: bannerPosition  the `BannerPosition` at which the ad should be positioned initially
+    */
     func loadAds(#bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
         if bannerPosition == .Top {
@@ -50,10 +55,20 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
         view.addSubview(adBannerView)
     }
     
+    /**
+    Repositions the `adBannerView` to the designated `bannerPosition`.
+    
+    :param: bannerPosition  the `BannerPosition` at which the ad should be positioned
+    */
     func moveAdsToNewPosition(#bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
     }
     
+    /**
+    Displays the `adBannerView` with a short animation for polish.
+    
+    If a banner ad has not been successfully loaded, nothing will happen.
+    */
     func displayAds() {
         if adBannerView.bannerLoaded {
             adBannerView.hidden = false
@@ -71,6 +86,11 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
         }
     }
     
+    /**
+    Hides the `adBannerView` with a short animation for polish.
+    
+    If a banner ad has not been successfully loaded, nothing will happen.
+    */
     func hideAds() {
         if adBannerView.bannerLoaded {
             UIView.animateWithDuration(0.5, animations: {() -> Void in
@@ -90,10 +110,16 @@ class iAdHandler: NSObject, ADBannerViewDelegate {
     
     // MARK: Functions Inherited From Delegate
     
+    /**
+    Called whenever a banner ad successfully loads.
+    */
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         println("Successfully loaded banner!")
     }
     
+    /**
+    Called when a banner ad was unable to be loaded.
+    */
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         println("Was not able to load a banner with error: \(error)")
         adBannerView.hidden = true
