@@ -90,7 +90,7 @@ There are no levels; only a one-player game mode.
 
 ### Week 1: Weekend
 * **Complete!** ~~Parents: Add text below each of the circular buttons because they're unclear on what they do.~~
-* SS & CK: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)
+* **Complete-ish!** ~~SS & CK: Need to find a better font. ("You can't just use Helvetica Neue for all of your games, Zach!" - my mother)~~
 * **Complete!** ~~CK: Menu icons need to be slightly redesigned so they have more padding between the edge of the circle and the icon.~~
 * **Complete-ish!** ~~SS: Not sure about the lowercase letter design. Also, header and footer should be closer to the buttons, with the padding at the top and bottom of the screen.~~
 * **Complete!** ~~JT: The "hamburger" icon might be too unclear on what it actually does, so you'll want to run some more user testing to see if people understand. (The fact that he thought it was a hamburger also should be a cause for concern.)~~
