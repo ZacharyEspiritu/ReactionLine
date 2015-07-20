@@ -287,6 +287,8 @@ class TimedMode: CCNode {
     */
     func win(line: Line) {
         
+        adHandler.hideAds()
+        
         statsHandler.addTimedModeWin()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)

@@ -291,6 +291,8 @@ class EvilMode: CCNode {
     */
     func win(line: Line) {
         
+        adHandler.hideAds()
+        
         statsHandler.addEvilModeWin()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
         statsHandler.calculateNewAverageTapTime(numberOfTaps: numberOfLinesCleared, timeSpent: time)
