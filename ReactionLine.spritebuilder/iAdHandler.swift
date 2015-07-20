@@ -115,10 +115,18 @@ class iAdHandler: NSObject {
     
     // MARK: Interstitial Functions
     
+    /**
+    Attempts to load an interstitial ad.
+    */
     func loadInterstitialAd() {
         interstitial.delegate = self
     }
     
+    /**
+    Displays the `interstitial`.
+    
+    If an interstitial has not been successfully loaded, nothing will happen.
+    */
     func displayInterstitialAd() {
         
         if interstitial.loaded == true {
@@ -140,6 +148,11 @@ class iAdHandler: NSObject {
         
     }
     
+    /**
+    Closes the `interstitial`.
+    
+    It closes the `interstitialAdView` and `closeButton` sub-views.
+    */
     func close() {
         interstitialAdView.removeFromSuperview()
         closeButton.removeFromSuperview()
@@ -164,6 +177,9 @@ class iAdHandler: NSObject {
 
 extension iAdHandler: ADInterstitialAdDelegate {
     
+    /**
+    Called whenever a interstitial successfully loads.
+    */
     func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!) {
         interstitialAdView = UIView()
         interstitialAdView.frame = self.view.bounds
@@ -171,20 +187,32 @@ extension iAdHandler: ADInterstitialAdDelegate {
         println("Succesfully loaded interstitital!")
     }
     
+    /**
+    Called whenever the interstitial's action finishes; e.g.: the user has already clicked on the ad and decides to exit out or the ad campaign finishes.
+    */
     func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
         interstitialAdView.removeFromSuperview()
         closeButton.removeFromSuperview()
     }
     
+    /**
+    Called whenever an interstitial ad is about to be displayed.
+    */
     func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool {
         return true
     }
     
+    /**
+    Called whenever an interstitial ad unloads automatically.
+    */
     func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
         interstitialAdView.removeFromSuperview()
         closeButton.removeFromSuperview()
     }
     
+    /**
+    Called when a interstitial was unable to be loaded.
+    */
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
         println("Was not able to load an interstitial with error: \(error)")
     }
