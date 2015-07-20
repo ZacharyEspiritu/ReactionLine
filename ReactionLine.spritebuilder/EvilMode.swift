@@ -78,6 +78,13 @@ class EvilMode: CCNode {
     
     var useWinningTwitterMessage: Bool = false
     
+    weak var linesLeftLabel: CCLabelTTF!
+    var linesLeft: Int = 100 {
+        didSet {
+            linesLeftLabel.string = "\(linesLeft) left"
+        }
+    }
+    
     
     // MARK: Convenience Functions
     
@@ -148,6 +155,8 @@ class EvilMode: CCNode {
         countdownLabel.visible = true
         countdownLabel.opacity = 0
         
+        linesLeftLabel.opacity = 0
+        
         countdownLabel.runAction(CCActionFadeIn(duration: 0.5))
         self.countdown = "ready?"
         delay(1.2) {
@@ -164,6 +173,8 @@ class EvilMode: CCNode {
                     self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
+                        self.linesLeftLabel.runAction(CCActionFadeIn(duration: 1))
+                        self.countdownLabel.string = "0.000" // Ensure possible graphical glitch does not occur.
                         self.userInteractionEnabled = true
                         self.multipleTouchEnabled = true
                         self.schedule("timer", interval: 0.001)
@@ -259,6 +270,7 @@ class EvilMode: CCNode {
     func moveStackDown(#sideAnimation: Color) {
         
         numberOfLinesCleared++
+        linesLeft--
         
         var currentLine = lineArray[lineIndex]
         var flyOutAction: CCActionMoveTo? = nil
@@ -311,6 +323,8 @@ class EvilMode: CCNode {
         gameState = .GameOver
         
         lineGroupingNode.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: 1.5, position: CGPoint(x: 0, y: (Double(line.contentSize.height + padding) * Double(numberOfLines - 20))))))
+        
+        linesLeftLabel.runAction(CCActionFadeOut(duration: 0.5))
         
         redTouchZone.runAction(CCActionFadeOut(duration: 0.5))
         blueTouchZone.runAction(CCActionFadeOut(duration: 0.5))
@@ -396,11 +410,14 @@ class EvilMode: CCNode {
             self.redTouchZone.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(redRandom))))
             
             self.countdownLabel.runAction(CCActionFadeOut(duration: 0.5))
+            self.linesLeftLabel.runAction(CCActionFadeOut(duration: 0.5))
             if (blueRandom + redRandom) == 2 {
                 self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
+                self.linesLeftLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: 30)))
             }
             else {
                 self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
+                self.linesLeftLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
             }
             
             if self.memoryHandler.defaults.boolForKey(self.memoryHandler.soundsSettingKey) {
@@ -411,7 +428,7 @@ class EvilMode: CCNode {
                 
                 self.adHandler.hideBannerAd()
                 
-                self.adHandler.displayInterstitialAd()
+                self.adHandler.checkIfInterstitialAdShouldBeDisplayed()
                 
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
                 self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))

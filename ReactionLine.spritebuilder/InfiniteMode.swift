@@ -194,6 +194,7 @@ class InfiniteMode: CCNode {
                     self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
+                        self.countdownLabel.string = "0.000" // Ensure possible graphical glitch does not occur.
                         self.userInteractionEnabled = true
                         self.multipleTouchEnabled = true
                         self.schedule("timer", interval: 0.001)
@@ -455,7 +456,7 @@ class InfiniteMode: CCNode {
         
         self.delay(1) {
             
-            self.adHandler.displayInterstitialAd()
+            self.adHandler.checkIfInterstitialAdShouldBeDisplayed()
             
             self.adHandler.hideBannerAd()
             

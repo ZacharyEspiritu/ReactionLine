@@ -24,6 +24,8 @@ class iAdHandler: NSObject {
     
     var interstitial = ADInterstitialAd()
     var interstitialAdView: UIView = UIView()
+    var interstitialIndexingNumber: Int = 0
+    var isInterstitialDisplaying: Bool = false
     
     var closeButton: UIButton!
     
@@ -68,7 +70,6 @@ class iAdHandler: NSObject {
     func setBannerPosition(#bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
     }
-    
     /**
     Displays the `adBannerView` with a short animation for polish.
     
@@ -140,6 +141,8 @@ class iAdHandler: NSObject {
             closeButton.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchDown)
             self.view.addSubview(closeButton)
             
+            isInterstitialDisplaying = true
+            
             println("Interstitial loaded!")
         }
         else {
@@ -147,15 +150,29 @@ class iAdHandler: NSObject {
         }
         
     }
-    
+
     /**
-    Closes the `interstitial`.
-    
-    It closes the `interstitialAdView` and `closeButton` sub-views.
+    Checks to see if an interstitial should be displayed in this round based on the `interstitialIndexingNumber`.
     */
+    func checkIfInterstitialAdShouldBeDisplayed() {
+        switch interstitialIndexingNumber % 4 {
+        case 0:
+            println("Interstitial should be displayed now!")
+            displayInterstitialAd()
+        default:
+            println("Interstitial should not be displayed yet!")
+            break
+        }
+        interstitialIndexingNumber++
+    }
+    
+    
     func close() {
-        interstitialAdView.removeFromSuperview()
-        closeButton.removeFromSuperview()
+        if isInterstitialDisplaying {
+            interstitialAdView.removeFromSuperview()
+            closeButton.removeFromSuperview()
+            isInterstitialDisplaying = false
+        }
     }
     
     // MARK: Convenience Functions
@@ -191,8 +208,11 @@ extension iAdHandler: ADInterstitialAdDelegate {
     Called whenever the interstitial's action finishes; e.g.: the user has already clicked on the ad and decides to exit out or the ad campaign finishes.
     */
     func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
-        interstitialAdView.removeFromSuperview()
-        closeButton.removeFromSuperview()
+        if isInterstitialDisplaying {
+            interstitialAdView.removeFromSuperview()
+            closeButton.removeFromSuperview()
+            isInterstitialDisplaying = false
+        }
     }
     
     /**
@@ -206,8 +226,11 @@ extension iAdHandler: ADInterstitialAdDelegate {
     Called whenever an interstitial ad unloads automatically.
     */
     func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
-        interstitialAdView.removeFromSuperview()
-        closeButton.removeFromSuperview()
+        if isInterstitialDisplaying {
+            interstitialAdView.removeFromSuperview()
+            closeButton.removeFromSuperview()
+            isInterstitialDisplaying = false
+        }
     }
     
     /**
