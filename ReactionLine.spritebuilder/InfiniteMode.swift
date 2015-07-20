@@ -455,6 +455,8 @@ class InfiniteMode: CCNode {
         
         self.delay(1) {
             
+            self.adHandler.displayInterstitialAd()
+            
             self.adHandler.hideBannerAd()
             
             self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
