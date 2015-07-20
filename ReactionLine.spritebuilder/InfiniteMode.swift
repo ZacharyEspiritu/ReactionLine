@@ -186,9 +186,11 @@ class InfiniteMode: CCNode {
                 self.countdown = "2"
                 self.blueTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
+                self.delay(0.22) {
+                    self.adHandler.displayAds() // Make money
+                }
                 self.delay(0.6) {
                     self.countdown = "1"
-                    self.adHandler.displayAds() // Make money
                     self.delay(0.6) {
                         self.countdownLabel.position = CGPoint(x: 0.5, y: 0.65)
                         self.countdownLabel.runAction(CCActionFadeIn(duration: 1))
