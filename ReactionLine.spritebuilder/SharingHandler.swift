@@ -65,8 +65,8 @@ class SharingHandler: UIViewController {
         }
         else {
             var error = UIAlertView()
-            error.title = "ERROR"
-            error.message = "No Twitter Account Present"
+            error.title = "No Twitter Account Available"
+            error.message = "You can add a Twitter account to share from in your Settings."
             error.addButtonWithTitle("OK")
             error.show()
         }
@@ -111,8 +111,8 @@ class SharingHandler: UIViewController {
         }
         else {
             var error = UIAlertView()
-            error.title = "ERROR"
-            error.message = "No Facebook Account Present"
+            error.title = "No Facebook Account Available"
+            error.message = "You can add a Facebook account to share from in your Settings."
             error.addButtonWithTitle("OK")
             error.show()
         }
