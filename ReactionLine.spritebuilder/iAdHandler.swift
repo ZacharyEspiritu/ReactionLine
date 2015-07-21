@@ -21,6 +21,7 @@ class iAdHandler: NSObject {
     
     var adBannerView = ADBannerView(frame: CGRect.zeroRect)
     var bannerPosition: BannerPosition = .Top
+    var isBannerDisplaying: Bool = false
     
     var interstitial = ADInterstitialAd()
     var interstitialAdView: UIView = UIView()
@@ -78,6 +79,7 @@ class iAdHandler: NSObject {
     func displayBannerAd() {
         if adBannerView.bannerLoaded {
             adBannerView.hidden = false
+            isBannerDisplaying = true
             UIView.animateWithDuration(0.5, animations: {() -> Void in
                 if self.bannerPosition == .Top {
                     self.adBannerView.center = CGPoint(x: self.adBannerView.center.x, y: (self.adBannerView.frame.size.height / 2))
@@ -109,6 +111,7 @@ class iAdHandler: NSObject {
             })
             delay(0.5) {
                 self.adBannerView.hidden = true
+                self.isBannerDisplaying = false
             }
         }
     }
@@ -136,14 +139,21 @@ class iAdHandler: NSObject {
             interstitial.presentInView(interstitialAdView)
             UIViewController.prepareInterstitialAds()
             
-            closeButton = UIButton(frame: CGRect(x: 270, y:  25, width: 25, height: 25))
+            closeButton = UIButton(frame: CGRect(x: 15, y: 15, width: 25, height: 25))
             closeButton.setBackgroundImage(UIImage(named: "close"), forState: UIControlState.Normal)
             closeButton.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchDown)
             self.view.addSubview(closeButton)
             
             isInterstitialDisplaying = true
             
-            println("Interstitial loaded!")
+            self.interstitialAdView.center = CGPoint(x: self.interstitialAdView.center.x, y: (self.view.bounds.size.height * 1.5))
+            self.closeButton.hidden = true
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.interstitialAdView.center = CGPoint(x: self.interstitialAdView.center.x, y: (self.view.bounds.size.height / 2))
+                self.closeButton.hidden = false
+            })
+            
+            println("Interstitial displaying!")
         }
         else {
             println("Interstitial not loaded yet!")
@@ -155,23 +165,35 @@ class iAdHandler: NSObject {
     Checks to see if an interstitial should be displayed in this round based on the `interstitialIndexingNumber`.
     */
     func checkIfInterstitialAdShouldBeDisplayed() {
-        switch interstitialIndexingNumber % 4 {
-        case 0:
-            println("Interstitial should be displayed now!")
-            displayInterstitialAd()
-        default:
-            println("Interstitial should not be displayed yet!")
-            break
+        if interstitial.loaded == true {
+            switch interstitialIndexingNumber % 3 {
+            case 0:
+                println("Interstitial should be displayed now!")
+                displayInterstitialAd()
+            default:
+                println("Interstitial should not be displayed yet!")
+                break
+            }
+            interstitialIndexingNumber++
         }
-        interstitialIndexingNumber++
+        else {
+            println("Interstitial isn't loaded yet!")
+        }
     }
     
     
     func close() {
         if isInterstitialDisplaying {
-            interstitialAdView.removeFromSuperview()
-            closeButton.removeFromSuperview()
-            isInterstitialDisplaying = false
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.interstitialAdView.center = CGPoint(x: self.interstitialAdView.center.x, y: (self.view.bounds.size.height * 1.5))
+                self.closeButton.center = CGPoint(x: -15, y: self.closeButton.center.y)
+            })
+            delay(0.5) {
+                self.interstitialAdView.removeFromSuperview()
+                self.closeButton.removeFromSuperview()
+                self.isInterstitialDisplaying = false
+                self.interstitial = ADInterstitialAd()
+            }
         }
     }
     
@@ -208,10 +230,15 @@ extension iAdHandler: ADInterstitialAdDelegate {
     Called whenever the interstitial's action finishes; e.g.: the user has already clicked on the ad and decides to exit out or the ad campaign finishes.
     */
     func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
-        if isInterstitialDisplaying {
-            interstitialAdView.removeFromSuperview()
-            closeButton.removeFromSuperview()
-            isInterstitialDisplaying = false
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            self.interstitialAdView.center = CGPoint(x: self.interstitialAdView.center.x, y: (self.view.bounds.size.height * 1.5))
+            self.closeButton.center = CGPoint(x: -15, y: self.closeButton.center.y)
+        })
+        delay(0.5) {
+            self.interstitialAdView.removeFromSuperview()
+            self.closeButton.removeFromSuperview()
+            self.isInterstitialDisplaying = false
+            self.interstitial = ADInterstitialAd()
         }
     }
     
@@ -231,6 +258,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
             closeButton.removeFromSuperview()
             isInterstitialDisplaying = false
         }
+        interstitial = ADInterstitialAd()
     }
     
     /**
@@ -238,6 +266,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
     */
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
         println("Was not able to load an interstitial with error: \(error)")
+        interstitial = ADInterstitialAd()
     }
     
 }
@@ -256,7 +285,5 @@ extension iAdHandler: ADBannerViewDelegate {
     */
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         println("Was not able to load a banner with error: \(error)")
-        adBannerView.hidden = true
     }
-    
 }
