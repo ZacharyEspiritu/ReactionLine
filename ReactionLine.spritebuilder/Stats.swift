@@ -121,10 +121,6 @@ class Stats: CCNode {
             
             defaults.setDouble(averageTapTime, forKey: averageTapTimeKey)
             
-            // Mixpanel stuff.
-            let truncatedAverageTapTime: Double = Double(round(1000 * defaults.doubleForKey(averageTapTimeKey))/1000)
-            mixpanel.people.set("Average Tap Time", to: truncatedAverageTapTime)
-            
         }
         
     }
@@ -139,7 +135,7 @@ class Stats: CCNode {
         
         defaults.setInteger(currentTimedModeWins, forKey: timedModeWins)
         
-        mixpanel.people.set("Timed Mode Wins", to: currentTimedModeWins)
+        mixpanel.track("Timed Mode Wins")
         
     }
     
@@ -153,7 +149,7 @@ class Stats: CCNode {
         
         defaults.setInteger(currentTimedModeLosses, forKey: timedModeLosses)
         
-        mixpanel.people.set("Timed Mode Losses", to: currentTimedModeLosses)
+        mixpanel.track("Timed Mode Losses")
         
     }
     
@@ -167,7 +163,7 @@ class Stats: CCNode {
         
         defaults.setInteger(currentEvilModeWins, forKey: evilModeWins)
         
-        mixpanel.people.set("Evil Mode Wins", to: currentEvilModeWins)
+        mixpanel.track("Evil Mode Wins")
         
     }
     
@@ -181,7 +177,7 @@ class Stats: CCNode {
         
         defaults.setInteger(currentEvilModeLosses, forKey: evilModeLosses)
         
-        mixpanel.people.set("Evil Mode Losses", to: currentEvilModeLosses)
+        mixpanel.track("Evil Mode Losses")
         
     }
     
@@ -196,8 +192,6 @@ class Stats: CCNode {
         currentNumberOfLinesCleared += numberOfLinesToAdd
         
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
-        
-        mixpanel.people.set("Number of Lines Cleared", to: currentNumberOfLinesCleared)
         
     }
     

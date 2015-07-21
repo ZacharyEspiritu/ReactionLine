@@ -41,7 +41,7 @@ class MainScene: CCNode {
     
     weak var timedModeButton:     CCButton!
     weak var infiniteModeButton:  CCButton!
-    weak var evilModeButton: CCButton!
+    weak var evilModeButton:      CCButton!
     weak var leaderboardButton:   CCButton!
     
     weak var optionsButton: CCButton!

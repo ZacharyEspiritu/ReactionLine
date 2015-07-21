@@ -111,7 +111,6 @@ class EvilMode: CCNode {
     func didLoadFromCCB() {
         
         mixpanel.identify(mixpanel.distinctId)
-        mixpanel.people.increment("Evil Mode Plays", by: 1)
         mixpanel.track("Evil Mode Plays")
         
         effectNode.effect = CCEffectDropShadow(shadowOffset: GLKVector2Make(0, 0), shadowColor: CCColor(red: 0/255, green: 0/255, blue: 0/255), blurRadius: 10)
