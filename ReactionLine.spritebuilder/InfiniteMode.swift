@@ -78,16 +78,12 @@ class InfiniteMode: CCNode {
         }
     }
     
-    weak var leftLifeBar: CCNode!
     weak var rightLifeBar: CCNode!
-    
-    weak var leftTimerOutline: CCNode!
     weak var rightTimerOutline: CCNode!
     
     var timeLeft: Float = 0 {
         didSet {
             timeLeft = max(min(timeLeft,10), 0)
-            leftLifeBar.scaleY = timeLeft / Float(10)
             rightLifeBar.scaleY = timeLeft / Float(10)
         }
     }
@@ -155,7 +151,7 @@ class InfiniteMode: CCNode {
         redTouchZone.opacity = 0
         
         backgroundGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0, y: 0))))
-        lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
+        lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 205))))
         
         self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
         
@@ -437,15 +433,11 @@ class InfiniteMode: CCNode {
             self.countdownLabel.runAction(CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: -30)))
         }
         
-        self.leftTimerOutline.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
         self.rightTimerOutline.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
-        self.leftLifeBar.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
         self.rightLifeBar.runAction(CCActionFadeTo(duration: 0.35, opacity: 0))
         
         self.delay(0.5) {
-            self.leftTimerOutline.visible = false
             self.rightTimerOutline.visible = false
-            self.leftLifeBar.visible = false
             self.rightLifeBar.visible = false
         }
         
