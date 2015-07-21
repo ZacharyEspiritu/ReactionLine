@@ -144,6 +144,10 @@ class TimedMode: CCNode {
             blueTouchZone.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
         }
         
+        if !memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter) {
+            linesLeftLabel.visible = false
+        }
+        
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
     }

@@ -39,6 +39,7 @@ class MemoryHandler {
     let vibrationSettingKey  = "vibrationSettingKey"
     let soundsSettingKey     = "soundsSettingKey"
     let colorblindSettingKey = "colorblindSettingKey"
+    let displayLineCounter   = "displayLineCounterKey"
     
     
     // MARK: Functions

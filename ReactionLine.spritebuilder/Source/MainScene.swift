@@ -71,7 +71,8 @@ class MainScene: CCNode {
             
             memoryHandler.defaults.setBool(true, forKey: memoryHandler.vibrationSettingKey)
             memoryHandler.defaults.setBool(true, forKey: memoryHandler.soundsSettingKey)
-            memoryHandler.defaults.setBool(false, forKey: memoryHandler.colorblindSettingKey)
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.colorblindSettingKey) // Not toggleable yet, but fully implemented
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.displayLineCounter)
             
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.topScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondScoreKey)
@@ -259,14 +260,14 @@ class MainScene: CCNode {
         }
     }
     
-    func toggleColorblindSetting() {
-        if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
-            memoryHandler.defaults.setBool(false, forKey: memoryHandler.colorblindSettingKey)
+    func toggleDisplayLineCounter() {
+        if memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter) {
+            memoryHandler.defaults.setBool(false, forKey: memoryHandler.displayLineCounter)
             colorblindToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
             colorblindToggleLabel.string = "OFF"
         }
         else {
-            memoryHandler.defaults.setBool(true, forKey: memoryHandler.colorblindSettingKey)
+            memoryHandler.defaults.setBool(true, forKey: memoryHandler.displayLineCounter)
             colorblindToggleLabel.color = CCColor(red: 0/255, green: 128/255, blue: 0/255)
             colorblindToggleLabel.string = "ON"
         }

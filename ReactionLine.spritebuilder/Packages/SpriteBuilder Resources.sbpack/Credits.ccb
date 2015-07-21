@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>11</integer>
+	<integer>12</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -125,7 +125,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.75</real>
+							<real>0.81999999284744263</real>
 						</array>
 					</dict>
 					<dict>
@@ -134,9 +134,11 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.75</real>
+						<real>0.81999999284744263</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -390,7 +392,7 @@
 								<key>value</key>
 								<array>
 									<real>192</real>
-									<real>420.14263916015625</real>
+									<real>431.14263916015625</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -597,7 +599,7 @@
 								<key>value</key>
 								<array>
 									<real>192</real>
-									<real>188.96379089355469</real>
+									<real>221</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -804,7 +806,7 @@
 								<key>value</key>
 								<array>
 									<real>192</real>
-									<real>134.96379089355469</real>
+									<real>150</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -842,10 +844,12 @@
 								<key>value</key>
 								<array>
 									<string>Dave Gandy (flaticon.com/authors/dave-gandy)
+Robin Kylander (flaticon.com/authors/robin-kylander)
 Egor Rumyantsev (flaticon.com/authors/egor-
 rumyantsev)
 Freepix (flaticon.com/authors/freepik)
 Google (flaticon.com/authors/google)
+SimpleIcon (flaticon.com/authors/simpleicon)
 </string>
 									<false/>
 								</array>
@@ -1223,7 +1227,7 @@ Google (flaticon.com/authors/google)
 								<key>value</key>
 								<array>
 									<real>122</real>
-									<real>161.85736083984375</real>
+									<real>150.85736083984375</real>
 									<integer>1</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1269,7 +1273,7 @@ Rel Guzman
 Jacob Haff
 Cassandra Kane
 Eric Kim
-Yeon Jun Kim</string>
+Vasu Laroiya</string>
 									<false/>
 								</array>
 							</dict>
@@ -1439,7 +1443,7 @@ Yeon Jun Kim</string>
 								<key>value</key>
 								<array>
 									<real>122</real>
-									<real>161.85736083984375</real>
+									<real>150.85736083984375</real>
 									<integer>2</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1476,16 +1480,16 @@ Yeon Jun Kim</string>
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Vasu Laroiya
-Rohan Mishra
+									<string>Rohan Mishra
 Liam Rahav
 Adam Reis
 Aman Sawhney
-Make School
 Shashank Sharma
 Luke Solomon
 Julian Thesseling
-Eric Zhou</string>
+Eric Zhou
+Make School
+(makeschool.com)</string>
 									<false/>
 								</array>
 							</dict>
@@ -1621,8 +1625,6 @@ Eric Zhou</string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
