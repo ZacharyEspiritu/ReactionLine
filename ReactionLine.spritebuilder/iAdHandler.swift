@@ -17,7 +17,7 @@ class iAdHandler: NSObject {
     
     // MARK: Variables
     
-    let view = CCDirector.sharedDirector().parentViewController!.view // Returns a UIView
+    let view = CCDirector.sharedDirector().parentViewController!.view // Returns a UIView of the cocos2d parent view controller.
     
     var adBannerView = ADBannerView(frame: CGRect.zeroRect)
     var bannerPosition: BannerPosition = .Top
@@ -27,8 +27,10 @@ class iAdHandler: NSObject {
     var interstitialAdView: UIView = UIView()
     var interstitialIndexingNumber: Int = 0
     var isInterstitialDisplaying: Bool = false
+    var isInterstitialLoaded: Bool = false
     
     var closeButton: UIButton!
+    
     
     // MARK: Singleton
     
@@ -165,7 +167,7 @@ class iAdHandler: NSObject {
     Checks to see if an interstitial should be displayed in this round based on the `interstitialIndexingNumber`.
     */
     func checkIfInterstitialAdShouldBeDisplayed() {
-        if interstitial.loaded == true {
+        if isInterstitialLoaded {
             switch interstitialIndexingNumber % 3 {
             case 0:
                 println("Interstitial should be displayed now!")
@@ -222,6 +224,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
     func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!) {
         interstitialAdView = UIView()
         interstitialAdView.frame = self.view.bounds
+        isInterstitialLoaded = true
         
         println("Succesfully loaded interstitital!")
     }
@@ -238,6 +241,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
             self.interstitialAdView.removeFromSuperview()
             self.closeButton.removeFromSuperview()
             self.isInterstitialDisplaying = false
+            self.isInterstitialLoaded = false
             self.interstitial = ADInterstitialAd()
         }
     }
@@ -258,6 +262,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
             closeButton.removeFromSuperview()
             isInterstitialDisplaying = false
         }
+        isInterstitialLoaded = false
         interstitial = ADInterstitialAd()
     }
     
@@ -266,6 +271,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
     */
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
         println("Was not able to load an interstitial with error: \(error)")
+        self.isInterstitialLoaded = false
         interstitial = ADInterstitialAd()
     }
     
