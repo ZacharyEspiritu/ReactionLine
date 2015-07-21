@@ -485,7 +485,7 @@ class TimedMode: CCNode {
             thirdTimeString = "—"
         }
         
-        highScoreLabel.string = "fastest times:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
+        highScoreLabel.string = "best timed mode:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
         
     }
     
@@ -496,9 +496,6 @@ class TimedMode: CCNode {
     Loads a new instance of `TimedMode.ccb` to restart the game.
     */
     func playAgain() {
-        
-        mixpanel.track("Timed Mode Play Again Button Pressed")
-        
         var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
         
         var scene = CCScene()

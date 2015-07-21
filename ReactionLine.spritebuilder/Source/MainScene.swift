@@ -204,7 +204,7 @@ class MainScene: CCNode {
         
         println("Vibration:  \(memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey))")
         println("Sounds:     \(memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey))")
-        println("Colorblind: \(memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey))")
+        println("Line Count: \(memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter))")
         
         if !memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey) {
             vibrationToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
@@ -224,7 +224,7 @@ class MainScene: CCNode {
             soundsToggleLabel.string = "ON"
         }
         
-        if !memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
+        if !memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter) {
             colorblindToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
             colorblindToggleLabel.string = "OFF"
         }

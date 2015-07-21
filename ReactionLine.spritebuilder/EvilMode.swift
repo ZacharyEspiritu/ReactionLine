@@ -489,7 +489,7 @@ class EvilMode: CCNode {
             thirdTimeString = "—"
         }
         
-        highScoreLabel.string = "fastest times:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
+        highScoreLabel.string = "best evil mode:\n" + topTimeString + "\n" + secondTimeString + "\n" + thirdTimeString
         
     }
     
@@ -500,9 +500,6 @@ class EvilMode: CCNode {
     Loads a new instance of `EvilMode.ccb` to restart the game.
     */
     func playAgain() {
-        
-        mixpanel.track("Evil Mode Play Again Button Pressed")
-        
         var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
         
         var scene = CCScene()

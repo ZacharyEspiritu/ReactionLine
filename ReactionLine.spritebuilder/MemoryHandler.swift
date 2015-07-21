@@ -44,6 +44,11 @@ class MemoryHandler {
     
     // MARK: Functions
     
+    /**
+    Checks for a new top Timed Mode score.
+    
+    :param: newTime  the time to check to see if there is a new high score
+    */
     func checkForNewTopTimedScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topScoreKey), defaults.doubleForKey(secondScoreKey), defaults.doubleForKey(thirdScoreKey)]
@@ -63,9 +68,14 @@ class MemoryHandler {
         
     }
     
-    func checkForNewTopInfiniteScore(newTime: Int) -> Bool {
+    /**
+    Checks for a new top Infinite Mode score.
+    
+    :param: newScore  the score to check to see if there is a new high score
+    */
+    func checkForNewTopInfiniteScore(newScore: Int) -> Bool {
         
-        var scoreArray: [Int] = [newTime, defaults.integerForKey(topInfiniteScoreKey), defaults.integerForKey(secondInfiniteScoreKey), defaults.integerForKey(thirdInfiniteScoreKey)]
+        var scoreArray: [Int] = [newScore, defaults.integerForKey(topInfiniteScoreKey), defaults.integerForKey(secondInfiniteScoreKey), defaults.integerForKey(thirdInfiniteScoreKey)]
         
         scoreArray.sort({ $0 > $1 })
         
@@ -81,6 +91,11 @@ class MemoryHandler {
         
     }
     
+    /**
+    Checks for a new top Evil Mode score.
+    
+    :param: newTime  the time to check to see if there is a new high score
+    */
     func checkForNewTopEvilScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topEvilScoreKey), defaults.doubleForKey(secondEvilScoreKey), defaults.doubleForKey(thirdEvilScoreKey)]

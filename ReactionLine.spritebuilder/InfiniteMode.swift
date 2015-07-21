@@ -511,7 +511,7 @@ class InfiniteMode: CCNode {
             thirdScoreString = "—"
         }
         
-        highScoreLabel.string = "longest runs:\n" + topScoreString + "\n" + secondScoreString + "\n" + thirdScoreString
+        highScoreLabel.string = "best infinite mode:\n" + topScoreString + "\n" + secondScoreString + "\n" + thirdScoreString
         
     }
     
@@ -522,9 +522,6 @@ class InfiniteMode: CCNode {
     Loads a new instance of `TimedMode.ccb` to restart the game.
     */
     func playAgain() {
-        
-        mixpanel.track("Infinite Mode Play Again Button Pressed")
-        
         var gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
         
         var scene = CCScene()

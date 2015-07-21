@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5510D9B71B5E902400819ADA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5510D9B61B5E902400819ADA /* Images.xcassets */; };
 		555C43341B567D1000AC39ED /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C43331B567D1000AC39ED /* EvilMode.swift */; };
 		555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF361B531F6300FA200F /* MemoryHandler.swift */; };
 		555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */; };
@@ -164,6 +165,7 @@
 
 /* Begin PBXFileReference section */
 		329D86E9F1026536526674C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5510D9B61B5E902400819ADA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		555C43331B567D1000AC39ED /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvilMode.swift; sourceTree = "<group>"; };
 		555CAF361B531F6300FA200F /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
 		555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteMode.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5510D9B61B5E902400819ADA /* Images.xcassets */,
 				5560A8661B5D40BA001810C6 /* close.png */,
 				5596AB901B4DFAB80089D1BA /* Audio */,
 				7A40366119DDF8C2007B6E8F /* Platforms */,
@@ -822,6 +825,7 @@
 				55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
+				5510D9B71B5E902400819ADA /* Images.xcassets in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
@@ -1248,7 +1252,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = ReactionLine;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "579f7617-dd2f-4c17-ae13-a3eee4246ee5";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -1285,7 +1289,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = ReactionLine;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "579f7617-dd2f-4c17-ae13-a3eee4246ee5";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
