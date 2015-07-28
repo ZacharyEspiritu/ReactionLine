@@ -1,5 +1,6 @@
 # Reaction Line
 
+####...is now on the App Store! Download it from the [App Store](https://itunes.apple.com/us/app/reaction-line-game-about-sorting/id1018598686?mt=8) today!
 ## Description
 
 Reaction Line is a minimalistic, hardcore, single-player game that aims to be the most entertaining (and aggravating) mobile game for iOS. The game is simple: sort 100 lines into red and blue stacks as quickly as possible. The catch? You only have one life.
