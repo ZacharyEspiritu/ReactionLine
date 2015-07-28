@@ -63,12 +63,12 @@ There are no levels; only a one-player game mode.
 
 
 ### Week 3
-* Add sounds
+* **Complete!** ~~Add sounds~~
 * **Complete!** ~~Implement iAd~~
-* Run some final playtesting sessions
-* Take some screenshots for iTunes Connect
-* Submit the app to the App Store for approval (and pray that it does)
-* Start raking in the ad revenue
+* **Complete!** ~~Run some final playtesting sessions~~
+* **Complete!** ~~Take some screenshots for iTunes Connect~~
+* **Complete!** ~~Submit the app to the App Store for approval (and pray that it does)~~
+* **Complete!** ~~Start raking in the ad revenue~~
 
 ## Sound Design Plan
 
