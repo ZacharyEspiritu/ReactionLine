@@ -195,6 +195,7 @@ class iAdHandler: NSObject {
                 self.closeButton.removeFromSuperview()
                 self.isInterstitialDisplaying = false
                 self.interstitial = ADInterstitialAd()
+                self.interstitial.delegate = self
             }
         }
     }
@@ -243,6 +244,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
             self.isInterstitialDisplaying = false
             self.isInterstitialLoaded = false
             self.interstitial = ADInterstitialAd()
+            self.interstitial.delegate = self
         }
     }
     
@@ -264,6 +266,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
         }
         isInterstitialLoaded = false
         interstitial = ADInterstitialAd()
+        interstitial.delegate = self
     }
     
     /**
@@ -271,10 +274,11 @@ extension iAdHandler: ADInterstitialAdDelegate {
     */
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
         println("Was not able to load an interstitial with error: \(error)")
-        self.isInterstitialLoaded = false
-        interstitial = ADInterstitialAd()
+        if !isInterstitialLoaded {
+            interstitial = ADInterstitialAd()
+            interstitial.delegate = self
+        }
     }
-    
 }
 
 extension iAdHandler: ADBannerViewDelegate {
