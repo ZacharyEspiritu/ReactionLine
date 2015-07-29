@@ -194,5 +194,4 @@ class Stats: CCNode {
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
         
     }
-    
 }
