@@ -4,6 +4,7 @@
 //
 //  Created by Stuart Breckenridge on 19/11/14.
 //  Copyright (c) 2014 Stuart Breckenridge. All rights reserved.
+//  Copyright (c) 2015 Zachary Espiritu. All rights reserved.
 //
 
 import UIKit
@@ -51,6 +52,16 @@ class GameCenterInteractor: NSObject {
             self.localPlayer.registerListener(self)
             
             // At this point you can download match data from Game Center.
+            GKAchievement.loadAchievementsWithCompletionHandler({(achievementDescriptions: [AnyObject]!, error: NSError!) -> Void in
+                if error != nil {
+                    println("Game Center: Loading achievements failed with error: \(error)")
+                }
+            })
+            GKAchievementDescription.loadAchievementDescriptionsWithCompletionHandler({(achievementDescriptions: [AnyObject]!, error: NSError!) -> Void in
+                if error != nil {
+                    println("Game Center: Loading achievement descriptions failed with error: \(error)")
+                }
+            })
         }
     }
     
@@ -158,9 +169,18 @@ class GameCenterInteractor: NSObject {
         }
     }
     
+    // MARK: 5 Achievement Handling
+    func saveAchievementProgress(#achievementIdentifier: String, percentComplete: Double) {
+        var achievement = GKAchievement(identifier: achievementIdentifier)
+        if percentComplete == 100 {
+            achievement.showsCompletionBanner = true
+        }
+        achievement.percentComplete = percentComplete
+    }
+    
 }
 
-extension GameCenterInteractor:GKLocalPlayerListener
+extension GameCenterInteractor: GKLocalPlayerListener
 {
     // Add functions for monitoring match changes.
 }

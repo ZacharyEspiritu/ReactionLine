@@ -65,7 +65,6 @@ class MemoryHandler {
         GameCenterInteractor.sharedInstance.saveHighScore("Timed", score: truncatedHighScore)
         
         return true
-        
     }
     
     /**
@@ -88,7 +87,6 @@ class MemoryHandler {
         GameCenterInteractor.sharedInstance.saveHighScore("Infinite", score: Double(self.defaults.integerForKey(self.topInfiniteScoreKey)))
         
         return true
-        
     }
     
     /**
@@ -112,7 +110,5 @@ class MemoryHandler {
         GameCenterInteractor.sharedInstance.saveHighScore("Evil", score: truncatedHighScore)
         
         return true
-        
     }
-    
 }

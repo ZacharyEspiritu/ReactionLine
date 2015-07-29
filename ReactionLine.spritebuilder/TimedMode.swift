@@ -74,8 +74,6 @@ class TimedMode: CCNode {
     
     var numberOfLinesCleared: Int = 0
     
-    weak var effectNode: CCEffectNode!
-    
     var useWinningTwitterMessage: Bool = false
     
     weak var linesLeftLabel: CCLabelTTF!
@@ -112,8 +110,6 @@ class TimedMode: CCNode {
         
         mixpanel.identify(mixpanel.distinctId)
         mixpanel.track("Timed Mode Plays")
-        
-        effectNode.effect = CCEffectDropShadow(shadowOffset: GLKVector2Make(0, 0), shadowColor: CCColor(red: 0/255, green: 0/255, blue: 0/255), blurRadius: 10)
         
         // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {

@@ -92,7 +92,7 @@ class MainScene: CCNode {
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.secondEvilScoreKey)
             memoryHandler.defaults.setDouble(999.999, forKey: memoryHandler.thirdEvilScoreKey)
             
-            statsHandler.defaults.setDouble(999.999, forKey: statsHandler.averageTapTimeKey)
+            statsHandler.defaults.setDouble(0, forKey: statsHandler.averageTapTimeKey)
             statsHandler.defaults.setObject([] as [Double], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
             println("Default settings loaded.")
@@ -108,7 +108,7 @@ class MainScene: CCNode {
         
         setupGameCenter()
         
-        delay(1) {
+        delay(1.1) {
             self.setupGestures()
         }
     }
