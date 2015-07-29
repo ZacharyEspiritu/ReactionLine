@@ -176,6 +176,13 @@ class GameCenterInteractor: NSObject {
             achievement.showsCompletionBanner = true
         }
         achievement.percentComplete = percentComplete
+        
+        var achievementArray: [GKAchievement] = [achievement]
+        GKAchievement.reportAchievements(achievementArray, withCompletionHandler: {(error : NSError!) -> Void in
+            if error != nil {
+                println("Game Center: Achievement Status Reporting Error")
+            }
+        })
     }
     
 }

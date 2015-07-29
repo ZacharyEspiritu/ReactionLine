@@ -56,33 +56,33 @@ class Stats: CCNode {
     // MARK: Stats Screen Loading Functions
     
     func didLoadFromCCB() {
-        
-        tapsPerSecondLabel.string        = String(format: "%.3f", defaults.doubleForKey(averageTapTimeKey)) + " taps"
-        numberOfLinesClearedLabel.string = String(defaults.integerForKey(numberOfLinesCleared))
-        timedModeClearsLabel.string      = String(defaults.integerForKey(timedModeWins))
-        timedModeLossesLabel.string      = String(defaults.integerForKey(timedModeLosses))
-        bestTimedLabel.string            = String(format: "%.3f", defaults.doubleForKey(topScoreKey))
-        bestEvilLabel.string             = String(format: "%.3f", defaults.doubleForKey(topEvilScoreKey))
-        bestInfiniteLabel.string         = String(defaults.integerForKey(topInfiniteScoreKey))
-        evilModeClearsLabel.string       = String(defaults.integerForKey(evilModeWins))
-        evilModeLossesLabel.string       = String(defaults.integerForKey(evilModeLosses))
-        
-        if tapsPerSecondLabel.string == "999.999 tps" {
-            tapsPerSecondLabel.string = "—" // Em dash!
+        delay(0.5) {
+            self.tapsPerSecondLabel.string        = String(format: "%.3f", self.defaults.doubleForKey(self.averageTapTimeKey)) + " taps"
+            self.numberOfLinesClearedLabel.string = String(self.defaults.integerForKey(self.numberOfLinesCleared))
+            self.timedModeClearsLabel.string      = String(self.defaults.integerForKey(self.timedModeWins))
+            self.timedModeLossesLabel.string      = String(self.defaults.integerForKey(self.timedModeLosses))
+            self.bestTimedLabel.string            = String(format: "%.3f", self.defaults.doubleForKey(self.topScoreKey))
+            self.bestEvilLabel.string             = String(format: "%.3f", self.defaults.doubleForKey(self.topEvilScoreKey))
+            self.bestInfiniteLabel.string         = String(self.defaults.integerForKey(self.topInfiniteScoreKey))
+            self.evilModeClearsLabel.string       = String(self.defaults.integerForKey(self.evilModeWins))
+            self.evilModeLossesLabel.string       = String(self.defaults.integerForKey(self.evilModeLosses))
+            
+            if self.defaults.doubleForKey(self.averageTapTimeKey) == 0 {
+                self.tapsPerSecondLabel.string = "—" // Em dash!
+            }
+            
+            if self.defaults.doubleForKey(self.topScoreKey) == 999.999 {
+                self.bestTimedLabel.string = "—" // Em dash!
+            }
+            
+            if self.defaults.doubleForKey(self.topEvilScoreKey) == 999.999 {
+                self.bestEvilLabel.string = "—" // Em dash!
+            }
+            
+            if self.defaults.integerForKey(self.topInfiniteScoreKey) == 0 {
+                self.bestInfiniteLabel.string = "—" // Em dash!
+            }
         }
-        
-        if bestTimedLabel.string == "999.999" {
-            bestTimedLabel.string = "—" // Em dash!
-        }
-        
-        if bestEvilLabel.string == "999.999" {
-            bestEvilLabel.string = "—" // Em dash!
-        }
-        
-        if bestInfiniteLabel.string == "0" {
-            bestInfiniteLabel.string = "—" // Em dash!
-        }
-        
     }
     
     // MARK: Statistic Handling Functions
@@ -193,5 +193,51 @@ class Stats: CCNode {
         
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
         
+        var tenThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(10000)
+        tenThousandLinesClearedAchievementProgress = floor(tenThousandLinesClearedAchievementProgress * 100)
+        if tenThousandLinesClearedAchievementProgress <= 100 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "tenThousandLinesCleared", percentComplete: tenThousandLinesClearedAchievementProgress)
+        }
+        
+        var oneHundredThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(100000)
+        oneHundredThousandLinesClearedAchievementProgress = floor(oneHundredThousandLinesClearedAchievementProgress * 100)
+        if oneHundredThousandLinesClearedAchievementProgress <= 100 {
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneHundredThousandLinesCleared", percentComplete: oneHundredThousandLinesClearedAchievementProgress)
+        }
+        
+        var twoHundredFiftyThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(250000)
+        twoHundredFiftyThousandLinesClearedAchievementProgress = floor(twoHundredFiftyThousandLinesClearedAchievementProgress * 100)
+        if twoHundredFiftyThousandLinesClearedAchievementProgress <= 100 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "twoHundredFiftyThousandLinesCleared", percentComplete: twoHundredFiftyThousandLinesClearedAchievementProgress)
+        }
+        
+        var fiveHundredThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(500000)
+        fiveHundredThousandLinesClearedAchievementProgress = floor(fiveHundredThousandLinesClearedAchievementProgress * 100)
+        if fiveHundredThousandLinesClearedAchievementProgress <= 100 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "fiveHundredThousandLinesCleared", percentComplete: fiveHundredThousandLinesClearedAchievementProgress)
+        }
+            
+        var oneMillionLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(500000)
+        oneMillionLinesClearedAchievementProgress = floor(oneMillionLinesClearedAchievementProgress * 100)
+        if oneMillionLinesClearedAchievementProgress <= 100 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneMillionLinesCleared", percentComplete: oneMillionLinesClearedAchievementProgress)
+        }
+    }
+    
+    
+    // MARK: Convenience Functions
+    
+    /**
+    When called, delays the running of code included in the `closure` parameter.
+    
+    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    */
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 }

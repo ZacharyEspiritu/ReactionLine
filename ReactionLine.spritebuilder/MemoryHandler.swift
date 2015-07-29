@@ -64,6 +64,22 @@ class MemoryHandler {
         
         GameCenterInteractor.sharedInstance.saveHighScore("Timed", score: truncatedHighScore)
         
+        if truncatedHighScore < 10 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "timedModeSub10", percentComplete: 100)
+        }
+        if truncatedHighScore < 15 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "timedModeSub15", percentComplete: 100)
+        }
+        if truncatedHighScore < 20 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "timedModeSub20", percentComplete: 100)
+        }
+        if truncatedHighScore < 25 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "timedModeSub25", percentComplete: 100)
+        }
+        if truncatedHighScore < 30 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "timedModeSub30", percentComplete: 100)
+        }
+        
         return true
     }
     
@@ -85,6 +101,22 @@ class MemoryHandler {
         mixpanel.people.set("Infinite Mode High Score", to: self.defaults.integerForKey(self.topInfiniteScoreKey))
         
         GameCenterInteractor.sharedInstance.saveHighScore("Infinite", score: Double(self.defaults.integerForKey(self.topInfiniteScoreKey)))
+        
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 1000 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode1000Lines", percentComplete: 100)
+        }
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 750 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode750Lines", percentComplete: 100)
+        }
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 500 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode500Lines", percentComplete: 100)
+        }
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 250 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode250Lines", percentComplete: 100)
+        }
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 100 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode100Lines", percentComplete: 100)
+        }
         
         return true
     }
@@ -108,6 +140,22 @@ class MemoryHandler {
         mixpanel.people.set("Evil Mode High Score", to: truncatedHighScore)
         
         GameCenterInteractor.sharedInstance.saveHighScore("Evil", score: truncatedHighScore)
+        
+        if truncatedHighScore < 25 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "evilModeSub25", percentComplete: 100)
+        }
+        if truncatedHighScore < 30 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "evilModeSub30", percentComplete: 100)
+        }
+        if truncatedHighScore < 35 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "evilModeSub35", percentComplete: 100)
+        }
+        if truncatedHighScore < 40 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "evilModeSub40", percentComplete: 100)
+        }
+        if truncatedHighScore < 45 {
+            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "evilModeSub45", percentComplete: 100)
+        }
         
         return true
     }

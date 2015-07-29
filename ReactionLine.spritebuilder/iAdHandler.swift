@@ -135,7 +135,7 @@ class iAdHandler: NSObject {
     */
     func displayInterstitialAd() {
         
-        if interstitial.loaded == true {
+        if interstitial.loaded {
     
             view.addSubview(interstitialAdView)
             interstitial.presentInView(interstitialAdView)
@@ -167,7 +167,7 @@ class iAdHandler: NSObject {
     Checks to see if an interstitial should be displayed in this round based on the `interstitialIndexingNumber`.
     */
     func checkIfInterstitialAdShouldBeDisplayed() {
-        if isInterstitialLoaded {
+        if interstitial.loaded {
             switch interstitialIndexingNumber % 3 {
             case 0:
                 println("Interstitial should be displayed now!")
@@ -267,6 +267,8 @@ extension iAdHandler: ADInterstitialAdDelegate {
         isInterstitialLoaded = false
         interstitial = ADInterstitialAd()
         interstitial.delegate = self
+        
+        println("Interstitial unloaded")
     }
     
     /**

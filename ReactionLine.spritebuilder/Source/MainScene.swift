@@ -13,7 +13,6 @@ import iAd
 enum CurrentMenuView {
     case MainMenu, Options, Stats, Share, Credits, GoingToGameplay
 }
-
 enum GameState {
     case Playing, GameOver
 }
@@ -65,9 +64,11 @@ class MainScene: CCNode {
     
     var currentMenuView: CurrentMenuView = .MainMenu
     
+    
     // MARK: Functions
     
     func didLoadFromCCB() {
+        
         iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
         iAdHandler.sharedInstance.loadInterstitialAd()
         
@@ -475,7 +476,9 @@ class MainScene: CCNode {
     }
     
     func swipeDown() {
-        // Unused
+        if currentMenuView == .Stats {
+            statsScreenToMenu()
+        }
     }
 }
 
@@ -494,5 +497,4 @@ extension MainScene: GKGameCenterControllerDelegate {
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
