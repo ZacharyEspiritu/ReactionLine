@@ -10,6 +10,10 @@ import Foundation
 import GameKit
 import iAd
 
+enum CurrentMenuView {
+    case MainMenu, Options, Stats, Share, Credits, GoingToGameplay
+}
+
 enum GameState {
     case Playing, GameOver
 }
@@ -37,7 +41,6 @@ class MainScene: CCNode {
     weak var infoLabel:  CCLabelTTF!
     
     weak var creditsLayer: CCNode!
-    var isCreditsInView = false
     
     weak var timedModeButton:     CCButton!
     weak var infiniteModeButton:  CCButton!
@@ -57,11 +60,14 @@ class MainScene: CCNode {
     
     weak var statsScrollView: CCScrollView!
     
+    weak var topMenuBorderColorNode:    CCNode!
+    weak var bottomMenuBorderColorNode: CCNode!
+    
+    var currentMenuView: CurrentMenuView = .MainMenu
     
     // MARK: Functions
     
     func didLoadFromCCB() {
-        
         iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
         iAdHandler.sharedInstance.loadInterstitialAd()
         
@@ -101,6 +107,10 @@ class MainScene: CCNode {
         self.userInteractionEnabled = true
         
         setupGameCenter()
+        
+        delay(1) {
+            self.setupGestures()
+        }
     }
     
     func setupGameCenter() {
@@ -114,6 +124,12 @@ class MainScene: CCNode {
     Begins Timed Mode.
     */
     func timedMode() {
+        currentMenuView = .GoingToGameplay
+        removeGestureRecognizers()
+        
+        topMenuBorderColorNode.visible = false
+        bottomMenuBorderColorNode.visible = false
+        
         mixpanel.timeEvent("Timed Mode Session Duration")
         
         disableAllMenuButtons()
@@ -135,6 +151,12 @@ class MainScene: CCNode {
     Begins Infinite Mode.
     */
     func infiniteMode() {
+        currentMenuView = .GoingToGameplay
+        removeGestureRecognizers()
+        
+        topMenuBorderColorNode.visible = false
+        bottomMenuBorderColorNode.visible = false
+        
         mixpanel.timeEvent("Infinite Mode Session Duration")
         
         disableAllMenuButtons()
@@ -156,6 +178,12 @@ class MainScene: CCNode {
     Begins Evil Mode.
     */
     func evilMode() {
+        currentMenuView = .GoingToGameplay
+        removeGestureRecognizers()
+        
+        topMenuBorderColorNode.visible = false
+        bottomMenuBorderColorNode.visible = false
+        
         mixpanel.timeEvent("Evil Mode Session Duration")
         
         disableAllMenuButtons()
@@ -189,19 +217,18 @@ class MainScene: CCNode {
     Displays an interface from which the user can change certain options for the game.
     */
     func optionsMenu() {
-        println("TODO: Implement options menu.")
-        
+        currentMenuView = .Options
         self.animationManager.runAnimationsForSequenceNamed("MenuToOptionsScreen")
         disableAllMenuButtons()
     }
     
     func optionsScreenToMenu() {
+        currentMenuView = .MainMenu
         self.animationManager.runAnimationsForSequenceNamed("OptionsScreenToMenu")
         enableAllMenuButtons()
     }
     
     func updateOptionsButtonText() {
-        
         println("Vibration:  \(memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey))")
         println("Sounds:     \(memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey))")
         println("Line Count: \(memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter))")
@@ -280,9 +307,9 @@ class MainScene: CCNode {
     Displays the game credits.
     */
     func aboutMenu() {
+        currentMenuView = .Credits
         mixpanel.track("Viewed About Screen")
         creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-        isCreditsInView = true
         disableAllMenuButtons()
     }
     
@@ -293,6 +320,7 @@ class MainScene: CCNode {
     Displays an interface from which the user can share the app.
     */
     func shareMenu() {
+        currentMenuView = .Share
         mixpanel.track("Viewed Share Screen")
         self.animationManager.runAnimationsForSequenceNamed("MenuToShareScreen")
         disableAllMenuButtons()
@@ -315,6 +343,7 @@ class MainScene: CCNode {
     }
     
     func shareScreenToMenu() {
+        currentMenuView = .MainMenu
         self.animationManager.runAnimationsForSequenceNamed("ShareScreenToMenu")
         enableAllMenuButtons()
     }
@@ -326,12 +355,14 @@ class MainScene: CCNode {
     Displays the stats view.
     */
     func statsMenu() {
+        currentMenuView = .Stats
         mixpanel.track("Viewed Stats Screen")
         self.animationManager.runAnimationsForSequenceNamed("MenuToStatsScreen")
         disableAllMenuButtons()
     }
     
     func statsScreenToMenu() {
+        currentMenuView = .MainMenu
         self.animationManager.runAnimationsForSequenceNamed("StatsScreenToMenu")
         statsScrollView.setScrollPosition(CGPoint(x: 0, y: 0), animated: true) // Reset the scroll position to 0 to prevent the tip of it from staying on the screen.
         enableAllMenuButtons()
@@ -384,13 +415,68 @@ class MainScene: CCNode {
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
-        if isCreditsInView {
+        if currentMenuView == .Credits {
             creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 0))
-            isCreditsInView = false
             enableAllMenuButtons()
+            currentMenuView = .MainMenu
         }
     }
-
+    
+    // MARK: Swipe Gesture Handling
+    
+    func setupGestures() {
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
+        swipeLeft.direction = .Left
+        CCDirector.sharedDirector().view.addGestureRecognizer(swipeLeft)
+        
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swipeRight")
+        swipeRight.direction = .Right
+        CCDirector.sharedDirector().view.addGestureRecognizer(swipeRight)
+        
+        var swipeUp = UISwipeGestureRecognizer(target: self, action: "swipeUp")
+        swipeUp.direction = .Up
+        CCDirector.sharedDirector().view.addGestureRecognizer(swipeUp)
+        
+        var swipeDown = UISwipeGestureRecognizer(target: self, action: "swipeDown")
+        swipeDown.direction = .Down
+        CCDirector.sharedDirector().view.addGestureRecognizer(swipeDown)
+    }
+    
+    func removeGestureRecognizers() {
+        if let recognizers = CCDirector.sharedDirector().view.gestureRecognizers {
+            for gestureRecognizer in recognizers {
+                CCDirector.sharedDirector().view.removeGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
+            }
+        }
+    }
+    
+    func swipeLeft() {
+        if currentMenuView == .MainMenu {
+            shareMenu()
+        }
+        else if currentMenuView == .Options {
+            optionsScreenToMenu()
+        }
+    }
+    
+    func swipeRight() {
+        if currentMenuView == .MainMenu {
+            optionsMenu()
+        }
+        else if currentMenuView == .Share {
+            shareScreenToMenu()
+        }
+    }
+    
+    func swipeUp() {
+        if currentMenuView == .MainMenu {
+            statsMenu()
+        }
+    }
+    
+    func swipeDown() {
+        // Unused
+    }
 }
 
 // MARK: Game Center Handling

@@ -155,7 +155,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"taps per second"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -375,7 +375,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>tapsPerSecondLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>tapsPerSecondLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -589,7 +589,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Taps Per Second</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -656,6 +656,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1026,7 +1028,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"number of lines cleared"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -1247,7 +1249,7 @@ cleared</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>numberOfLinesClearedLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>numberOfLinesClearedLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -1461,7 +1463,7 @@ cleared</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Number of Lines Cleared</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1898,7 +1900,7 @@ cleared</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"best infinite mode"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -2119,7 +2121,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>bestInfiniteLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>bestInfiniteLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -2339,7 +2341,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"best evil mode"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -2560,7 +2562,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>bestEvilLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>bestEvilLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -2774,7 +2776,7 @@ mode</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Best Infinite + Evil Mode</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -3563,7 +3565,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"timed mode clears"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -3784,7 +3786,7 @@ clears</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>timedModeClearsLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>timedModeClearsLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -3998,7 +4000,7 @@ clears</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Timed Mode Clears</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -4083,7 +4085,7 @@ clears</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"timed mode losses"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -4304,7 +4306,7 @@ losses</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>timedModeLossesLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>timedModeLossesLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -4518,7 +4520,7 @@ losses</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Timed Mode Losses</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -5737,7 +5739,7 @@ losses</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"best timed mode"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -5958,7 +5960,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>bestTimedMode</string>
 						<key>memberVarAssignmentName</key>
 						<string>bestTimedLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -6172,7 +6174,7 @@ mode</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Best Timed Mode</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -6243,6 +6245,11 @@ mode</string>
 			<dict>
 				<key>UUID</key>
 				<integer>39</integer>
+				<key>animatedProperties</key>
+				<dict>
+					<key>0</key>
+					<dict/>
+				</dict>
 				<key>baseClass</key>
 				<string>CCNode</string>
 				<key>children</key>
@@ -6257,7 +6264,7 @@ mode</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"evil mode losses"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -6478,7 +6485,7 @@ losses</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>evilModeLossesLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>evilModeLossesLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -6687,14 +6694,12 @@ losses</string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Evil Mode Losses</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -6779,7 +6784,7 @@ losses</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>"Sounds"</string>
+						<string>"evil mode clears"</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -7000,7 +7005,7 @@ clears</string>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>soundsToggleLabel</string>
+						<string>evilModeClearsLabel</string>
 						<key>memberVarAssignmentName</key>
 						<string>evilModeClearsLabel</string>
 						<key>memberVarAssignmentType</key>
@@ -7214,7 +7219,7 @@ clears</string>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>Evil Mode Clears</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
