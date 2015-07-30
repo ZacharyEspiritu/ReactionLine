@@ -102,19 +102,19 @@ class MemoryHandler {
         
         GameCenterInteractor.sharedInstance.saveHighScore("Infinite", score: Double(self.defaults.integerForKey(self.topInfiniteScoreKey)))
         
-        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 1000 {
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) >= 1000 {
             GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode1000Lines", percentComplete: 100)
         }
-        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 750 {
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) >= 750 {
             GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode750Lines", percentComplete: 100)
         }
-        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 500 {
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) >= 500 {
             GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode500Lines", percentComplete: 100)
         }
-        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 250 {
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) >= 250 {
             GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode250Lines", percentComplete: 100)
         }
-        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) > 100 {
+        if Double(self.defaults.integerForKey(self.topInfiniteScoreKey)) >= 100 {
             GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "infiniteMode100Lines", percentComplete: 100)
         }
         

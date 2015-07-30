@@ -334,6 +334,12 @@
     {
         // Button is disabled
         [self updatePropertiesForState:CCControlStateDisabled];
+        
+        if (_zoomWhenHighlighted)
+        {
+            [_label runAction:[CCActionScaleTo actionWithDuration:0.14 scaleX:_originalScaleX scaleY:_originalScaleY]];
+            [_background runAction:[CCActionScaleTo actionWithDuration:0.14 scaleX:_originalScaleX scaleY:_originalScaleY]];
+        }
     }
 }
 

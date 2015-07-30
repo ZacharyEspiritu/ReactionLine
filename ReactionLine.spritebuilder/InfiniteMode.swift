@@ -8,7 +8,7 @@
 
 import Foundation
 
-class InfiniteMode: CCNode {
+class InfiniteMode: CCScene {
     
     // MARK: Constants
     
@@ -518,9 +518,8 @@ class InfiniteMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
-        delay(0.4) {
-            self.clearAllLinesFromMemory()
-        }
+        self.removeAllChildrenWithCleanup(true)
+        self.removeFromParentAndCleanup(true)
     }
     
     /**
@@ -539,15 +538,8 @@ class InfiniteMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
-        delay(0.4) {
-            self.clearAllLinesFromMemory()
-        }
-    }
-    
-    func clearAllLinesFromMemory() {
-        for index in lineIndex..<lineArray.count {
-            lineArray[index].removeFromParent()
-        }
+        self.removeAllChildrenWithCleanup(true)
+        self.removeFromParentAndCleanup(true)
     }
     
     

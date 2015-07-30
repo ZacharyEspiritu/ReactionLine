@@ -193,35 +193,45 @@ class Stats: CCNode {
         
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
         
+        // Check if 10,000 lines achievement was cleared.
         var tenThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(10000)
         tenThousandLinesClearedAchievementProgress = floor(tenThousandLinesClearedAchievementProgress * 100)
-        if tenThousandLinesClearedAchievementProgress <= 100 {
-            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "tenThousandLinesCleared", percentComplete: tenThousandLinesClearedAchievementProgress)
+        if tenThousandLinesClearedAchievementProgress > 100 {
+            tenThousandLinesClearedAchievementProgress = 100
         }
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "tenThousandLinesCleared", percentComplete: tenThousandLinesClearedAchievementProgress)
         
+        // Check if 100,000 lines achievement was cleared.
         var oneHundredThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(100000)
         oneHundredThousandLinesClearedAchievementProgress = floor(oneHundredThousandLinesClearedAchievementProgress * 100)
-        if oneHundredThousandLinesClearedAchievementProgress <= 100 {
-        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneHundredThousandLinesCleared", percentComplete: oneHundredThousandLinesClearedAchievementProgress)
+        if oneHundredThousandLinesClearedAchievementProgress > 100 {
+            oneHundredThousandLinesClearedAchievementProgress = 100
         }
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneHundredThousandLinesCleared", percentComplete: oneHundredThousandLinesClearedAchievementProgress)
         
+        // Check if 250,000 lines achievement was cleared.
         var twoHundredFiftyThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(250000)
         twoHundredFiftyThousandLinesClearedAchievementProgress = floor(twoHundredFiftyThousandLinesClearedAchievementProgress * 100)
-        if twoHundredFiftyThousandLinesClearedAchievementProgress <= 100 {
-            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "twoHundredFiftyThousandLinesCleared", percentComplete: twoHundredFiftyThousandLinesClearedAchievementProgress)
+        if twoHundredFiftyThousandLinesClearedAchievementProgress > 100 {
+            twoHundredFiftyThousandLinesClearedAchievementProgress = 100
         }
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "twoHundredFiftyThousandLinesCleared", percentComplete: twoHundredFiftyThousandLinesClearedAchievementProgress)
         
+        // Check if 500,000 lines achievement was cleared.
         var fiveHundredThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(500000)
         fiveHundredThousandLinesClearedAchievementProgress = floor(fiveHundredThousandLinesClearedAchievementProgress * 100)
-        if fiveHundredThousandLinesClearedAchievementProgress <= 100 {
-            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "fiveHundredThousandLinesCleared", percentComplete: fiveHundredThousandLinesClearedAchievementProgress)
+        if fiveHundredThousandLinesClearedAchievementProgress > 100 {
+            fiveHundredThousandLinesClearedAchievementProgress = 100
         }
-            
-        var oneMillionLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(500000)
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "fiveHundredThousandLinesCleared", percentComplete: fiveHundredThousandLinesClearedAchievementProgress)
+        
+        // Check if 1,000,000 lines achievement was cleared.
+        var oneMillionLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(1000000)
         oneMillionLinesClearedAchievementProgress = floor(oneMillionLinesClearedAchievementProgress * 100)
-        if oneMillionLinesClearedAchievementProgress <= 100 {
-            GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneMillionLinesCleared", percentComplete: oneMillionLinesClearedAchievementProgress)
+        if oneMillionLinesClearedAchievementProgress > 100 {
+            oneMillionLinesClearedAchievementProgress = 100
         }
+        GameCenterInteractor.sharedInstance.saveAchievementProgress(achievementIdentifier: "oneMillionLinesCleared", percentComplete: oneMillionLinesClearedAchievementProgress)
     }
     
     

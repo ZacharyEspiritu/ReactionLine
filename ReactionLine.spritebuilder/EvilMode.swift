@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EvilMode: CCNode {
+class EvilMode: CCScene {
     
     // MARK: Constants
     
@@ -504,9 +504,8 @@ class EvilMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
-        delay(0.4) {
-            self.clearAllLinesFromMemory()
-        }
+        self.removeAllChildrenWithCleanup(true)
+        self.removeFromParentAndCleanup(true)
     }
     
     /**
@@ -525,15 +524,8 @@ class EvilMode: CCNode {
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
-        delay(0.4) {
-            self.clearAllLinesFromMemory()
-        }
-    }
-    
-    func clearAllLinesFromMemory() {
-        for index in 0..<lineArray.count {
-            lineArray[index].removeFromParent()
-        }
+        self.removeAllChildrenWithCleanup(true)
+        self.removeFromParentAndCleanup(true)
     }
     
     

@@ -17,7 +17,7 @@ enum GameState {
     case Playing, GameOver
 }
 
-class MainScene: CCNode {
+class MainScene: CCScene {
     
     // MARK: Constants
     
@@ -97,7 +97,6 @@ class MainScene: CCNode {
             statsHandler.defaults.setObject([] as [Double], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
             println("Default settings loaded.")
-            
         }
         
         updateOptionsButtonText()
@@ -145,6 +144,9 @@ class MainScene: CCNode {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
+            
+            self.removeAllChildrenWithCleanup(true)
+            self.removeFromParentAndCleanup(true)
         }
     }
     
@@ -172,6 +174,9 @@ class MainScene: CCNode {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
+            
+            self.removeAllChildrenWithCleanup(true)
+            self.removeFromParentAndCleanup(true)
         }
     }
     
@@ -199,6 +204,9 @@ class MainScene: CCNode {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
+            
+            self.removeAllChildrenWithCleanup(true)
+            self.removeFromParentAndCleanup(true)
         }
     }
     
