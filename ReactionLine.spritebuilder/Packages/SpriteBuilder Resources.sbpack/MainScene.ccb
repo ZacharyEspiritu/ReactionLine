@@ -139,6 +139,8 @@
 						<real>1</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -13120,7 +13122,7 @@
 										<string>Text</string>
 										<key>value</key>
 										<array>
-											<string>1.0</string>
+											<string>1.1</string>
 											<false/>
 										</array>
 									</dict>
