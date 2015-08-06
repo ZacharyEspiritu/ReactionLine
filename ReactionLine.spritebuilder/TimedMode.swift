@@ -540,4 +540,20 @@ class TimedMode: CCScene {
         SharingHandler.sharedInstance.postToFacebook(postWithScreenshot: true)
     }
     
+    
+    // MARK: Swipe Gesture Handling
+    
+    func swipeLeft() {
+        // Unused
+    }
+    func swipeRight() {
+        // Unused
+    }
+    func swipeUp() {
+        // Unused
+    }
+    func swipeDown() {
+        // Unused
+    }
+    
 }
