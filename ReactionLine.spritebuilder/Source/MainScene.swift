@@ -427,7 +427,9 @@ class MainScene: CCScene {
         if currentMenuView == .Credits {
             creditsLayer.runAction(CCActionFadeTo(duration: 0.5, opacity: 0))
             enableAllMenuButtons()
-            currentMenuView = .MainMenu
+            delay(0.4) {
+                self.currentMenuView = .MainMenu
+            }
         }
     }
     
@@ -453,8 +455,8 @@ class MainScene: CCScene {
     
     func removeGestureRecognizers() {
         if let recognizers = CCDirector.sharedDirector().view.gestureRecognizers {
-            for gestureRecognizer in recognizers {
-                CCDirector.sharedDirector().view.removeGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
+            for recognizer in recognizers {
+                CCDirector.sharedDirector().view.removeGestureRecognizer(recognizer as! UIGestureRecognizer)
             }
         }
     }

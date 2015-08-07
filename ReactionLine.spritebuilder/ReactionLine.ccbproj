@@ -39,7 +39,7 @@
 	<key>publishDirectoryAndroid</key>
 	<string>Source/Resources/Published-Android</string>
 	<key>publishEnabledAndroid</key>
-	<true/>
+	<false/>
 	<key>publishEnablediPhone</key>
 	<true/>
 	<key>publishEnvironment</key>

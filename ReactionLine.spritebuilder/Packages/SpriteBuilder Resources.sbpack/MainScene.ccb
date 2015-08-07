@@ -14,9 +14,9 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>11</integer>
+	<integer>6</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -139,8 +139,6 @@
 						<real>1</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -280,8 +278,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>75</real>
+							<real>0.0</real>
+							<real>-570</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -7943,8 +7941,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>570</real>
+							<real>-0.5</real>
+							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -10966,8 +10964,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>-35</real>
+							<real>-0.5</real>
+							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -10996,8 +10994,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.30000001192092896</real>
-							<real>1.2999999523162842</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -13122,7 +13120,7 @@
 										<string>Text</string>
 										<key>value</key>
 										<array>
-											<string>1.1</string>
+											<string>1.1.1</string>
 											<false/>
 										</array>
 									</dict>
@@ -13595,7 +13593,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -14127,7 +14125,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -19029,7 +19027,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.0</real>
+							<real>-70</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -20190,8 +20188,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>-44</real>
+							<real>-0.5</real>
+							<real>66</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -20220,8 +20218,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.80000001192092896</real>
-							<real>1.2000000476837158</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -20543,7 +20541,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
+							<real>0.5</real>
 							<real>66</real>
 							<integer>1</integer>
 							<integer>2</integer>
@@ -21308,7 +21306,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>66</real>
+							<real>-43</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -21843,13 +21841,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>10</real>
+			<real>1.0666667222976685</real>
 			<key>name</key>
 			<string>InitialLaunch</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.2666666507720947</real>
+			<real>1.0666667222976685</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -22084,7 +22082,7 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>stageColor</key>
 	<integer>0</integer>
 </dict>

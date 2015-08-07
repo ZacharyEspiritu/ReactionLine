@@ -16,7 +16,7 @@ class InfiniteMode: CCScene {
     let numberOfLines: Int = 25       // How many lines should be played in this game instance?
     let animationRowDelay = 0.15       // How long should it take for a correctly tapped line to move from its current position to the side of the screen?
     let animationLinesDownDelay = 0.1  // How long should it take for the stack of lines to move down on a correct tap?
-    let timeBonusOnCorrectTap: Float = 0.18
+    let timeBonusOnCorrectTap: Float = 0.168
     let indexToStartRemovingOutOfBoundsLines = 15
     
     let audio = OALSimpleAudio.sharedInstance()  // System object used to handle audio files.

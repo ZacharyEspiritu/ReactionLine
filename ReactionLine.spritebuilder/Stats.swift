@@ -193,6 +193,8 @@ class Stats: CCNode {
         
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
         
+        mixpanel.people.set(["Number of Lines Cleared" : currentNumberOfLinesCleared])
+        
         // Check if 10,000 lines achievement was cleared.
         var tenThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(10000)
         tenThousandLinesClearedAchievementProgress = floor(tenThousandLinesClearedAchievementProgress * 100)
