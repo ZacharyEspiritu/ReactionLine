@@ -139,6 +139,8 @@
 						<real>1</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -7997,7 +7999,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNodeColor</string>
+				<string>bottomMenuBorderColorNode</string>
 				<key>memberVarAssignmentName</key>
 				<string>bottomMenuBorderColorNode</string>
 				<key>memberVarAssignmentType</key>
@@ -8211,7 +8213,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNodeColor</string>
+				<string>topMenuBorderColorNode</string>
 				<key>memberVarAssignmentName</key>
 				<string>topMenuBorderColorNode</string>
 				<key>memberVarAssignmentType</key>
