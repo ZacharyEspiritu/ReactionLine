@@ -400,10 +400,10 @@ class MainScene: CCScene {
     }
     
     func disableAllMenuButtons() {
-        timedModeButton.enabled     = false
-        infiniteModeButton.enabled  = false
-        evilModeButton.enabled = false
-        leaderboardButton.enabled = false
+        timedModeButton.enabled    = false
+        infiniteModeButton.enabled = false
+        evilModeButton.enabled     = false
+        leaderboardButton.enabled  = false
         
         optionsButton.enabled = false
         aboutButton.enabled   = false
@@ -412,10 +412,10 @@ class MainScene: CCScene {
     }
     
     func enableAllMenuButtons() {
-        timedModeButton.enabled     = true
-        infiniteModeButton.enabled  = true
-        evilModeButton.enabled = true
-        leaderboardButton.enabled = true
+        timedModeButton.enabled    = true
+        infiniteModeButton.enabled = true
+        evilModeButton.enabled     = true
+        leaderboardButton.enabled  = true
         
         optionsButton.enabled = true
         aboutButton.enabled   = true
