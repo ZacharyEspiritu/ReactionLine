@@ -70,9 +70,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Entire Gameplay Session Duration"];
-    
+    // Unused
 }
 
 - (CCScene*) startScene
