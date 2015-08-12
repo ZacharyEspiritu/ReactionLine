@@ -138,7 +138,7 @@ class MainScene: CCScene {
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
                 
         delay(1.1) {
-            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
+            var gameplayScene = CCBReader.load("TutorialScene") as! TutorialScene
             
             var scene = CCScene()
             scene.addChild(gameplayScene)

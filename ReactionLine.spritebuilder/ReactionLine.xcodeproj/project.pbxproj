@@ -8,19 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		5510D9B71B5E902400819ADA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5510D9B61B5E902400819ADA /* Images.xcassets */; };
-		555C43341B567D1000AC39ED /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C43331B567D1000AC39ED /* EvilMode.swift */; };
-		555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF361B531F6300FA200F /* MemoryHandler.swift */; };
-		555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */; };
 		5560A8671B5D40BA001810C6 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560A8661B5D40BA001810C6 /* close.png */; };
-		558B430E1B5BF2C5003CD7A6 /* SharingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */; };
+		55688F661B7AE612003CFB77 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F651B7AE612003CFB77 /* TutorialScene.swift */; };
+		55688F6C1B7AE68B003CFB77 /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F691B7AE68B003CFB77 /* EvilMode.swift */; };
+		55688F6D1B7AE68B003CFB77 /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F6A1B7AE68B003CFB77 /* InfiniteMode.swift */; };
+		55688F6E1B7AE68B003CFB77 /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F6B1B7AE68B003CFB77 /* TimedMode.swift */; };
+		55688F751B7AE69F003CFB77 /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F6F1B7AE69F003CFB77 /* GameCenterInteractor.swift */; };
+		55688F761B7AE69F003CFB77 /* iAdHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F701B7AE69F003CFB77 /* iAdHandler.swift */; };
+		55688F771B7AE69F003CFB77 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F711B7AE69F003CFB77 /* Line.swift */; };
+		55688F781B7AE69F003CFB77 /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F721B7AE69F003CFB77 /* MemoryHandler.swift */; };
+		55688F791B7AE69F003CFB77 /* SharingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F731B7AE69F003CFB77 /* SharingHandler.swift */; };
+		55688F7A1B7AE69F003CFB77 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F741B7AE69F003CFB77 /* Stats.swift */; };
 		55916C2E1B5003B5003C9E93 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55916C2B1B5003B5003C9E93 /* spring.mp3 */; };
-		5596AB691B4DB7610089D1BA /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB681B4DB7610089D1BA /* Line.swift */; };
 		5596AB961B4DFCCF0089D1BA /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5596AB951B4DFCCF0089D1BA /* tada.wav */; };
-		5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596AB971B4E16D30089D1BA /* TimedMode.swift */; };
-		559AACA81B5580E800F77C7D /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559AACA71B5580E800F77C7D /* Stats.swift */; };
 		55D09C241B5C6BCB00E01268 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D09C231B5C6BCB00E01268 /* iAd.framework */; };
-		55D09C331B5C847600E01268 /* iAdHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D09C321B5C847600E01268 /* iAdHandler.swift */; };
-		55D928011B59746700CECBAE /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D928001B59746600CECBAE /* GameCenterInteractor.swift */; };
 		55D928081B59772400CECBAE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D928051B5975E500CECBAE /* GameKit.framework */; };
 		5B121030197484FA004C1E1D /* ReactionLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ReactionLineActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
@@ -166,19 +167,20 @@
 /* Begin PBXFileReference section */
 		329D86E9F1026536526674C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5510D9B61B5E902400819ADA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		555C43331B567D1000AC39ED /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvilMode.swift; sourceTree = "<group>"; };
-		555CAF361B531F6300FA200F /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
-		555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteMode.swift; sourceTree = "<group>"; };
 		5560A8661B5D40BA001810C6 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingHandler.swift; sourceTree = "<group>"; };
+		55688F651B7AE612003CFB77 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialScene.swift; path = Source/TutorialScene.swift; sourceTree = "<group>"; };
+		55688F691B7AE68B003CFB77 /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EvilMode.swift; path = Source/EvilMode.swift; sourceTree = "<group>"; };
+		55688F6A1B7AE68B003CFB77 /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteMode.swift; path = Source/InfiniteMode.swift; sourceTree = "<group>"; };
+		55688F6B1B7AE68B003CFB77 /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimedMode.swift; path = Source/TimedMode.swift; sourceTree = "<group>"; };
+		55688F6F1B7AE69F003CFB77 /* GameCenterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameCenterInteractor.swift; path = Source/GameCenterInteractor.swift; sourceTree = "<group>"; };
+		55688F701B7AE69F003CFB77 /* iAdHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iAdHandler.swift; path = Source/iAdHandler.swift; sourceTree = "<group>"; };
+		55688F711B7AE69F003CFB77 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Line.swift; path = Source/Line.swift; sourceTree = "<group>"; };
+		55688F721B7AE69F003CFB77 /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryHandler.swift; path = Source/MemoryHandler.swift; sourceTree = "<group>"; };
+		55688F731B7AE69F003CFB77 /* SharingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharingHandler.swift; path = Source/SharingHandler.swift; sourceTree = "<group>"; };
+		55688F741B7AE69F003CFB77 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stats.swift; path = Source/Stats.swift; sourceTree = "<group>"; };
 		55916C2B1B5003B5003C9E93 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
-		5596AB681B4DB7610089D1BA /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5596AB951B4DFCCF0089D1BA /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
-		5596AB971B4E16D30089D1BA /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedMode.swift; sourceTree = "<group>"; };
-		559AACA71B5580E800F77C7D /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		55D09C231B5C6BCB00E01268 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		55D09C321B5C847600E01268 /* iAdHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iAdHandler.swift; sourceTree = "<group>"; };
-		55D928001B59746600CECBAE /* GameCenterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterInteractor.swift; sourceTree = "<group>"; };
 		55D928041B5975E400CECBAE /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		55D928051B5975E500CECBAE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		55DAD8891B58B0C200A7AF16 /* Mixpanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixpanel.h; path = Pods/Mixpanel/Mixpanel/Mixpanel.h; sourceTree = "<group>"; };
@@ -310,6 +312,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55688F7B1B7AE6DF003CFB77 /* Handler Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55688F6F1B7AE69F003CFB77 /* GameCenterInteractor.swift */,
+				55688F701B7AE69F003CFB77 /* iAdHandler.swift */,
+				55688F721B7AE69F003CFB77 /* MemoryHandler.swift */,
+				55688F731B7AE69F003CFB77 /* SharingHandler.swift */,
+			);
+			name = "Handler Classes";
+			sourceTree = "<group>";
+		};
 		5596AB901B4DFAB80089D1BA /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,9 +335,9 @@
 		55E66E401B57310D008F1190 /* Gamemodes */ = {
 			isa = PBXGroup;
 			children = (
-				5596AB971B4E16D30089D1BA /* TimedMode.swift */,
-				555C43331B567D1000AC39ED /* EvilMode.swift */,
-				555CAF3C1B532EFC00FA200F /* InfiniteMode.swift */,
+				55688F691B7AE68B003CFB77 /* EvilMode.swift */,
+				55688F6A1B7AE68B003CFB77 /* InfiniteMode.swift */,
+				55688F6B1B7AE68B003CFB77 /* TimedMode.swift */,
 			);
 			name = Gamemodes;
 			sourceTree = "<group>";
@@ -503,12 +516,10 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				55D928001B59746600CECBAE /* GameCenterInteractor.swift */,
-				558B430D1B5BF2C5003CD7A6 /* SharingHandler.swift */,
-				555CAF361B531F6300FA200F /* MemoryHandler.swift */,
-				55D09C321B5C847600E01268 /* iAdHandler.swift */,
-				559AACA71B5580E800F77C7D /* Stats.swift */,
-				5596AB681B4DB7610089D1BA /* Line.swift */,
+				55688F651B7AE612003CFB77 /* TutorialScene.swift */,
+				55688F711B7AE69F003CFB77 /* Line.swift */,
+				55688F741B7AE69F003CFB77 /* Stats.swift */,
+				55688F7B1B7AE6DF003CFB77 /* Handler Classes */,
 				55E66E401B57310D008F1190 /* Gamemodes */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				55DAD8891B58B0C200A7AF16 /* Mixpanel.h */,
@@ -932,18 +943,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				558B430E1B5BF2C5003CD7A6 /* SharingHandler.swift in Sources */,
-				55D928011B59746700CECBAE /* GameCenterInteractor.swift in Sources */,
-				555CAF3D1B532EFC00FA200F /* InfiniteMode.swift in Sources */,
+				55688F6D1B7AE68B003CFB77 /* InfiniteMode.swift in Sources */,
+				55688F7A1B7AE69F003CFB77 /* Stats.swift in Sources */,
+				55688F791B7AE69F003CFB77 /* SharingHandler.swift in Sources */,
+				55688F6E1B7AE68B003CFB77 /* TimedMode.swift in Sources */,
+				55688F781B7AE69F003CFB77 /* MemoryHandler.swift in Sources */,
+				55688F761B7AE69F003CFB77 /* iAdHandler.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				555CAF371B531F6300FA200F /* MemoryHandler.swift in Sources */,
-				55D09C331B5C847600E01268 /* iAdHandler.swift in Sources */,
-				5596AB691B4DB7610089D1BA /* Line.swift in Sources */,
+				55688F751B7AE69F003CFB77 /* GameCenterInteractor.swift in Sources */,
+				55688F661B7AE612003CFB77 /* TutorialScene.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
-				559AACA81B5580E800F77C7D /* Stats.swift in Sources */,
-				5596AB981B4E16D30089D1BA /* TimedMode.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
-				555C43341B567D1000AC39ED /* EvilMode.swift in Sources */,
+				55688F6C1B7AE68B003CFB77 /* EvilMode.swift in Sources */,
+				55688F771B7AE69F003CFB77 /* Line.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

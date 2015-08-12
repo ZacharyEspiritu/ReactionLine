@@ -1068,7 +1068,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>90</real>
+							<real>92.196189880371094</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -4217,7 +4217,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.50853878259658813</real>
+							<real>0.51441538333892822</real>
 							<real>288</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -4427,7 +4427,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>372</real>
+										<real>-52</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4445,7 +4445,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>267.29998779296875</real>
+										<real>52.70001220703125</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4476,7 +4476,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>372</real>
+										<real>-52</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4494,7 +4494,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>267.29998779296875</real>
+										<real>52.70001220703125</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4531,7 +4531,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>372</real>
+							<real>-52</real>
 							<real>212.11814880371094</real>
 						</array>
 						<key>name</key>
@@ -4540,9 +4540,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>267.29998779296875</real>
+							<real>52.70001220703125</real>
 							<real>208</real>
-							<integer>0</integer>
+							<integer>3</integer>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -4660,6 +4660,8 @@
 						<real>0.33000001311302185</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -6749,7 +6751,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

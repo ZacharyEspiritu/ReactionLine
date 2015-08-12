@@ -1378,7 +1378,7 @@
 							<real>0.20000000298023224</real>
 							<real>0.20000000298023224</real>
 							<real>0.20000000298023224</real>
-							<real>0.60000002384185791</real>
+							<real>0.32266667485237122</real>
 						</array>
 					</dict>
 					<dict>
@@ -1389,7 +1389,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.60000002384185791</real>
+						<real>0.32266667485237122</real>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -3144,7 +3144,7 @@
 										<key>value</key>
 										<array>
 											<real>2.5</real>
-											<real>-30</real>
+											<real>-32.175003051757812</real>
 											<integer>1</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -3187,7 +3187,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>14</real>
+										<real>13.443340301513672</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3235,7 +3235,20 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.95652180910110474</real>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<real>1</real>
+											<real>0.95652180910110474</real>
+										</array>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3621,8 +3634,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-2</real>
-											<real>34</real>
+											<real>-1.9838888645172119</real>
+											<real>31.71221923828125</real>
 											<integer>1</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -3665,7 +3678,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-8</real>
+										<real>-7.457611083984375</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3713,7 +3726,20 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.95652180910110474</real>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<real>1</real>
+											<real>0.95652180910110474</real>
+										</array>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -4217,7 +4243,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.50582683086395264</real>
 							<real>288</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -4247,8 +4273,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.99883460998535156</real>
+							<real>1.0011653900146484</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4427,7 +4453,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>372</real>
+										<real>-52</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4445,7 +4471,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>267.29998779296875</real>
+										<real>52.70001220703125</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4476,7 +4502,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>372</real>
+										<real>-52</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4494,7 +4520,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>267.29998779296875</real>
+										<real>52.70001220703125</real>
 										<real>208</real>
 									</array>
 								</dict>
@@ -4531,7 +4557,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>372</real>
+							<real>-52</real>
 							<real>212.11814880371094</real>
 						</array>
 						<key>name</key>
@@ -4540,9 +4566,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>267.29998779296875</real>
+							<real>52.70001220703125</real>
 							<real>208</real>
-							<integer>0</integer>
+							<integer>3</integer>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -4660,6 +4686,8 @@
 						<real>0.33000001311302185</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4921,8 +4949,6 @@
 						<real>0.33000001311302185</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -6715,7 +6741,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
