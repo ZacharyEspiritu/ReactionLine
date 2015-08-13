@@ -142,7 +142,7 @@ class InfiniteMode: CCScene {
             
         }
         
-        lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
+        lineGroupingNode.position = CGPoint(x: 0.50, y: 3440)
         blueTouchZone.opacity = 0
         redTouchZone.opacity = 0
         
@@ -159,7 +159,6 @@ class InfiniteMode: CCScene {
         countdownBeforeGameBegins() // Initiates the pre-game countdown.
         
         timeLeft = 5
-        
     }
     
     /**
@@ -272,7 +271,6 @@ class InfiniteMode: CCScene {
     }
     
     override func update(delta: CCTime) {
-        
         if gameState != .Playing {
             return
         }
@@ -282,7 +280,6 @@ class InfiniteMode: CCScene {
         if timeLeft == 0 {
             gameOver(breakDelay: 0.1)
         }
-        
     }
     
     
@@ -470,15 +467,11 @@ class InfiniteMode: CCScene {
                 }
                 
                 var delay = (0.06 * Double(delayMultiplier!))
-                
                 currentLine.scheduleOnce("fallDown", delay: delay)
-                
             }
             
             self.animationManager.runAnimationsForSequenceNamed("LoseSequence")
-            
         }
-        
     }
     
     func getHighScore() {

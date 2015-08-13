@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5510D9B71B5E902400819ADA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5510D9B61B5E902400819ADA /* Images.xcassets */; };
 		5560A8671B5D40BA001810C6 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560A8661B5D40BA001810C6 /* close.png */; };
-		55688F661B7AE612003CFB77 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F651B7AE612003CFB77 /* TutorialScene.swift */; };
 		55688F6C1B7AE68B003CFB77 /* EvilMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F691B7AE68B003CFB77 /* EvilMode.swift */; };
 		55688F6D1B7AE68B003CFB77 /* InfiniteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F6A1B7AE68B003CFB77 /* InfiniteMode.swift */; };
 		55688F6E1B7AE68B003CFB77 /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55688F6B1B7AE68B003CFB77 /* TimedMode.swift */; };
@@ -168,7 +167,6 @@
 		329D86E9F1026536526674C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5510D9B61B5E902400819ADA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5560A8661B5D40BA001810C6 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		55688F651B7AE612003CFB77 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialScene.swift; path = Source/TutorialScene.swift; sourceTree = "<group>"; };
 		55688F691B7AE68B003CFB77 /* EvilMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EvilMode.swift; path = Source/EvilMode.swift; sourceTree = "<group>"; };
 		55688F6A1B7AE68B003CFB77 /* InfiniteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteMode.swift; path = Source/InfiniteMode.swift; sourceTree = "<group>"; };
 		55688F6B1B7AE68B003CFB77 /* TimedMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimedMode.swift; path = Source/TimedMode.swift; sourceTree = "<group>"; };
@@ -516,7 +514,6 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				55688F651B7AE612003CFB77 /* TutorialScene.swift */,
 				55688F711B7AE69F003CFB77 /* Line.swift */,
 				55688F741B7AE69F003CFB77 /* Stats.swift */,
 				55688F7B1B7AE6DF003CFB77 /* Handler Classes */,
@@ -681,6 +678,7 @@
 				D352B47A19EC5D8A00829775 /* Compile Metal Shaders */,
 				B77F1B2C17B978D7009739AE /* Resources */,
 				055CD9D561BD5A91C563A955 /* Copy Pods Resources */,
+				556FACFF1B7C1D4D00001190 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -861,6 +859,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		556FACFF1B7C1D4D00001190 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 		927F619B196C771E000F43EF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -951,7 +962,6 @@
 				55688F761B7AE69F003CFB77 /* iAdHandler.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				55688F751B7AE69F003CFB77 /* GameCenterInteractor.swift in Sources */,
-				55688F661B7AE612003CFB77 /* TutorialScene.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				55688F6C1B7AE68B003CFB77 /* EvilMode.swift in Sources */,

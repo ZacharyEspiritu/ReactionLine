@@ -53,7 +53,7 @@
 				<key>displayName</key>
 				<string>Background Color</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>backgroundColorNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -139,8 +139,6 @@
 						<real>1</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -626,7 +624,7 @@
 				<key>displayName</key>
 				<string>Top Dividing Line</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>topDividingLine</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1538,7 +1536,7 @@
 												<key>displayName</key>
 												<string>"two player"</string>
 												<key>memberVarAssignmentName</key>
-												<string></string>
+												<string>evilModeLabel</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -3185,7 +3183,7 @@
 												<key>displayName</key>
 												<string>"challenges"</string>
 												<key>memberVarAssignmentName</key>
-												<string></string>
+												<string>leaderboardLabel</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -4909,7 +4907,7 @@
 												<key>displayName</key>
 												<string>"timed mode"</string>
 												<key>memberVarAssignmentName</key>
-												<string></string>
+												<string>timedModeLabel</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -6548,7 +6546,7 @@
 												<key>displayName</key>
 												<string>"infinite mode"</string>
 												<key>memberVarAssignmentName</key>
-												<string></string>
+												<string>infiniteModeLabel</string>
 												<key>memberVarAssignmentType</key>
 												<integer>1</integer>
 												<key>properties</key>
@@ -7943,7 +7941,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-0.5</real>
+							<real>0.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -8566,7 +8564,7 @@
 				<key>displayName</key>
 				<string>Bottom Dividing Line</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bottomDividingLine</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -10966,7 +10964,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-0.5</real>
+							<real>0.5</real>
 							<real>35</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -13284,7 +13282,7 @@
 								<key>displayName</key>
 								<string>"Version"</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>versionNumberHeader</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -13595,7 +13593,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>70</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -14127,7 +14125,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -14653,7 +14651,7 @@
 										<key>displayName</key>
 										<string>"Vibration"</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>vibrationOptionHeader</string>
 										<key>memberVarAssignmentType</key>
 										<integer>1</integer>
 										<key>properties</key>
@@ -15945,7 +15943,7 @@
 										<key>displayName</key>
 										<string>"Sounds"</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>soundEffectsOptionHeader</string>
 										<key>memberVarAssignmentType</key>
 										<integer>1</integer>
 										<key>properties</key>
@@ -17237,7 +17235,7 @@
 										<key>displayName</key>
 										<string>"Colorblind"</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>displayLinesRemainingOptionHeader</string>
 										<key>memberVarAssignmentType</key>
 										<integer>1</integer>
 										<key>properties</key>
@@ -17444,6 +17442,8 @@
 												</array>
 											</dict>
 										</array>
+										<key>selected</key>
+										<true/>
 									</dict>
 									<dict>
 										<key>UUID</key>
@@ -20165,7 +20165,7 @@
 				<key>displayName</key>
 				<string>titleLabel</string>
 				<key>memberVarAssignmentName</key>
-				<string>titleLabel</string>
+				<string>mainTitleLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -20190,7 +20190,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-0.5</real>
+							<real>0.5</real>
 							<real>66</real>
 							<integer>1</integer>
 							<integer>2</integer>
@@ -20518,7 +20518,7 @@
 				<key>displayName</key>
 				<string>shareTitle</string>
 				<key>memberVarAssignmentName</key>
-				<string>titleLabel</string>
+				<string>shareTitleLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -20543,7 +20543,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>1.5</real>
 							<real>66</real>
 							<integer>1</integer>
 							<integer>2</integer>
@@ -20854,7 +20854,7 @@
 				<key>displayName</key>
 				<string>optionsTitle</string>
 				<key>memberVarAssignmentName</key>
-				<string>titleLabel</string>
+				<string>optionsTitleLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -21282,7 +21282,7 @@
 				<key>displayName</key>
 				<string>statsTitle</string>
 				<key>memberVarAssignmentName</key>
-				<string>titleLabel</string>
+				<string>statsTitleLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -21885,7 +21885,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -22084,7 +22084,7 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>stageColor</key>
 	<integer>0</integer>
 </dict>

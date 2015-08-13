@@ -16,6 +16,11 @@ enum CurrentMenuView {
 enum GameState {
     case Playing, GameOver
 }
+enum ColorTheme: String {
+    case Default = "Default"
+    case Dark    = "Dark"
+    case Light   = "Light"
+}
 
 class MainScene: CCScene {
     
@@ -36,7 +41,11 @@ class MainScene: CCScene {
     
     // MARK: Variables
     
-    weak var titleLabel: CCLabelTTF!
+    weak var mainTitleLabel: CCLabelTTF!
+    weak var statsTitleLabel: CCLabelTTF!
+    weak var optionsTitleLabel: CCLabelTTF!
+    weak var shareTitleLabel: CCLabelTTF!
+    
     weak var infoLabel:  CCLabelTTF!
     
     weak var creditsLayer: CCNode!
@@ -59,8 +68,23 @@ class MainScene: CCScene {
     
     weak var statsScrollView: CCScrollView!
     
+    weak var backgroundColorNode:       CCNode!
     weak var topMenuBorderColorNode:    CCNode!
     weak var bottomMenuBorderColorNode: CCNode!
+    
+    weak var timedModeLabel:    CCLabelTTF!
+    weak var infiniteModeLabel: CCLabelTTF!
+    weak var evilModeLabel:     CCLabelTTF!
+    weak var leaderboardLabel:  CCLabelTTF!
+    
+    weak var topDividingLine: CCNode!
+    weak var bottomDividingLine: CCNode!
+    
+    weak var versionNumberHeader: CCLabelTTF!
+    
+    weak var vibrationOptionHeader: CCLabelTTF!
+    weak var soundEffectsOptionHeader: CCLabelTTF!
+    weak var displayLinesRemainingOptionHeader: CCLabelTTF!
     
     var currentMenuView: CurrentMenuView = .MainMenu
     
@@ -108,6 +132,8 @@ class MainScene: CCScene {
         
         setupGameCenter()
         
+        loadColorScheme()
+        
         delay(1.1) {
             self.setupGestures()
         }
@@ -138,7 +164,7 @@ class MainScene: CCScene {
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
                 
         delay(1.1) {
-            var gameplayScene = CCBReader.load("TutorialScene") as! TutorialScene
+            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
             var scene = CCScene()
             scene.addChild(gameplayScene)
@@ -488,6 +514,59 @@ class MainScene: CCScene {
     func swipeDown() {
         if currentMenuView == .Stats {
             statsScreenToMenu()
+        }
+    }
+    
+    
+    // MARK: Color Option Handling
+    
+    func loadColorScheme() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setObject("Dark", forKey: "colorScheme")
+        
+        if let colorThemeRawValue = defaults.stringForKey("colorScheme") {
+            let colorTheme: ColorTheme = ColorTheme(rawValue: colorThemeRawValue)!
+            
+            if colorTheme == .Default {
+                // Default color scheme
+            }
+            else if colorTheme == .Dark {
+                
+                let backgroundColor: CCColor = CCColor(red: 26/255, green: 23/255, blue: 23/255)
+                let textColor: CCColor = CCColor(red: 246/255, green: 246/255, blue: 246/255)
+                let detailColor: CCColor = CCColor(red: 150/255, green: 150/255, blue: 150/255)
+                
+                backgroundColorNode.color = backgroundColor
+                topMenuBorderColorNode.color = backgroundColor
+                bottomMenuBorderColorNode.color = backgroundColor
+                
+                mainTitleLabel.color = textColor
+                statsTitleLabel.color = textColor
+                shareTitleLabel.color = textColor
+                optionsTitleLabel.color = textColor
+                
+                timedModeLabel.color = textColor
+                infiniteModeLabel.color = textColor
+                evilModeLabel.color = textColor
+                leaderboardLabel.color = textColor
+                
+                versionNumberHeader.color = textColor
+                vibrationOptionHeader.color = textColor
+                soundEffectsOptionHeader.color = textColor
+                displayLinesRemainingOptionHeader.color = textColor
+                
+                topDividingLine.color = detailColor
+                bottomDividingLine.color = detailColor
+            }
+            else if colorTheme == .Light {
+                
+            }
+        }
+        else {
+            let defaultColorTheme = ColorTheme(rawValue: "Default")!
+            defaults.setObject(defaultColorTheme.rawValue, forKey: "colorScheme")
         }
     }
 }
