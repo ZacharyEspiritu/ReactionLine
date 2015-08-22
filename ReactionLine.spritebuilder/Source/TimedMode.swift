@@ -108,43 +108,44 @@ class TimedMode: CCScene {
     */
     func didLoadFromCCB() {
         
-        mixpanel.identify(mixpanel.distinctId)
-        mixpanel.track("Timed Mode Plays")
-        
-        // Sets up each of the lines before the game begins.
-        for index in 0..<numberOfLines {
+        delay(0.05) {
+            self.mixpanel.identify(self.mixpanel.distinctId)
+            self.mixpanel.track("Timed Mode Plays")
             
-            var line = CCBReader.load("Line") as! Line
-            line.setRandomColor()
+            // Sets up each of the lines before the game begins.
+            for index in 0..<self.numberOfLines {
+                
+                var line = CCBReader.load("Line") as! Line
+                line.setRandomColor()
+                
+                var lineHeight = (line.contentSizeInPoints.height + self.padding) * CGFloat(index)
+                line.position = CGPoint(x: 0, y: lineHeight)
+                
+                self.lineGroupingNode.addChild(line)
+                self.lineArray.append(line)
+                
+            }
             
-            var lineHeight = (line.contentSizeInPoints.height + padding) * CGFloat(index)
-            line.position = CGPoint(x: 0, y: lineHeight)
+            self.lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
+            self.blueTouchZone.opacity = 0
+            self.redTouchZone.opacity = 0
             
-            lineGroupingNode.addChild(line)
-            lineArray.append(line)
+            self.backgroundGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0, y: 0))))
+            self.lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
             
+            self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
+            
+            if self.memoryHandler.defaults.boolForKey(self.memoryHandler.colorblindSettingKey) {
+                self.redTouchZone.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+                self.blueTouchZone.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
+            }
+            
+            if !self.memoryHandler.defaults.boolForKey(self.memoryHandler.displayLineCounter) {
+                self.linesLeftLabel.visible = false
+            }
+            
+            self.countdownBeforeGameBegins() // Initiates the pre-game countdown.
         }
-        
-        lineGroupingNode.position = CGPoint(x: 0.50, y: -3238)
-        blueTouchZone.opacity = 0
-        redTouchZone.opacity = 0
-        
-        backgroundGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0, y: 0))))
-        lineGroupingNode.runAction(CCActionEaseSineInOut(action: CCActionMoveTo(duration: 2.5, position: CGPoint(x: 0.50, y: 175))))
-        
-        self.animationManager.runAnimationsForSequenceNamed("InitialFlythrough")
-        
-        if memoryHandler.defaults.boolForKey(memoryHandler.colorblindSettingKey) {
-            redTouchZone.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
-            blueTouchZone.color = CCColor(red: 0/255, green: 0/255, blue: 0/255)
-        }
-        
-        if !memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter) {
-            linesLeftLabel.visible = false
-        }
-        
-        countdownBeforeGameBegins() // Initiates the pre-game countdown.
-        
     }
     
     /**
@@ -519,9 +520,6 @@ class TimedMode: CCScene {
         var transition = CCTransition(fadeWithDuration: 0.3)
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
-        
-        self.removeAllChildrenWithCleanup(true)
-        self.removeFromParentAndCleanup(true)
     }
     
     

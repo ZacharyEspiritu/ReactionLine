@@ -68,11 +68,6 @@
     return YES;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Unused
-}
-
 - (CCScene*) startScene
 {
     return [CCBReader loadAsScene:@"MainScene"];

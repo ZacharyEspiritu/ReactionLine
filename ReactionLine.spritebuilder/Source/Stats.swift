@@ -13,9 +13,7 @@ class Stats: CCNode {
     // MARK: Constants
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    
-    let gameCenterInteractor = GameCenterInteractor.sharedInstance
-    
+        
     let mixpanel = Mixpanel.sharedInstance()
     
     let tapTimeOfLastFifteenGamesArray = "tapTimeOfLastFifteenGamesArray"
@@ -135,6 +133,9 @@ class Stats: CCNode {
         
         defaults.setInteger(currentTimedModeWins, forKey: timedModeWins)
         
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.set(["Timed Mode Wins" : currentTimedModeWins])
+        
         mixpanel.track("Timed Mode Wins")
         
     }
@@ -149,6 +150,9 @@ class Stats: CCNode {
         
         defaults.setInteger(currentTimedModeLosses, forKey: timedModeLosses)
         
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.set(["Timed Mode Losses" : currentTimedModeLosses])
+            
         mixpanel.track("Timed Mode Losses")
         
     }
@@ -163,6 +167,9 @@ class Stats: CCNode {
         
         defaults.setInteger(currentEvilModeWins, forKey: evilModeWins)
         
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.set(["Evil Mode Wins" : currentEvilModeWins])
+        
         mixpanel.track("Evil Mode Wins")
         
     }
@@ -176,6 +183,9 @@ class Stats: CCNode {
         currentEvilModeLosses++
         
         defaults.setInteger(currentEvilModeLosses, forKey: evilModeLosses)
+        
+        mixpanel.identify(mixpanel.distinctId)
+        mixpanel.people.set(["Evil Mode Losses" : currentEvilModeLosses])
         
         mixpanel.track("Evil Mode Losses")
         
@@ -194,6 +204,8 @@ class Stats: CCNode {
         defaults.setInteger(currentNumberOfLinesCleared, forKey: numberOfLinesCleared)
         
         mixpanel.people.set(["Number of Lines Cleared" : currentNumberOfLinesCleared])
+        
+        GameCenterInteractor.sharedInstance.saveHighScore("Lines", score: Double(currentNumberOfLinesCleared))
         
         // Check if 10,000 lines achievement was cleared.
         var tenThousandLinesClearedAchievementProgress: Double = Double(currentNumberOfLinesCleared) / Double(10000)

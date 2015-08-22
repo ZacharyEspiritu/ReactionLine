@@ -163,6 +163,20 @@ class GameCenterInteractor: NSObject {
                     }
                 })
             }
+            else if gamemode == "Lines" {
+                
+                var scoreReporter = GKScore(leaderboardIdentifier: "numberOfLinesClearedLeaderboard")
+                
+                scoreReporter.value = Int64(score)
+                
+                var scoreArray: [GKScore] = [scoreReporter]
+                
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                    if error != nil {
+                        println("Game Center: Evil Score Submission Error")
+                    }
+                })
+            }
             else {
                 println("Game Center: Invalid Gamemode Leaderboard Argument")
             }

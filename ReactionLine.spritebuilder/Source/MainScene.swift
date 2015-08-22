@@ -170,9 +170,6 @@ class MainScene: CCScene {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
-            self.removeAllChildrenWithCleanup(true)
-            self.removeFromParentAndCleanup(true)
         }
     }
     
@@ -200,9 +197,6 @@ class MainScene: CCScene {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
-            self.removeAllChildrenWithCleanup(true)
-            self.removeFromParentAndCleanup(true)
         }
     }
     
@@ -230,9 +224,6 @@ class MainScene: CCScene {
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
-            
-            self.removeAllChildrenWithCleanup(true)
-            self.removeFromParentAndCleanup(true)
         }
     }
     
@@ -462,21 +453,21 @@ class MainScene: CCScene {
     // MARK: Swipe Gesture Handling
     
     func setupGestures() {
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
-        swipeLeft.direction = .Left
-        CCDirector.sharedDirector().view.addGestureRecognizer(swipeLeft)
-        
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swipeRight")
-        swipeRight.direction = .Right
-        CCDirector.sharedDirector().view.addGestureRecognizer(swipeRight)
-        
-        var swipeUp = UISwipeGestureRecognizer(target: self, action: "swipeUp")
-        swipeUp.direction = .Up
-        CCDirector.sharedDirector().view.addGestureRecognizer(swipeUp)
-        
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "swipeDown")
-        swipeDown.direction = .Down
-        CCDirector.sharedDirector().view.addGestureRecognizer(swipeDown)
+//        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
+//        swipeLeft.direction = .Left
+//        CCDirector.sharedDirector().view.addGestureRecognizer(swipeLeft)
+//        
+//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swipeRight")
+//        swipeRight.direction = .Right
+//        CCDirector.sharedDirector().view.addGestureRecognizer(swipeRight)
+//        
+//        var swipeUp = UISwipeGestureRecognizer(target: self, action: "swipeUp")
+//        swipeUp.direction = .Up
+//        CCDirector.sharedDirector().view.addGestureRecognizer(swipeUp)
+//        
+//        var swipeDown = UISwipeGestureRecognizer(target: self, action: "swipeDown")
+//        swipeDown.direction = .Down
+//        CCDirector.sharedDirector().view.addGestureRecognizer(swipeDown)
     }
     
     func removeGestureRecognizers() {
@@ -487,35 +478,35 @@ class MainScene: CCScene {
         }
     }
     
-    func swipeLeft() {
-        if currentMenuView == .MainMenu {
-            shareMenu()
-        }
-        else if currentMenuView == .Options {
-            optionsScreenToMenu()
-        }
-    }
-    
-    func swipeRight() {
-        if currentMenuView == .MainMenu {
-            optionsMenu()
-        }
-        else if currentMenuView == .Share {
-            shareScreenToMenu()
-        }
-    }
-    
-    func swipeUp() {
-        if currentMenuView == .MainMenu {
-            statsMenu()
-        }
-    }
-    
-    func swipeDown() {
-        if currentMenuView == .Stats {
-            statsScreenToMenu()
-        }
-    }
+//    func swipeLeft() {
+//        if currentMenuView == .MainMenu {
+//            shareMenu()
+//        }
+//        else if currentMenuView == .Options {
+//            optionsScreenToMenu()
+//        }
+//    }
+//    
+//    func swipeRight() {
+//        if currentMenuView == .MainMenu {
+//            optionsMenu()
+//        }
+//        else if currentMenuView == .Share {
+//            shareScreenToMenu()
+//        }
+//    }
+//    
+//    func swipeUp() {
+//        if currentMenuView == .MainMenu {
+//            statsMenu()
+//        }
+//    }
+//    
+//    func swipeDown() {
+//        if currentMenuView == .Stats {
+//            statsScreenToMenu()
+//        }
+//    }
     
     
     // MARK: Color Option Handling
@@ -524,7 +515,7 @@ class MainScene: CCScene {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        defaults.setObject("Dark", forKey: "colorScheme")
+        defaults.setObject("Default", forKey: "colorScheme")
         
         if let colorThemeRawValue = defaults.stringForKey("colorScheme") {
             let colorTheme: ColorTheme = ColorTheme(rawValue: colorThemeRawValue)!

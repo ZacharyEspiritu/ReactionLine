@@ -523,9 +523,6 @@ class EvilMode: CCScene {
         var transition = CCTransition(fadeWithDuration: 0.3)
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
-        
-        self.removeAllChildrenWithCleanup(true)
-        self.removeFromParentAndCleanup(true)
     }
     
     
