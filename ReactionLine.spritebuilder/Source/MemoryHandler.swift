@@ -47,13 +47,13 @@ class MemoryHandler {
     /**
     Checks for a new top Timed Mode score.
     
-    :param: newTime  the time to check to see if there is a new high score
+    - parameter newTime:  the time to check to see if there is a new high score
     */
     func checkForNewTopTimedScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topScoreKey), defaults.doubleForKey(secondScoreKey), defaults.doubleForKey(thirdScoreKey)]
         
-        scoreArray.sort({ $0 < $1 })
+        scoreArray.sortInPlace({ $0 < $1 })
         
         defaults.setDouble(scoreArray[0], forKey: topScoreKey)
         defaults.setDouble(scoreArray[1], forKey: secondScoreKey)
@@ -86,13 +86,13 @@ class MemoryHandler {
     /**
     Checks for a new top Infinite Mode score.
     
-    :param: newScore  the score to check to see if there is a new high score
+    - parameter newScore:  the score to check to see if there is a new high score
     */
     func checkForNewTopInfiniteScore(newScore: Int) -> Bool {
         
         var scoreArray: [Int] = [newScore, defaults.integerForKey(topInfiniteScoreKey), defaults.integerForKey(secondInfiniteScoreKey), defaults.integerForKey(thirdInfiniteScoreKey)]
         
-        scoreArray.sort({ $0 > $1 })
+        scoreArray.sortInPlace({ $0 > $1 })
         
         defaults.setInteger(scoreArray[0], forKey: topInfiniteScoreKey)
         defaults.setInteger(scoreArray[1], forKey: secondInfiniteScoreKey)
@@ -124,13 +124,13 @@ class MemoryHandler {
     /**
     Checks for a new top Evil Mode score.
     
-    :param: newTime  the time to check to see if there is a new high score
+    - parameter newTime:  the time to check to see if there is a new high score
     */
     func checkForNewTopEvilScore(newTime: Double) -> Bool {
         
         var scoreArray: [Double] = [newTime, defaults.doubleForKey(topEvilScoreKey), defaults.doubleForKey(secondEvilScoreKey), defaults.doubleForKey(thirdEvilScoreKey)]
         
-        scoreArray.sort({ $0 < $1 })
+        scoreArray.sortInPlace({ $0 < $1 })
         
         defaults.setDouble(scoreArray[0], forKey: topEvilScoreKey)
         defaults.setDouble(scoreArray[1], forKey: secondEvilScoreKey)

@@ -36,7 +36,7 @@ class iAdHandler: NSObject {
     
     let view = CCDirector.sharedDirector().parentViewController!.view // Returns a UIView of the cocos2d parent view controller.
     
-    var adBannerView = ADBannerView(frame: CGRect.zeroRect)
+    var adBannerView = ADBannerView(frame: CGRect.zero)
     var bannerPosition: BannerPosition = .Top
     var isBannerDisplaying: Bool = false
     
@@ -64,9 +64,9 @@ class iAdHandler: NSObject {
     /**
     Sets the position of the soon-to-be banner ad and attempts to load a new ad from the iAd network.
     
-    :param: bannerPosition  the `BannerPosition` at which the ad should be positioned initially
+    - parameter bannerPosition:  the `BannerPosition` at which the ad should be positioned initially
     */
-    func loadAds(#bannerPosition: BannerPosition) {
+    func loadAds(bannerPosition bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
         
         if bannerPosition == .Top {
@@ -85,9 +85,9 @@ class iAdHandler: NSObject {
     /**
     Repositions the `adBannerView` to the designated `bannerPosition`.
     
-    :param: bannerPosition  the `BannerPosition` at which the ad should be positioned
+    - parameter bannerPosition:  the `BannerPosition` at which the ad should be positioned
     */
-    func setBannerPosition(#bannerPosition: BannerPosition) {
+    func setBannerPosition(bannerPosition bannerPosition: BannerPosition) {
         self.bannerPosition = bannerPosition
     }
     /**
@@ -109,7 +109,7 @@ class iAdHandler: NSObject {
             })
         }
         else {
-            println("Did not display ads because banner isn't loaded yet!")
+            print("Did not display ads because banner isn't loaded yet!")
         }
     }
     
@@ -172,10 +172,10 @@ class iAdHandler: NSObject {
                 self.closeButton.hidden = false
             })
             
-            println("Interstitial displaying!")
+            print("Interstitial displaying!")
         }
         else {
-            println("Interstitial not loaded yet!")
+            print("Interstitial not loaded yet!")
         }
         
     }
@@ -187,16 +187,16 @@ class iAdHandler: NSObject {
         if interstitial.loaded {
             switch interstitialIndexingNumber % 3 {
             case 0:
-                println("Interstitial should be displayed now!")
+                print("Interstitial should be displayed now!")
                 displayInterstitialAd()
             default:
-                println("Interstitial should not be displayed yet!")
+                print("Interstitial should not be displayed yet!")
                 break
             }
             interstitialIndexingNumber++
         }
         else {
-            println("Interstitial isn't loaded yet!")
+            print("Interstitial isn't loaded yet!")
         }
     }
     
@@ -222,7 +222,7 @@ class iAdHandler: NSObject {
     /**
     When called, delays the running of code included in the `closure` parameter.
     
-    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    - parameter delay:  how long, in milliseconds, to wait until the program should run the code in the closure statement
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
@@ -244,7 +244,7 @@ extension iAdHandler: ADInterstitialAdDelegate {
         interstitialAdView.frame = self.view.bounds
         isInterstitialLoaded = true
         
-        println("Succesfully loaded interstitital!")
+        print("Succesfully loaded interstitital!")
     }
     
     /**
@@ -285,14 +285,14 @@ extension iAdHandler: ADInterstitialAdDelegate {
         interstitial = ADInterstitialAd()
         interstitial.delegate = self
         
-        println("Interstitial unloaded")
+        print("Interstitial unloaded")
     }
     
     /**
     Called when a interstitial was unable to be loaded.
     */
     func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
-        println("Was not able to load an interstitial with error: \(error)")
+        print("Was not able to load an interstitial with error: \(error)")
         if !isInterstitialLoaded {
             interstitial = ADInterstitialAd()
             interstitial.delegate = self
@@ -306,13 +306,13 @@ extension iAdHandler: ADBannerViewDelegate {
     Called whenever a banner ad successfully loads.
     */
     func bannerViewDidLoadAd(banner: ADBannerView!) {
-        println("Successfully loaded banner!")
+        print("Successfully loaded banner!")
     }
     
     /**
     Called when a banner ad was unable to be loaded.
     */
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        println("Was not able to load a banner with error: \(error)")
+        print("Was not able to load a banner with error: \(error)")
     }
 }

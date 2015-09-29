@@ -90,14 +90,14 @@ class Stats: CCNode {
     
     It stores the last 15 games of the player and combines the averages of all of those games to find a more accurate average.
     
-    :param: numberOfTaps  the number of taps the player made in the last game instance
-    :param: timeSpent     the amount of time the player was in the last game instance, in seconds
+    - parameter numberOfTaps:  the number of taps the player made in the last game instance
+    - parameter timeSpent:     the amount of time the player was in the last game instance, in seconds
     */
-    func calculateNewAverageTapTime(#numberOfTaps: Int, timeSpent: Double) {
+    func calculateNewAverageTapTime(numberOfTaps numberOfTaps: Int, timeSpent: Double) {
     
         if numberOfTaps > 0 {
             
-            var averageTapTimeOfThisGame = timeSpent / Double(numberOfTaps)
+            let averageTapTimeOfThisGame = timeSpent / Double(numberOfTaps)
             
             var lastFifteenGames: [Double] = defaults.arrayForKey(tapTimeOfLastFifteenGamesArray) as! [Double]
             lastFifteenGames.append(averageTapTimeOfThisGame)
@@ -194,9 +194,9 @@ class Stats: CCNode {
     /**
     Adds `numberOfLinesToAdd` to the current amount of total lines cleared and stores that value.
     
-    :param: numberOfLinesToAdd  the number of lines to add to the total amount of lines ever cleared
+    - parameter numberOfLinesToAdd:  the number of lines to add to the total amount of lines ever cleared
     */
-    func addMoreLinesCleared(#numberOfLinesToAdd: Int) {
+    func addMoreLinesCleared(numberOfLinesToAdd numberOfLinesToAdd: Int) {
         
         var currentNumberOfLinesCleared = defaults.integerForKey(numberOfLinesCleared)
         currentNumberOfLinesCleared += numberOfLinesToAdd
@@ -254,7 +254,7 @@ class Stats: CCNode {
     /**
     When called, delays the running of code included in the `closure` parameter.
     
-    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    - parameter delay:  how long, in milliseconds, to wait until the program should run the code in the closure statement
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(

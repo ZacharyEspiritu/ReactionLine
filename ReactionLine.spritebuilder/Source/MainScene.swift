@@ -8,7 +8,7 @@
 
 import Foundation
 import GameKit
-import iAd
+//import iAd
 
 enum CurrentMenuView {
     case MainMenu, Options, Stats, Share, Credits, GoingToGameplay
@@ -93,8 +93,8 @@ class MainScene: CCScene {
     
     func didLoadFromCCB() {
         
-        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
-        iAdHandler.sharedInstance.loadInterstitialAd()
+//        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
+//        iAdHandler.sharedInstance.loadInterstitialAd()
         
         if !memoryHandler.defaults.boolForKey(memoryHandler.hasAlreadyLoaded) {
             
@@ -120,7 +120,7 @@ class MainScene: CCScene {
             statsHandler.defaults.setDouble(0, forKey: statsHandler.averageTapTimeKey)
             statsHandler.defaults.setObject([] as [Double], forKey: statsHandler.tapTimeOfLastFifteenGamesArray)
             
-            println("Default settings loaded.")
+            print("Default settings loaded.")
         }
         
         updateOptionsButtonText()
@@ -164,9 +164,9 @@ class MainScene: CCScene {
         self.animationManager.runAnimationsForSequenceNamed("TimedMode")
                 
         delay(1.1) {
-            var gameplayScene = CCBReader.load("TimedMode") as! TimedMode
+            let gameplayScene = CCBReader.load("TimedMode") as! TimedMode
             
-            var scene = CCScene()
+            let scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
@@ -191,9 +191,9 @@ class MainScene: CCScene {
         self.animationManager.runAnimationsForSequenceNamed("InfiniteMode")
         
         delay(1.1) {
-            var gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
+            let gameplayScene = CCBReader.load("InfiniteMode") as! InfiniteMode
             
-            var scene = CCScene()
+            let scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
@@ -218,9 +218,9 @@ class MainScene: CCScene {
         self.animationManager.runAnimationsForSequenceNamed("EvilMode")
         
         delay(1.1) {
-            var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
+            let gameplayScene = CCBReader.load("EvilMode") as! EvilMode
             
-            var scene = CCScene()
+            let scene = CCScene()
             scene.addChild(gameplayScene)
             
             CCDirector.sharedDirector().presentScene(scene)
@@ -255,9 +255,9 @@ class MainScene: CCScene {
     }
     
     func updateOptionsButtonText() {
-        println("Vibration:  \(memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey))")
-        println("Sounds:     \(memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey))")
-        println("Line Count: \(memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter))")
+        print("Vibration:  \(memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey))")
+        print("Sounds:     \(memoryHandler.defaults.boolForKey(memoryHandler.soundsSettingKey))")
+        print("Line Count: \(memoryHandler.defaults.boolForKey(memoryHandler.displayLineCounter))")
         
         if !memoryHandler.defaults.boolForKey(memoryHandler.vibrationSettingKey) {
             vibrationToggleLabel.color = CCColor(red: 213/255, green: 35/255, blue: 0/255)
@@ -405,7 +405,7 @@ class MainScene: CCScene {
     /**
     When called, delays the running of code included in the `closure` parameter.
     
-    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    - parameter delay:  how long, in milliseconds, to wait until the program should run the code in the closure statement
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
@@ -473,7 +473,7 @@ class MainScene: CCScene {
     func removeGestureRecognizers() {
         if let recognizers = CCDirector.sharedDirector().view.gestureRecognizers {
             for recognizer in recognizers {
-                CCDirector.sharedDirector().view.removeGestureRecognizer(recognizer as! UIGestureRecognizer)
+                CCDirector.sharedDirector().view.removeGestureRecognizer(recognizer )
             }
         }
     }
@@ -567,14 +567,14 @@ class MainScene: CCScene {
 extension MainScene: GKGameCenterControllerDelegate {
     
     func showLeaderboard() {
-        var viewController = CCDirector.sharedDirector().parentViewController!
-        var gameCenterViewController = GKGameCenterViewController()
+        let viewController = CCDirector.sharedDirector().parentViewController!
+        let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         viewController.presentViewController(gameCenterViewController, animated: true, completion: nil)
     }
     
     // Delegate methods
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

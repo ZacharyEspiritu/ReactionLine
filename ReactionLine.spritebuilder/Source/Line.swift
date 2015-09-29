@@ -52,7 +52,7 @@ class Line: CCNode {
     Sets each line to a randomly chosen color.
     */
     func setRandomColor() {
-        var randomNumber = CCRANDOM_0_1()
+        let randomNumber = CCRANDOM_0_1()
         
         if randomNumber < 0.50 {
             colorType = .Red

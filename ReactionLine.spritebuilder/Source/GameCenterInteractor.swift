@@ -43,23 +43,23 @@ class GameCenterInteractor: NSObject {
         if (self.localPlayer.authenticated == false)
         {
             //Authenticate the player
-            println("The local player is not authenticated.")
+            print("The local player is not authenticated.")
             self.authenticateLocalPlayer()
         } else
         {
-            println("The local player is authenticated")
+            print("The local player is authenticated")
             // Register the listener
             self.localPlayer.registerListener(self)
             
             // At this point you can download match data from Game Center.
-            GKAchievement.loadAchievementsWithCompletionHandler({(achievementDescriptions: [AnyObject]!, error: NSError!) -> Void in
+            GKAchievement.loadAchievementsWithCompletionHandler({(achievementDescriptions: [GKAchievement]?, error: NSError?) -> Void in
                 if error != nil {
-                    println("Game Center: Loading achievements failed with error: \(error)")
+                    print("Game Center: Loading achievements failed with error: \(error)")
                 }
             })
-            GKAchievementDescription.loadAchievementDescriptionsWithCompletionHandler({(achievementDescriptions: [AnyObject]!, error: NSError!) -> Void in
+            GKAchievementDescription.loadAchievementDescriptionsWithCompletionHandler({(achievementDescriptions: [GKAchievementDescription]?, error: NSError?) -> Void in
                 if error != nil {
-                    println("Game Center: Loading achievement descriptions failed with error: \(error)")
+                    print("Game Center: Loading achievement descriptions failed with error: \(error)")
                 }
             })
         }
@@ -73,32 +73,32 @@ class GameCenterInteractor: NSObject {
     {
         self.delegate?.willSignIn()
         
-        self.localPlayer.authenticateHandler = {(viewController : UIViewController!, error : NSError!) -> Void in
+        self.localPlayer.authenticateHandler = {(viewController : UIViewController?, error : NSError?) -> Void in
             
             if (viewController != nil)
             {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showAuthenticationDialogueWhenReasonable(presentingViewController: CCDirector.sharedDirector().parentViewController!, gameCenterController: viewController)
+                    self.showAuthenticationDialogueWhenReasonable(presentingViewController: CCDirector.sharedDirector().parentViewController!, gameCenterController: viewController!)
                 })
             }
                 
             else if (self.localPlayer.authenticated == true)
             {
-                println("Player is Authenticated")
+                print("Player is Authenticated")
                 self.localPlayer.registerListener(self)
                 self.delegate?.didSignIn()
             }
                 
             else
             {
-                println("User Still Not Authenticated")
+                print("User Still Not Authenticated")
                 self.delegate?.failedToSignIn()
             }
             
             if (error != nil)
             {
-                println("Failed to sign in with error:\(error.localizedDescription).")
-                self.delegate?.failedToSignInWithError(error)
+                print("Failed to sign in with error:\(error!.localizedDescription).")
+                self.delegate?.failedToSignInWithError(error!)
                 // Delegate can take necessary action. For example: present a UIAlertController with the error details.
             }
         }
@@ -108,10 +108,10 @@ class GameCenterInteractor: NSObject {
     /**
     When appropriate, this function will be called and will present the Game Center login view controller.
     
-    :param: presentingViewController The view controller that will present the game center view controller.
-    :param: gameCenterController     The game center controller.
+    - parameter presentingViewController: The view controller that will present the game center view controller.
+    - parameter gameCenterController:     The game center controller.
     */
-    func showAuthenticationDialogueWhenReasonable(#presentingViewController:UIViewController, gameCenterController:UIViewController)
+    func showAuthenticationDialogueWhenReasonable(presentingViewController presentingViewController:UIViewController, gameCenterController:UIViewController)
     {
         presentingViewController.presentViewController(gameCenterController, animated: true, completion: nil)
     }
@@ -123,78 +123,78 @@ class GameCenterInteractor: NSObject {
             
             if gamemode == "Timed" {
                 
-                var scoreReporter = GKScore(leaderboardIdentifier: "timedModeLeaderboard")
+                let scoreReporter = GKScore(leaderboardIdentifier: "timedModeLeaderboard")
                 
                 scoreReporter.value = Int64(score * 1000)
                 
-                var scoreArray: [GKScore] = [scoreReporter]
+                let scoreArray: [GKScore] = [scoreReporter]
                 
-                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
                     if error != nil {
-                        println("Game Center: Timed Score Submission Error")
+                        print("Game Center: Timed Score Submission Error")
                     }
                 })
             }
             else if gamemode == "Infinite" {
                 
-                var scoreReporter = GKScore(leaderboardIdentifier: "infiniteModeLeaderboard")
+                let scoreReporter = GKScore(leaderboardIdentifier: "infiniteModeLeaderboard")
                 
                 scoreReporter.value = Int64(score)
                 
-                var scoreArray: [GKScore] = [scoreReporter]
+                let scoreArray: [GKScore] = [scoreReporter]
                 
-                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
                     if error != nil {
-                        println("Game Center: Infinite Score Submission Error")
+                        print("Game Center: Infinite Score Submission Error")
                     }
                 })
             }
             else if gamemode == "Evil" {
                 
-                var scoreReporter = GKScore(leaderboardIdentifier: "evilModeLeaderboard")
+                let scoreReporter = GKScore(leaderboardIdentifier: "evilModeLeaderboard")
                 
                 scoreReporter.value = Int64(score * 1000)
                 
-                var scoreArray: [GKScore] = [scoreReporter]
+                let scoreArray: [GKScore] = [scoreReporter]
                 
-                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
                     if error != nil {
-                        println("Game Center: Evil Score Submission Error")
+                        print("Game Center: Evil Score Submission Error")
                     }
                 })
             }
             else if gamemode == "Lines" {
                 
-                var scoreReporter = GKScore(leaderboardIdentifier: "numberOfLinesClearedLeaderboard")
+                let scoreReporter = GKScore(leaderboardIdentifier: "numberOfLinesClearedLeaderboard")
                 
                 scoreReporter.value = Int64(score)
                 
-                var scoreArray: [GKScore] = [scoreReporter]
+                let scoreArray: [GKScore] = [scoreReporter]
                 
-                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+                GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
                     if error != nil {
-                        println("Game Center: Evil Score Submission Error")
+                        print("Game Center: Evil Score Submission Error")
                     }
                 })
             }
             else {
-                println("Game Center: Invalid Gamemode Leaderboard Argument")
+                print("Game Center: Invalid Gamemode Leaderboard Argument")
             }
         }
     }
     
     // MARK: 5 Achievement Handling
-    func saveAchievementProgress(#achievementIdentifier: String, percentComplete: Double) {
-        var achievement = GKAchievement(identifier: achievementIdentifier)
+    func saveAchievementProgress(achievementIdentifier achievementIdentifier: String, percentComplete: Double) {
+        let achievement = GKAchievement(identifier: achievementIdentifier)
         if percentComplete == 100 {
             achievement.showsCompletionBanner = true
         }
         achievement.percentComplete = percentComplete
         
-        var achievementArray: [GKAchievement] = [achievement]
-        GKAchievement.reportAchievements(achievementArray, withCompletionHandler: {(error : NSError!) -> Void in
+        let achievementArray: [GKAchievement] = [achievement]
+        GKAchievement.reportAchievements(achievementArray, withCompletionHandler: {(error : NSError?) -> Void in
             if error != nil {
-                println("Game Center: Achievement Status Reporting Error")
+                print("Game Center: Achievement Status Reporting Error")
             }
         })
     }

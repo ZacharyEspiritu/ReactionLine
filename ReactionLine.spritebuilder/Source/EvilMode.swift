@@ -89,7 +89,7 @@ class EvilMode: CCScene {
     /**
     When called, delays the running of code included in the `closure` parameter.
     
-    :param: delay  how long, in milliseconds, to wait until the program should run the code in the closure statement
+    - parameter delay:  how long, in milliseconds, to wait until the program should run the code in the closure statement
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
@@ -114,10 +114,10 @@ class EvilMode: CCScene {
         // Sets up each of the lines before the game begins.
         for index in 0..<numberOfLines {
             
-            var line = CCBReader.load("Line") as! Line
+            let line = CCBReader.load("Line") as! Line
             line.setRandomColor()
             
-            var lineHeight = (line.contentSizeInPoints.height + padding) * CGFloat(index)
+            let lineHeight = (line.contentSizeInPoints.height + padding) * CGFloat(index)
             line.position = CGPoint(x: 0, y: lineHeight)
             
             lineGroupingNode.addChild(line)
@@ -164,9 +164,9 @@ class EvilMode: CCScene {
                 self.countdown = "2"
                 self.blueTouchZone.runAction(CCActionFadeIn(duration: 1))
                 self.redTouchZone.runAction(CCActionFadeIn(duration: 1))
-                self.delay(0.22) {
-                    self.adHandler.displayBannerAd() // Make money
-                }
+//                self.delay(0.22) {
+//                    self.adHandler.displayBannerAd() // Make money
+//                }
                 self.delay(0.6) {
                     self.countdown = "1"
                     self.delay(0.6) {
@@ -230,12 +230,12 @@ class EvilMode: CCScene {
     
     The function also checks to see if the current tap may have caused a win state to occur.
     
-    :param: tapSide  the side that the player just tapped on (value should be passed from `touchBegan()`)
+    - parameter tapSide:  the side that the player just tapped on (value should be passed from `touchBegan()`)
     */
-    func checkIfRightTap(#tapSide: Color) {
+    func checkIfRightTap(tapSide tapSide: Color) {
         
-        var currentLine = lineArray[lineIndex]
-        var lineColor = currentLine.colorType
+        let currentLine = lineArray[lineIndex]
+        let lineColor = currentLine.colorType
         
         // Check if the tap was on the correct side of the screen.
         if tapSide == lineColor {
@@ -266,12 +266,12 @@ class EvilMode: CCScene {
     
     It "slides" the `currentLine` over to its corresponding `Color` side, and moves the `lineGroupingNode` down to account for the now moved piece.
     */
-    func moveStackDown(#sideAnimation: Color) {
+    func moveStackDown(sideAnimation sideAnimation: Color) {
         
         numberOfLinesCleared++
         linesLeft--
         
-        var currentLine = lineArray[lineIndex]
+        let currentLine = lineArray[lineIndex]
         var flyOutAction: CCActionMoveTo? = nil
         
         if sideAnimation == .Blue {
@@ -283,7 +283,7 @@ class EvilMode: CCScene {
         
         currentLine.runAction(flyOutAction!)
         
-        var moveLinesDown = CCActionMoveBy(duration: animationLinesDownDelay, position: CGPoint(x: 0, y: -(currentLine.contentSize.height + padding)))
+        let moveLinesDown = CCActionMoveBy(duration: animationLinesDownDelay, position: CGPoint(x: 0, y: -(currentLine.contentSize.height + padding)))
         lineGroupingNode.runAction(moveLinesDown)
         
         lineIndex++
@@ -302,11 +302,11 @@ class EvilMode: CCScene {
     
     It should only be called whenever the player makes a move that would land the game in a winning state.
     
-    :param: line  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game are passed into this function, because it simply uses it to determine how tall each of the `Line` objects are.
+    - parameter line:  used to determine the positioning of several animation sequences called by the win state. It doesn't matter which one of the `Line` objects that are loaded in the game are passed into this function, because it simply uses it to determine how tall each of the `Line` objects are.
     */
     func win(line: Line) {
         
-        adHandler.hideBannerAd()
+//        adHandler.hideBannerAd()
         
         statsHandler.addEvilModeWin()
         statsHandler.addMoreLinesCleared(numberOfLinesToAdd: numberOfLinesCleared)
@@ -315,7 +315,7 @@ class EvilMode: CCScene {
         useWinningTwitterMessage = true
         
         self.unschedule("timer")
-        println("win!")
+        print("win!")
         
         audio.playEffect("tada.wav")
         
@@ -353,7 +353,7 @@ class EvilMode: CCScene {
         self.unschedule("timer")
         self.userInteractionEnabled = false
         
-        var currentLine = lineArray[lineIndex]
+        let currentLine = lineArray[lineIndex]
         
         if currentLine.colorType == .Blue {
             currentLine.runAction(CCActionEaseElasticOut(action: CCActionMoveBy(duration: animationRowDelay * 2.5, position: CGPoint(x: 100, y: 0))))
@@ -371,9 +371,9 @@ class EvilMode: CCScene {
             }
             
             for index in 0..<self.lineArray.count {
-                var currentLine = self.lineArray[index]
+                let currentLine = self.lineArray[index]
                 var random = Int(arc4random_uniform(9))
-                var negativeRandom = Int(arc4random_uniform(2))
+                let negativeRandom = Int(arc4random_uniform(2))
                 
                 random = random * 4
                 
@@ -385,21 +385,21 @@ class EvilMode: CCScene {
                     random = -random
                 }
                 
-                var tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
+                let tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
                 
                 currentLine.runAction(tiltAction)
             }
             
             // Randomize "broken" position of the `blueTouchZone`.
             var blueRandom = Int(arc4random_uniform(9))
-            var blueNegativeRandom = Int(arc4random_uniform(2))
+            let blueNegativeRandom = Int(arc4random_uniform(2))
             blueRandom = blueRandom * 4 + 3
             if blueNegativeRandom == 0 {
                 blueRandom = -blueRandom
             }
             // Randomize "broken" position of the `redTouchZone`.
             var redRandom = Int(arc4random_uniform(9))
-            var redNegativeRandom = Int(arc4random_uniform(2))
+            let redNegativeRandom = Int(arc4random_uniform(2))
             redRandom = redRandom * 4 + 3
             if redNegativeRandom == 0 {
                 redRandom = -redRandom
@@ -425,9 +425,9 @@ class EvilMode: CCScene {
             
             self.delay(1) {
                 
-                self.adHandler.hideBannerAd()
-                
-                self.adHandler.checkIfInterstitialAdShouldBeDisplayed()
+//                self.adHandler.hideBannerAd()
+//                
+//                self.adHandler.checkIfInterstitialAdShouldBeDisplayed()
                 
                 self.redTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.redTouchZone.position.x, y: -2000))))
                 self.blueTouchZone.runAction(CCActionEaseSineIn(action: CCActionMoveBy(duration: 4, position: CGPoint(x: self.blueTouchZone.position.x, y: -2000))))
@@ -436,7 +436,7 @@ class EvilMode: CCScene {
                     
                     let numberOfRowsToSkip: Int = 9 // A bit hard to explain, but, in essence, determines how fast the animation responds to the losing state occuring. This entire section is necessary in order for the animation sequence to start running at the `Line` objects that are currently on the screen as opposed to starting at the ones that the player may have already cleared and are now off the screen. If we start the animation sequence at the ones that are off the screen, it can take a while until the sequence actually has any visible effect.
                     
-                    var currentLine = self.lineArray[index]
+                    let currentLine = self.lineArray[index]
                     var delayMultiplier: Int?
                     
                     if (self.lineIndex - numberOfRowsToSkip) < numberOfRowsToSkip {
@@ -451,7 +451,7 @@ class EvilMode: CCScene {
                         }
                     }
                     
-                    var delay = (0.06 * Double(delayMultiplier!))
+                    let delay = (0.06 * Double(delayMultiplier!))
                     
                     currentLine.scheduleOnce("fallDown", delay: delay)
                     
@@ -495,12 +495,12 @@ class EvilMode: CCScene {
     Loads a new instance of `EvilMode.ccb` to restart the game.
     */
     func playAgain() {
-        var gameplayScene = CCBReader.load("EvilMode") as! EvilMode
+        let gameplayScene = CCBReader.load("EvilMode") as! EvilMode
         
-        var scene = CCScene()
+        let scene = CCScene()
         scene.addChild(gameplayScene)
         
-        var transition = CCTransition(fadeWithDuration: 0.3)
+        let transition = CCTransition(fadeWithDuration: 0.3)
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
         
@@ -515,12 +515,12 @@ class EvilMode: CCScene {
         
         mixpanel.track("Evil Mode Session Duration")
         
-        var mainScene = CCBReader.load("MainScene") as! MainScene
+        let mainScene = CCBReader.load("MainScene") as! MainScene
         
-        var scene = CCScene()
+        let scene = CCScene()
         scene.addChild(mainScene)
         
-        var transition = CCTransition(fadeWithDuration: 0.3)
+        let transition = CCTransition(fadeWithDuration: 0.3)
         
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
     }
