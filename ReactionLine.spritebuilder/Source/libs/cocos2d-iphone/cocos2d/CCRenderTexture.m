@@ -257,10 +257,10 @@ FlipY(GLKMatrix4 projection)
 
 -(CCRenderer *)begin
 {
-	CCTexture *texture = self.texture;
-	if(texture == nil){
+	// CCTexture *texture = self.texture;
+	if(self.texture == nil){
 		[self create];
-		texture = self.texture;
+		// texture = self.texture;
 	}
 	
 	CCRenderer *renderer = [[CCDirector sharedDirector] rendererFromPool];
@@ -458,8 +458,6 @@ FlipY(GLKMatrix4 projection)
 
 -(BOOL)saveToFile:(NSString*)fileName format:(CCRenderTextureImageFormat)format
 {
-	BOOL success = YES;
-	
 	NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:fileName];
 
     return [self saveToFilePath:fullPath format:format];

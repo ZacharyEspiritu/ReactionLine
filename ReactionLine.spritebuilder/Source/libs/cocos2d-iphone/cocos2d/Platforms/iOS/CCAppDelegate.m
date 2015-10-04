@@ -34,7 +34,6 @@
 #import "CCGLView.h"
 
 #import "OALSimpleAudio.h"
-#import "CCPackageManager.h"
 
 #if __CC_METAL_SUPPORTED_AND_ENABLED
 #import "CCMetalView.h"
@@ -62,19 +61,18 @@ const CGSize FIXED_SIZE = {568, 384};
 // Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
 -(NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskPortrait;
-//    if ([_screenOrientation isEqual:CCScreenOrientationAll])
-//    {
-//        return UIInterfaceOrientationMaskAll;
-//    }
-//    else if ([_screenOrientation isEqual:CCScreenOrientationPortrait])
-//    {
-//        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
-//    }
-//    else
-//    {
-//        return UIInterfaceOrientationMaskLandscape;
-//    }
+    if ([_screenOrientation isEqual:CCScreenOrientationAll])
+    {
+        return UIInterfaceOrientationMaskAll;
+    }
+    else if ([_screenOrientation isEqual:CCScreenOrientationPortrait])
+    {
+        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskLandscape;
+    }
 }
 
 // Supported orientations. Customize it for your own needs
@@ -229,8 +227,6 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	// set the Navigation Controller as the root view controller
 	[window_ setRootViewController:navController_];
     
-    [[CCPackageManager sharedManager] loadPackages];
-	
 	// make main window visible
 	[window_ makeKeyAndVisible];
     
@@ -318,7 +314,6 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	if([CCDirector sharedDirector].animating) {
 		[[CCDirector sharedDirector] stopAnimation];
 	}
-	[[CCPackageManager sharedManager] savePackages];
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
@@ -332,16 +327,12 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] end];
-
-    [[CCPackageManager sharedManager] savePackages];
 }
 
 // purge memory
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] purgeCachedData];
-
-    [[CCPackageManager sharedManager] savePackages];
 }
 
 // next delta time will be zero

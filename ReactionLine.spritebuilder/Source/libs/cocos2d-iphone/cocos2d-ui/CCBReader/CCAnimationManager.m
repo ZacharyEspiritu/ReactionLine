@@ -820,7 +820,7 @@ static NSInteger ccbAnimationManagerID = 0;
     NSMutableArray* result = [[NSMutableArray alloc] init];
     
     CCBKeyframe* startKeyFrame = [seqProp.keyframes objectAtIndex:0];
-    CCBKeyframe* endKeyFrame   = [seqProp.keyframes objectAtIndex:0];
+    CCBKeyframe* endKeyFrame; //   = [seqProp.keyframes objectAtIndex:0];
   
     NSUInteger frameCount = [seqProp.keyframes count];
     
@@ -1028,8 +1028,6 @@ static NSInteger ccbAnimationManagerID = 0;
 
 -(void) update: (CCTime) t
 {
-    CCNode* tn = (CCNode*) _target;
-    
     ccColor4F fc = _from.ccColor4f;
     ccColor4F tc = _to.ccColor4f;
     CCColor *lerped = [CCColor colorWithRed:fc.r + (tc.r - fc.r) * t green:fc.g + (tc.g - fc.g) * t blue:fc.b + (tc.b - fc.b) * t alpha:fc.a + (tc.a - fc.a) * t];

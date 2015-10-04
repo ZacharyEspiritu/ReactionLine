@@ -41,10 +41,7 @@ typedef struct _CCEffectTexCoordFunc
 } CCEffectTexCoordFunc;
 
 static const CCEffectTexCoordFunc CCEffectTexCoordOverwrite      = { CCEffectTexCoordConstant, CCEffectTexCoordTransformNone };
-static const CCEffectTexCoordFunc CCEffectTexCoord1Untransformed = { CCEffectTexCoordSource1,  CCEffectTexCoordTransformNone };
 static const CCEffectTexCoordFunc CCEffectTexCoord1Padded        = { CCEffectTexCoordSource1,  CCEffectTexCoordTransformPad };
-static const CCEffectTexCoordFunc CCEffectTexCoord2Untransformed = { CCEffectTexCoordSource2,  CCEffectTexCoordTransformNone };
-static const CCEffectTexCoordFunc CCEffectTexCoord2Padded        = { CCEffectTexCoordSource2,  CCEffectTexCoordTransformPad };
 
 
 static CCEffectTexCoordFunc selectTexCoordFunc(CCEffectTexCoordMapping mapping, CCEffectTexCoordSource source, BOOL fromIntermediate, BOOL padMainTexCoords);
@@ -272,7 +269,8 @@ static GLKVector2 selectTexCoordPadding(CCEffectTexCoordSource tcSource, GLKVect
         CCEffectTexCoordFunc tc1 = selectTexCoordFunc(renderPass.texCoord1Mapping, CCEffectTexCoordSource1, fromIntermediate, padMainTexCoords);
         CCEffectTexCoordFunc tc2 = selectTexCoordFunc(renderPass.texCoord2Mapping, CCEffectTexCoordSource2, fromIntermediate, padMainTexCoords);
         
-        renderPassInputs.verts = padVertices(sprite.vertexes, effect.padding, tc1, tc2);
+        CCSpriteVertexes paddedVerts = padVertices(sprite.vertexes, effect.padding, tc1, tc2);
+        [renderPassInputs setVertsWorkAround:&paddedVerts];
         
         renderPassInputs.texCoord1Center = GLKVector2Make((sprite.vertexes->tr.texCoord1.s + sprite.vertexes->bl.texCoord1.s) * 0.5f, (sprite.vertexes->tr.texCoord1.t + sprite.vertexes->bl.texCoord1.t) * 0.5f);
         renderPassInputs.texCoord1Extents = GLKVector2Make(fabsf(sprite.vertexes->tr.texCoord1.s - sprite.vertexes->bl.texCoord1.s) * 0.5f, fabsf(sprite.vertexes->tr.texCoord1.t - sprite.vertexes->bl.texCoord1.t) * 0.5f);

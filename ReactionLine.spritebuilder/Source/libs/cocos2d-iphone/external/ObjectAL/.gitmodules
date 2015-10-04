@@ -1,0 +1,8 @@
+[submodule "external/ogg"]
+	path = external/ogg
+	url = https://github.com/spritebuilder/ogg.git
+	branch = apportable
+[submodule "external/tremor"]
+	path = external/tremor
+	url = https://github.com/spritebuilder/tremor.git
+	branch = apportable

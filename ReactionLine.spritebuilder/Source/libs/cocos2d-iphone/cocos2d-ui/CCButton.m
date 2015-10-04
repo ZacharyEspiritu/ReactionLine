@@ -81,8 +81,8 @@
     self = [self initWithTitle:title spriteFrame:spriteFrame highlightedSpriteFrame:NULL disabledSpriteFrame:NULL];
     
     // Setup default colors for when only one frame is used
-    [self setBackgroundColor:[CCColor colorWithWhite:1 alpha:1] forState:CCControlStateHighlighted];
-    [self setLabelColor:[CCColor colorWithWhite:1 alpha:1] forState:CCControlStateHighlighted];
+    [self setBackgroundColor:[CCColor colorWithWhite:0.7 alpha:1] forState:CCControlStateHighlighted];
+    [self setLabelColor:[CCColor colorWithWhite:0.7 alpha:1] forState:CCControlStateHighlighted];
     
     [self setBackgroundOpacity:0.5f forState:CCControlStateDisabled];
     [self setLabelOpacity:0.5f forState:CCControlStateDisabled];
@@ -305,8 +305,8 @@
             
             if (_zoomWhenHighlighted)
             {
-                [_label runAction:[CCActionScaleTo actionWithDuration:0.08 scaleX:_originalScaleX*1.12 scaleY:_originalScaleY*1.12]];
-                [_background runAction:[CCActionScaleTo actionWithDuration:0.08 scaleX:_originalScaleX*1.12 scaleY:_originalScaleY*1.12]];
+                [_label runAction:[CCActionScaleTo actionWithDuration:0.1 scaleX:_originalScaleX*1.2 scaleY:_originalScaleY*1.2]];
+                [_background runAction:[CCActionScaleTo actionWithDuration:0.1 scaleX:_originalScaleX*1.2 scaleY:_originalScaleY*1.2]];
             }
         }
         else
@@ -325,8 +325,11 @@
 			
             if (_zoomWhenHighlighted)
             {
-                [_label runAction:[CCActionScaleTo actionWithDuration:0.08 scaleX:_originalScaleX scaleY:_originalScaleY]];
-                [_background runAction:[CCActionScaleTo actionWithDuration:0.08 scaleX:_originalScaleX scaleY:_originalScaleY]];
+                _label.scaleX = _originalScaleX;
+                _label.scaleY = _originalScaleY;
+                
+                _background.scaleX = _originalScaleX;
+                _background.scaleY = _originalScaleY;
             }
         }
     }
@@ -334,12 +337,6 @@
     {
         // Button is disabled
         [self updatePropertiesForState:CCControlStateDisabled];
-        
-        if (_zoomWhenHighlighted)
-        {
-            [_label runAction:[CCActionScaleTo actionWithDuration:0.14 scaleX:_originalScaleX scaleY:_originalScaleY]];
-            [_background runAction:[CCActionScaleTo actionWithDuration:0.14 scaleX:_originalScaleX scaleY:_originalScaleY]];
-        }
     }
 }
 
